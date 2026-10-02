@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Portfolio | Bruno Parlin Pakpahan</title>
+    <title>Bruno Parlin Pakpahan | BFD-Bewerbung</title>
 
     <meta name="description"
-          content="Portfolio von Bruno Parlin Pakpahan – Bewerbung um einen Bundesfreiwilligendienst (BFD) in Deutschland.">
+          content="Persönliches Portfolio von Bruno Parlin Pakpahan für die Bewerbung um einen Bundesfreiwilligendienst in Deutschland.">
 
     <style>
         * {
@@ -28,18 +28,18 @@
         }
 
         a {
-            color: inherit;
             text-decoration: none;
+            color: inherit;
         }
 
-        /* NAVIGATION */
+        /* Navigation */
         nav {
             position: sticky;
             top: 0;
-            z-index: 100;
-            background: rgba(255,255,255,0.96);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.97);
             border-bottom: 1px solid #e5e7eb;
-            padding: 15px 30px;
+            padding: 15px 25px;
         }
 
         .nav-container {
@@ -51,14 +51,17 @@
         }
 
         .logo {
-            font-size: 20px;
+            font-size: 19px;
             font-weight: bold;
+            color: #111827;
         }
 
         .nav-links {
             display: flex;
-            gap: 24px;
+            gap: 22px;
             list-style: none;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .nav-links a {
@@ -70,10 +73,11 @@
             color: #111827;
         }
 
-        /* HERO */
+        /* Hero */
         .hero {
             background: white;
             padding: 90px 25px;
+            border-bottom: 1px solid #e5e7eb;
         }
 
         .hero-container {
@@ -81,22 +85,23 @@
             margin: auto;
             display: flex;
             align-items: center;
-            gap: 60px;
+            gap: 55px;
         }
 
         .profile-photo {
             width: 190px;
-            height: 230px;
-            border-radius: 12px;
+            height: 235px;
             object-fit: cover;
+            border-radius: 12px;
             background: #e5e7eb;
             flex-shrink: 0;
         }
 
         .hero-text h1 {
-            font-size: 46px;
+            font-size: 45px;
+            line-height: 1.2;
             color: #111827;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .hero-text h2 {
@@ -107,8 +112,9 @@
         }
 
         .hero-text p {
-            max-width: 650px;
-            color: #5b6470;
+            max-width: 700px;
+            color: #5f6b76;
+            font-size: 17px;
         }
 
         .button {
@@ -125,7 +131,7 @@
             background: #374151;
         }
 
-        /* SECTIONS */
+        /* Sections */
         section {
             max-width: 1000px;
             margin: auto;
@@ -139,11 +145,11 @@
         }
 
         .section-intro {
-            color: #667085;
-            max-width: 750px;
+            max-width: 800px;
+            color: #5f6b76;
         }
 
-        /* CARDS */
+        /* Cards */
         .cards {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -153,47 +159,132 @@
 
         .card {
             background: white;
-            padding: 25px;
+            padding: 26px;
             border: 1px solid #e5e7eb;
             border-radius: 10px;
         }
 
         .card h3 {
-            margin-bottom: 10px;
             color: #111827;
+            margin-bottom: 10px;
         }
 
         .card p {
-            color: #667085;
+            color: #5f6b76;
         }
 
-        /* LANGUAGE */
-        .language {
-            margin: 18px 0;
+        /* Timeline */
+        .timeline {
+            border-left: 3px solid #d1d5db;
+            padding-left: 25px;
         }
 
-        .language-title {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 6px;
+        .timeline-item {
+            background: white;
+            padding: 25px;
+            margin-bottom: 22px;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+        }
+
+        .timeline-item h3 {
+            color: #111827;
+            margin-bottom: 5px;
+        }
+
+        .date {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .timeline-item ul {
+            padding-left: 20px;
+            color: #5f6b76;
+        }
+
+        /* Education */
+        .education {
+            background: white;
+            padding: 28px;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+        }
+
+        .education .date {
+            margin-top: 5px;
+        }
+
+        /* Languages */
+        .language-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+            background: white;
+            border: 1px solid #e5e7eb;
+        }
+
+        .language-table th,
+        .language-table td {
+            padding: 14px;
+            text-align: center;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .language-table th {
+            background: #f3f4f6;
+            color: #111827;
+        }
+
+        .language-table td:first-child,
+        .language-table th:first-child {
+            text-align: left;
             font-weight: bold;
         }
 
-        .bar {
-            height: 9px;
-            background: #e5e7eb;
-            border-radius: 10px;
-            overflow: hidden;
+        /* Skills */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 25px;
         }
 
-        .bar span {
+        .skill {
+            background: white;
+            border: 1px solid #dfe3e8;
+            border-radius: 20px;
+            padding: 8px 16px;
+            color: #374151;
+            font-size: 14px;
+        }
+
+        /* Personal information */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-top: 25px;
+        }
+
+        .info-item {
+            background: white;
+            padding: 20px;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+        }
+
+        .info-item strong {
             display: block;
-            height: 100%;
-            background: #374151;
-            border-radius: 10px;
+            color: #111827;
+            margin-bottom: 4px;
         }
 
-        /* CONTACT */
+        .info-item span {
+            color: #5f6b76;
+        }
+
+        /* Contact */
         .contact {
             background: white;
             border: 1px solid #e5e7eb;
@@ -202,19 +293,23 @@
         }
 
         .contact p {
-            margin: 8px 0;
+            margin: 9px 0;
         }
 
-        /* FOOTER */
+        .contact a {
+            color: #1f4b7a;
+        }
+
+        /* Footer */
         footer {
-            text-align: center;
-            padding: 35px 20px;
             background: #111827;
             color: #d1d5db;
+            text-align: center;
+            padding: 35px 20px;
             font-size: 14px;
         }
 
-        /* MOBILE */
+        /* Mobile */
         @media (max-width: 750px) {
 
             .nav-container {
@@ -224,8 +319,6 @@
 
             .nav-links {
                 gap: 12px;
-                flex-wrap: wrap;
-                justify-content: center;
             }
 
             .hero-container {
@@ -234,15 +327,25 @@
             }
 
             .hero-text h1 {
-                font-size: 36px;
+                font-size: 35px;
             }
 
-            .cards {
+            .hero-text h2 {
+                font-size: 19px;
+            }
+
+            .cards,
+            .info-grid {
                 grid-template-columns: 1fr;
             }
 
-            .hero {
-                padding: 60px 20px;
+            .language-table {
+                font-size: 13px;
+            }
+
+            .language-table th,
+            .language-table td {
+                padding: 9px 5px;
             }
         }
     </style>
@@ -261,9 +364,10 @@
         <ul class="nav-links">
             <li><a href="#ueber-mich">Über mich</a></li>
             <li><a href="#motivation">Motivation</a></li>
-            <li><a href="#bildung">Bildung</a></li>
             <li><a href="#erfahrung">Erfahrung</a></li>
+            <li><a href="#bildung">Bildung</a></li>
             <li><a href="#sprachen">Sprachen</a></li>
+            <li><a href="#kompetenzen">Kompetenzen</a></li>
             <li><a href="#kontakt">Kontakt</a></li>
         </ul>
 
@@ -277,8 +381,8 @@
     <div class="hero-container">
 
         <!--
-        Später hier dein Bewerbungsfoto einsetzen.
-        Dafür legen wir später einen Ordner "images" an.
+        Dein Bewerbungsfoto kommt später hier hinein.
+        Datei: images/profil.jpg
         -->
 
         <img
@@ -294,13 +398,15 @@
             <h2>Bewerbung um einen Bundesfreiwilligendienst (BFD)</h2>
 
             <p>
-                Willkommen auf meiner persönlichen Bewerbungsseite.
-                Hier finden Sie Informationen über mich, meine Motivation,
-                meine Ausbildung und meine bisherigen Erfahrungen.
+                Motivierter Bewerber aus Indonesien mit Berufserfahrung
+                in Logistik, Produktion und Personenbeförderung.
+                Ich möchte mich im sozialen Bereich engagieren,
+                neue Erfahrungen sammeln und mich persönlich
+                sowie beruflich weiterentwickeln.
             </p>
 
             <a href="#kontakt" class="button">
-                Kontakt aufnehmen
+                Kontakt
             </a>
 
         </div>
@@ -316,28 +422,67 @@
     <h2>Über mich</h2>
 
     <p class="section-intro">
-        Mein Name ist Bruno Parlin Pakpahan. Ich interessiere mich für
-        einen Bundesfreiwilligendienst in Deutschland und möchte mich
-        persönlich sowie beruflich weiterentwickeln.
+        Ich bin Absolvent einer Berufsschule (SMK) im Bereich
+        Computer- und Netzwerktechnik und verfüge über mehrere Jahre
+        Berufserfahrung in den Bereichen Logistik, Produktion und
+        Personenbeförderung.
+    </p>
+
+    <br>
+
+    <p class="section-intro">
+        Ich bin zuverlässig, lernbereit und arbeite gerne im Team.
+        Durch einen Bundesfreiwilligendienst möchte ich neue
+        Erfahrungen im sozialen Bereich sammeln, meine Deutschkenntnisse
+        verbessern und mich beruflich sowie persönlich weiterentwickeln.
+    </p>
+
+</section>
+
+
+<!-- MOTIVATION -->
+<section id="motivation">
+
+    <h2>Meine Motivation für den BFD</h2>
+
+    <p class="section-intro">
+        Ein Bundesfreiwilligendienst in Deutschland bietet mir die
+        Möglichkeit, mich aktiv für andere Menschen einzusetzen und
+        gleichzeitig wertvolle praktische Erfahrungen zu sammeln.
     </p>
 
     <div class="cards">
 
         <div class="card">
-            <h3>Persönlichkeit</h3>
+            <h3>Soziales Engagement</h3>
             <p>
-                Ich bin motiviert, zuverlässig und bereit, Verantwortung
-                zu übernehmen. Neue Aufgaben und Erfahrungen sehe ich
-                als Möglichkeit, mich weiterzuentwickeln.
+                Ich möchte Menschen unterstützen, Verantwortung übernehmen
+                und mich aktiv in einer sozialen Einrichtung einbringen.
             </p>
         </div>
 
         <div class="card">
-            <h3>Interessen</h3>
+            <h3>Persönliche Entwicklung</h3>
             <p>
-                Besonders interessieren mich soziale Tätigkeiten,
-                der Umgang mit Menschen und die Möglichkeit,
-                aktiv in einer Gemeinschaft mitzuwirken.
+                Ich möchte meine sozialen und praktischen Fähigkeiten
+                erweitern und neue Perspektiven für meine berufliche
+                Zukunft gewinnen.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Deutschkenntnisse</h3>
+            <p>
+                Während des BFD möchte ich meine Deutschkenntnisse im
+                Alltag und im beruflichen Umfeld weiter verbessern.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Neue Erfahrungen</h3>
+            <p>
+                Die Zusammenarbeit mit Menschen aus unterschiedlichen
+                Lebensbereichen sehe ich als wertvolle Erfahrung.
             </p>
         </div>
 
@@ -346,34 +491,79 @@
 </section>
 
 
-<!-- MOTIVATION -->
-<section id="motivation">
+<!-- BERUFSERFAHRUNG -->
+<section id="erfahrung">
 
-    <h2>Meine Motivation</h2>
+    <h2>Berufserfahrung</h2>
 
-    <p class="section-intro">
-        Ich möchte einen Bundesfreiwilligendienst absolvieren, weil ich
-        praktische Erfahrungen sammeln, meine Deutschkenntnisse verbessern
-        und gleichzeitig einen sinnvollen Beitrag für andere Menschen
-        leisten möchte.
-    </p>
+    <div class="timeline">
 
-    <div class="cards">
+        <div class="timeline-item">
 
-        <div class="card">
-            <h3>Soziales Engagement</h3>
-            <p>
-                Ich möchte Menschen unterstützen und lernen, Verantwortung
-                in einem sozialen Umfeld zu übernehmen.
-            </p>
+            <h3>Selbstständiger Fahrer – GRAB Indonesia</h3>
+
+            <div class="date">
+                01.09.2024 – aktuell · Jakarta, Indonesien
+            </div>
+
+            <ul>
+                <li>Sicherer Transport von Fahrgästen, Dokumenten, Paketen und Lebensmitteln.</li>
+                <li>Verantwortung für die pünktliche und unversehrte Zustellung von Lieferungen.</li>
+                <li>Flexible und effiziente Routenplanung im dichten Stadtverkehr.</li>
+                <li>Freundlicher und professioneller Umgang mit einer vielfältigen Kundengruppe.</li>
+            </ul>
+
         </div>
 
-        <div class="card">
-            <h3>Persönliche Entwicklung</h3>
-            <p>
-                Der BFD bietet mir die Möglichkeit, neue Fähigkeiten zu
-                entwickeln und wertvolle praktische Erfahrungen zu sammeln.
-            </p>
+
+        <div class="timeline-item">
+
+            <h3>Lagermitarbeiter (Warehouse Operator) – PT. Serpong Alam Lestari</h3>
+
+            <div class="date">
+                01.06.2022 – 01.05.2024 · Bogor, Indonesien
+            </div>
+
+            <ul>
+                <li>Kommissionierung von Waren.</li>
+                <li>Durchführung von Bestandskontrollen.</li>
+                <li>Sicherstellung eines reibungslosen Lagerablaufs.</li>
+            </ul>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <h3>Produktionsmitarbeiter – PT. Bright Food International</h3>
+
+            <div class="date">
+                01.03.2020 – 01.06.2022 · Bogor, Indonesien
+            </div>
+
+            <ul>
+                <li>Bedienung von Produktionsmaschinen.</li>
+                <li>Qualitätskontrolle der Produkte.</li>
+                <li>Wartung und Pflege der Maschinen.</li>
+            </ul>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <h3>Helper – Lager / Transport – PT. Mulia Multi Mandiri</h3>
+
+            <div class="date">
+                01.10.2018 – 01.02.2020 · Indonesien
+            </div>
+
+            <ul>
+                <li>Be- und Entladen von Waren.</li>
+                <li>Kontrolle von Warenmenge und Zustand.</li>
+                <li>Unterstützung der Logistikprozesse.</li>
+            </ul>
+
         </div>
 
     </div>
@@ -386,46 +576,23 @@
 
     <h2>Bildung</h2>
 
-    <div class="card">
+    <div class="education">
 
-        <h3>Meine Ausbildung</h3>
-
-        <p>
-            <strong>Schulische / berufliche Ausbildung</strong>
-        </p>
+        <h3>
+            Berufsbildende Oberschule (SMK)
+        </h3>
 
         <p>
-            Hier können später deine Schule, dein Abschluss,
-            Studiengang oder deine berufliche Ausbildung eingetragen werden.
+            <strong>Fachrichtung: Computer- und Netzwerktechnik</strong>
         </p>
 
-    </div>
-
-</section>
-
-
-<!-- ERFAHRUNG -->
-<section id="erfahrung">
-
-    <h2>Erfahrungen</h2>
-
-    <div class="cards">
-
-        <div class="card">
-            <h3>Berufliche Erfahrungen</h3>
-            <p>
-                Hier werden später deine bisherigen Arbeits-
-                oder Praktikumserfahrungen eingetragen.
-            </p>
+        <div class="date">
+            01.06.2015 – 01.03.2018 · Tarutung, Indonesien
         </div>
 
-        <div class="card">
-            <h3>Weitere Erfahrungen</h3>
-            <p>
-                Hier können beispielsweise ehrenamtliche Tätigkeiten,
-                Projekte oder andere relevante Erfahrungen stehen.
-            </p>
-        </div>
+        <p>
+            SMK Swasta St. Nahanson Parapat
+        </p>
 
     </div>
 
@@ -437,43 +604,109 @@
 
     <h2>Sprachkenntnisse</h2>
 
-    <div class="language">
+    <p class="section-intro">
+        Die folgenden Angaben entsprechen meinen derzeitigen
+        Sprachkenntnissen.
+    </p>
 
-        <div class="language-title">
-            <span>Deutsch</span>
-            <span>---</span>
-        </div>
+    <table class="language-table">
 
-        <div class="bar">
-            <span style="width: 50%;"></span>
-        </div>
+        <thead>
+            <tr>
+                <th>Sprache</th>
+                <th>Hören</th>
+                <th>Lesen</th>
+                <th>Sprechen</th>
+                <th>Schreiben</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>Indonesisch</td>
+                <td colspan="4">Muttersprache</td>
+            </tr>
+
+            <tr>
+                <td>Deutsch</td>
+                <td>B1</td>
+                <td>B1</td>
+                <td>B1</td>
+                <td>B1</td>
+            </tr>
+
+            <tr>
+                <td>Englisch</td>
+                <td>A1</td>
+                <td>A1</td>
+                <td>A1</td>
+                <td>A1</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+
+<!-- KOMPETENZEN -->
+<section id="kompetenzen">
+
+    <h2>Kompetenzen</h2>
+
+    <div class="skills">
+
+        <span class="skill">Microsoft Office</span>
+        <span class="skill">Teamfähigkeit</span>
+        <span class="skill">Zuverlässigkeit</span>
+        <span class="skill">Pünktlichkeit</span>
+        <span class="skill">Einfühlungsvermögen</span>
+        <span class="skill">Verantwortungsbewusstsein</span>
+        <span class="skill">Belastbarkeit</span>
+        <span class="skill">Flexibilität</span>
+        <span class="skill">Organisation</span>
+        <span class="skill">Kundenorientierung</span>
 
     </div>
 
+</section>
 
-    <div class="language">
 
-        <div class="language-title">
-            <span>Englisch</span>
-            <span>---</span>
+<!-- HOBBYS -->
+<section id="interessen">
+
+    <h2>Hobbys und Interessen</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Sport</h3>
+            <p>
+                Sport und körperliche Aktivität.
+            </p>
         </div>
 
-        <div class="bar">
-            <span style="width: 70%;"></span>
+        <div class="card">
+            <h3>Musik</h3>
+            <p>
+                Musik hören in meiner Freizeit.
+            </p>
         </div>
 
-    </div>
-
-
-    <div class="language">
-
-        <div class="language-title">
-            <span>Indonesisch</span>
-            <span>Muttersprache</span>
+        <div class="card">
+            <h3>Lesen</h3>
+            <p>
+                Lesen und persönliche Weiterbildung.
+            </p>
         </div>
 
-        <div class="bar">
-            <span style="width: 100%;"></span>
+        <div class="card">
+            <h3>Reisen</h3>
+            <p>
+                Neue Orte, Menschen und Kulturen kennenlernen.
+            </p>
         </div>
 
     </div>
@@ -481,18 +714,32 @@
 </section>
 
 
-<!-- ZERTIFIKATE -->
-<section id="zertifikate">
+<!-- PERSÖNLICHE DATEN -->
+<section id="persoenlich">
 
-    <h2>Zertifikate</h2>
+    <h2>Persönliche Informationen</h2>
 
-    <div class="card">
+    <div class="info-grid">
 
-        <p>
-            Hier können später deine Sprachzertifikate,
-            Kurszertifikate und weitere relevante Nachweise
-            als PDF hinzugefügt werden.
-        </p>
+        <div class="info-item">
+            <strong>Geburtsdatum</strong>
+            <span>03.10.1999</span>
+        </div>
+
+        <div class="info-item">
+            <strong>Geburtsort</strong>
+            <span>Aekraja, Indonesien</span>
+        </div>
+
+        <div class="info-item">
+            <strong>Staatsangehörigkeit</strong>
+            <span>Indonesisch</span>
+        </div>
+
+        <div class="info-item">
+            <strong>Geschlecht</strong>
+            <span>Männlich</span>
+        </div>
 
     </div>
 
@@ -507,7 +754,8 @@
     <div class="card">
 
         <p>
-            Mein vollständiger Lebenslauf steht hier als PDF zur Verfügung.
+            Mein vollständiger Lebenslauf kann hier als PDF
+            eingesehen werden.
         </p>
 
         <a href="documents/Lebenslauf.pdf" class="button">
@@ -527,24 +775,23 @@
     <div class="contact">
 
         <p>
-            <strong>Name:</strong>
-            Bruno Parlin Pakpahan
-        </p>
-
-        <p>
             <strong>E-Mail:</strong>
-            DEINE-EMAIL@BEISPIEL.DE
+            <a href="mailto:brunoparlinpakpahan16@gmail.com">
+                brunoparlinpakpahan16@gmail.com
+            </a>
         </p>
 
         <p>
-            <strong>Standort:</strong>
-            Indonesien
+            <strong>Telefon:</strong>
+            <a href="tel:+6285183370310">
+                +62 851 8337 0310
+            </a>
         </p>
 
         <p>
-            Bei Fragen zu meiner Bewerbung oder meinem Interesse
-            an einem Bundesfreiwilligendienst können Sie mich gerne
-            per E-Mail kontaktieren.
+            Wenn Sie Fragen zu meiner Bewerbung um einen
+            Bundesfreiwilligendienst haben, können Sie mich gerne
+            per E-Mail oder telefonisch kontaktieren.
         </p>
 
     </div>
@@ -560,7 +807,7 @@
     </p>
 
     <p>
-        Portfolio – Bewerbung um einen Bundesfreiwilligendienst (BFD)
+        Portfolio · Bewerbung um einen Bundesfreiwilligendienst (BFD)
     </p>
 
 </footer>
