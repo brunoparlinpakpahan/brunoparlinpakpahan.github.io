@@ -4,31 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Bruno Parlin Pakpahan | Persönliches Portfolio</title>
+    <title>Bruno Parlin Pakpahan | BFD Bewerbung</title>
 
-    <meta name="description"
-          content="Persönliches Portfolio von Bruno Parlin Pakpahan – Bewerbung für einen Bundesfreiwilligendienst (BFD) in Deutschland.">
+    <meta
+        name="description"
+        content="Persönliches Bewerbungsportfolio von Bruno Parlin Pakpahan für einen Bundesfreiwilligendienst in Deutschland."
+    >
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-          rel="stylesheet">
+    <meta name="theme-color" content="#08111c">
 
     <style>
+
+        /* =========================
+           ROOT
+        ========================= */
+
         :root {
-            --bg: #07111f;
-            --bg2: #0b1728;
-            --card: rgba(16, 31, 50, .78);
-            --card2: rgba(20, 38, 60, .65);
+            --bg: #07111c;
+            --bg-soft: #0b1725;
+            --card: #0d1b2a;
+            --card-light: #102235;
+
             --gold: #d7b56d;
-            --gold-light: #f0d99a;
-            --text: #f5f7fa;
-            --muted: #aeb9c8;
-            --border: rgba(215,181,109,.22);
-            --white-soft: rgba(255,255,255,.07);
-            --shadow: 0 25px 70px rgba(0,0,0,.35);
+            --gold-light: #efd99c;
+
+            --white: #f7f8fa;
+            --text: #d9e0e8;
+            --muted: #91a0b1;
+
+            --border: rgba(215, 181, 109, 0.20);
+
+            --shadow:
+                0 20px 60px rgba(0, 0, 0, 0.35);
+
+            --radius: 22px;
         }
+
+
+        /* =========================
+           RESET
+        ========================= */
 
         * {
             margin: 0;
@@ -41,39 +56,29 @@
         }
 
         body {
-            font-family: "DM Sans", sans-serif;
+            font-family:
+                Inter,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
             background:
-                radial-gradient(circle at 15% 10%, rgba(215,181,109,.08), transparent 30%),
-                radial-gradient(circle at 85% 30%, rgba(40,90,150,.12), transparent 30%),
+                radial-gradient(
+                    circle at top right,
+                    rgba(215, 181, 109, 0.07),
+                    transparent 35%
+                ),
                 var(--bg);
+
             color: var(--text);
             line-height: 1.7;
             overflow-x: hidden;
         }
 
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            background:
-                linear-gradient(
-                    rgba(255,255,255,.015) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(255,255,255,.015) 1px,
-                    transparent 1px
-                );
-            background-size: 70px 70px;
-            mask-image: linear-gradient(to bottom, black, transparent);
-            z-index: -2;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
+        body.no-scroll {
+            overflow: hidden;
         }
 
         img {
@@ -81,14 +86,17 @@
             display: block;
         }
 
-        button {
-            font-family: inherit;
+        a {
+            color: inherit;
+            text-decoration: none;
         }
 
-        .container {
-            width: min(1160px, 92%);
-            margin: auto;
+        button,
+        input,
+        textarea {
+            font: inherit;
         }
+
 
         /* =========================
            LOADER
@@ -97,106 +105,167 @@
         .loader {
             position: fixed;
             inset: 0;
-            background: var(--bg);
-            display: grid;
-            place-items: center;
             z-index: 9999;
-            transition: .7s ease;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--bg);
+
+            transition:
+                opacity .6s ease,
+                visibility .6s ease;
         }
 
-        .loader.hide {
+        .loader.hidden {
             opacity: 0;
             visibility: hidden;
         }
 
-        .loader-inner {
+        .loader-content {
             text-align: center;
         }
 
         .loader-logo {
-            font-family: "Playfair Display", serif;
-            font-size: 2.3rem;
+            font-size: 38px;
+            font-weight: 800;
+            letter-spacing: 4px;
             color: var(--gold);
-            margin-bottom: 15px;
         }
 
         .loader-line {
-            width: 160px;
+            width: 150px;
             height: 2px;
-            background: rgba(255,255,255,.12);
-            overflow: hidden;
+            margin: 18px auto 0;
+
+            background: linear-gradient(
+                90deg,
+                transparent,
+                var(--gold),
+                transparent
+            );
+
+            animation: loaderLine 1.5s ease-in-out infinite;
         }
 
-        .loader-line span {
-            display: block;
-            height: 100%;
-            width: 50%;
-            background: var(--gold);
-            animation: loading 1.2s infinite;
-        }
-
-        @keyframes loading {
-            from {
-                transform: translateX(-100%);
+        @keyframes loaderLine {
+            0% {
+                transform: scaleX(.2);
+                opacity: .4;
             }
 
-            to {
-                transform: translateX(300%);
+            50% {
+                transform: scaleX(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scaleX(.2);
+                opacity: .4;
             }
         }
+
 
         /* =========================
-           PROGRESS
+           SCROLL PROGRESS
         ========================= */
 
-        .progress {
+        .scroll-progress {
             position: fixed;
             top: 0;
             left: 0;
+
+            width: 0%;
             height: 3px;
-            width: 0;
-            background: var(--gold);
+
             z-index: 9998;
+
+            background: var(--gold);
         }
+
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
+        .container {
+            width: min(1180px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
 
         /* =========================
            NAVBAR
         ========================= */
 
-        nav {
+        .navbar {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
+            right: 0;
+
             z-index: 1000;
-            background: rgba(7,17,31,.78);
-            backdrop-filter: blur(18px);
+
             border-bottom: 1px solid rgba(255,255,255,.05);
+
+            background: rgba(7,17,28,.80);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            transition: .3s ease;
         }
 
         .nav-inner {
-            min-height: 76px;
+            height: 76px;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
         .logo {
-            font-family: "Playfair Display", serif;
-            font-size: 1.25rem;
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--white);
+        }
+
+        .logo span {
             color: var(--gold);
-            letter-spacing: .5px;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
             gap: 30px;
+            list-style: none;
         }
 
         .nav-links a {
-            font-size: .9rem;
+            position: relative;
+
             color: var(--muted);
+
+            font-size: 14px;
+            font-weight: 600;
+
+            transition: .3s ease;
+        }
+
+        .nav-links a::after {
+            content: "";
+
+            position: absolute;
+            left: 0;
+            bottom: -7px;
+
+            width: 0;
+            height: 1px;
+
+            background: var(--gold);
+
             transition: .3s ease;
         }
 
@@ -204,14 +273,22 @@
             color: var(--gold-light);
         }
 
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
         .menu-toggle {
             display: none;
+
             border: 0;
             background: transparent;
-            color: white;
-            font-size: 1.5rem;
+
+            color: var(--white);
+
+            font-size: 27px;
             cursor: pointer;
         }
+
 
         /* =========================
            HERO
@@ -219,16 +296,43 @@
 
         .hero {
             min-height: 100vh;
+
             display: flex;
             align-items: center;
+
+            padding: 140px 0 100px;
+
             position: relative;
-            padding: 120px 0 80px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 600px;
+            height: 600px;
+
+            top: -250px;
+            right: -220px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(215,181,109,.13),
+                    transparent 65%
+                );
+
+            pointer-events: none;
         }
 
         .hero-grid {
             display: grid;
-            grid-template-columns: 1.15fr .85fr;
-            gap: 70px;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 80px;
             align-items: center;
         }
 
@@ -236,134 +340,150 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 8px 14px;
-            border: 1px solid var(--border);
-            border-radius: 999px;
-            color: var(--gold-light);
-            background: rgba(215,181,109,.05);
-            font-size: .82rem;
-            margin-bottom: 25px;
+
+            margin-bottom: 20px;
+
+            color: var(--gold);
+
+            font-size: 13px;
+            font-weight: 700;
+
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .eyebrow::before {
             content: "";
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
+
+            width: 35px;
+            height: 1px;
+
             background: var(--gold);
-            box-shadow: 0 0 15px var(--gold);
         }
 
-        h1 {
-            font-family: "Playfair Display", serif;
-            font-size: clamp(3.1rem, 7vw, 6rem);
-            line-height: .98;
-            font-weight: 600;
+        .hero h1 {
+            margin-bottom: 20px;
+
+            color: var(--white);
+
+            font-size: clamp(42px, 6vw, 76px);
+            line-height: 1.05;
+
             letter-spacing: -2px;
-            margin-bottom: 28px;
         }
 
-        h1 span {
+        .hero h1 span {
             color: var(--gold);
         }
 
-        .hero-text {
+        .hero-subtitle {
             max-width: 680px;
+
+            margin-bottom: 30px;
+
             color: var(--muted);
-            font-size: 1.05rem;
-            margin-bottom: 35px;
+
+            font-size: 18px;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 14px;
             flex-wrap: wrap;
+            gap: 14px;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 13px 22px;
-            border-radius: 999px;
-            border: 1px solid var(--border);
+
+            min-height: 48px;
+
+            padding: 0 22px;
+
+            border-radius: 12px;
+
+            font-size: 14px;
+            font-weight: 700;
+
             transition: .3s ease;
-            font-weight: 600;
-            font-size: .9rem;
         }
 
         .btn-primary {
-            background: var(--gold);
             color: #101923;
-            border-color: var(--gold);
+            background: var(--gold);
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(215,181,109,.2);
+            background: var(--gold-light);
+            transform: translateY(-2px);
         }
 
-        .btn-outline {
-            color: var(--text);
-            background: rgba(255,255,255,.03);
+        .btn-secondary {
+            border: 1px solid var(--border);
+            color: var(--white);
+            background: rgba(255,255,255,.02);
         }
 
-        .btn-outline:hover {
-            border-color: var(--gold);
-            color: var(--gold-light);
-            transform: translateY(-3px);
+        .btn-secondary:hover {
+            border-color: rgba(215,181,109,.55);
+            transform: translateY(-2px);
         }
 
-        /* Hero Profile */
 
-        .hero-profile {
+        /* =========================
+           HERO IMAGE
+        ========================= */
+
+        .hero-image-wrap {
             position: relative;
+
             display: flex;
             justify-content: center;
         }
 
-        .profile-frame {
-            width: min(360px, 85vw);
-            aspect-ratio: 4 / 5;
-            border-radius: 28px;
+        .hero-image-frame {
+            position: relative;
+
+            width: min(390px, 100%);
+
             padding: 10px;
-            background: linear-gradient(
-                145deg,
-                rgba(215,181,109,.75),
-                rgba(215,181,109,.08)
-            );
+
+            border-radius: 32px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(215,181,109,.65),
+                    rgba(215,181,109,.08)
+                );
+
             box-shadow: var(--shadow);
-            transform: rotate(2deg);
         }
 
-        .profile-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 21px;
-            background: #111;
-        }
+        .hero-image-frame::before {
+            content: "";
 
-        .profile-badge {
             position: absolute;
-            left: -20px;
-            bottom: 30px;
-            background: rgba(12,26,43,.94);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 16px 18px;
-            backdrop-filter: blur(15px);
-            box-shadow: var(--shadow);
+            inset: -14px;
+
+            border: 1px solid rgba(215,181,109,.15);
+            border-radius: 38px;
+
+            pointer-events: none;
         }
 
-        .profile-badge strong {
-            display: block;
-            color: var(--gold-light);
+        .hero-image {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+
+            object-fit: cover;
+
+            border-radius: 25px;
+
+            background: var(--card);
         }
 
-        .profile-badge small {
-            color: var(--muted);
-        }
 
         /* =========================
            MARQUEE
@@ -371,34 +491,55 @@
 
         .marquee {
             overflow: hidden;
-            border-top: 1px solid rgba(255,255,255,.06);
-            border-bottom: 1px solid rgba(255,255,255,.06);
-            padding: 16px 0;
-            white-space: nowrap;
+
+            border-top: 1px solid rgba(255,255,255,.05);
+            border-bottom: 1px solid rgba(255,255,255,.05);
+
+            background: rgba(255,255,255,.015);
         }
 
         .marquee-track {
-            display: inline-flex;
-            gap: 35px;
-            animation: marquee 24s linear infinite;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: .72rem;
+            width: max-content;
+
+            display: flex;
+            gap: 50px;
+
+            padding: 17px 0;
+
+            animation: marquee 25s linear infinite;
         }
 
-        .marquee-track span {
+        .marquee span {
+            color: var(--muted);
+
+            font-size: 12px;
+            font-weight: 700;
+
+            letter-spacing: 2px;
+            text-transform: uppercase;
+
+            white-space: nowrap;
+        }
+
+        .marquee span::after {
+            content: "✦";
+            margin-left: 50px;
             color: var(--gold);
         }
 
         @keyframes marquee {
+            from {
+                transform: translateX(0);
+            }
+
             to {
                 transform: translateX(-50%);
             }
         }
 
+
         /* =========================
-           SECTIONS
+           SECTION
         ========================= */
 
         section {
@@ -406,900 +547,771 @@
         }
 
         .section-heading {
-            max-width: 700px;
-            margin-bottom: 50px;
+            max-width: 720px;
+            margin-bottom: 55px;
         }
 
         .section-label {
+            display: block;
+
+            margin-bottom: 12px;
+
             color: var(--gold);
+
+            font-size: 12px;
+            font-weight: 800;
+
             text-transform: uppercase;
-            font-size: .75rem;
             letter-spacing: 2px;
-            font-weight: 700;
-            margin-bottom: 12px;
         }
 
-        .section-title {
-            font-family: "Playfair Display", serif;
-            font-size: clamp(2.2rem, 5vw, 3.7rem);
-            line-height: 1.1;
-            margin-bottom: 18px;
-        }
-
-        .section-description {
-            color: var(--muted);
-        }
-
-        /* =========================
-           VIDEO
-        ========================= */
-
-        .video-wrapper {
-            border: 1px solid var(--border);
-            background: var(--card);
-            padding: 10px;
-            border-radius: 25px;
-            box-shadow: var(--shadow);
-        }
-
-        .video-wrapper video {
-            width: 100%;
-            max-height: 650px;
-            display: block;
-            border-radius: 18px;
-            background: #000;
-        }
-
-        /* =========================
-           CARDS
-        ========================= */
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .card {
-            padding: 28px;
-            border: 1px solid var(--border);
-            background: var(--card);
-            border-radius: 22px;
-            transition: .35s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-7px);
-            border-color: rgba(215,181,109,.5);
-        }
-
-        .card-number {
-            color: var(--gold);
-            font-size: .75rem;
-            letter-spacing: 2px;
-            margin-bottom: 18px;
-        }
-
-        .card h3 {
-            font-family: "Playfair Display", serif;
-            font-size: 1.45rem;
-            margin-bottom: 12px;
-        }
-
-        .card p {
-            color: var(--muted);
-            font-size: .94rem;
-        }
-
-        /* =========================
-           STRENGTHS
-        ========================= */
-
-        .strength-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-        }
-
-        .strength {
-            padding: 22px;
-            border-radius: 18px;
-            background: rgba(255,255,255,.035);
-            border: 1px solid rgba(255,255,255,.07);
-            transition: .3s;
-        }
-
-        .strength:hover {
-            border-color: var(--border);
-            transform: translateY(-4px);
-        }
-
-        .strength span {
-            color: var(--gold);
-            display: block;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-
-        .strength strong {
-            font-size: .95rem;
-        }
-
-        /* =========================
-           TIMELINE
-        ========================= */
-
-        .timeline {
-            position: relative;
-            max-width: 900px;
-        }
-
-        .timeline::before {
-            content: "";
-            position: absolute;
-            left: 9px;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: rgba(215,181,109,.3);
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-left: 45px;
-            margin-bottom: 40px;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: 4px;
-            top: 8px;
-            width: 11px;
-            height: 11px;
-            border-radius: 50%;
-            background: var(--gold);
-            box-shadow: 0 0 0 5px rgba(215,181,109,.1);
-        }
-
-        .timeline-date {
-            color: var(--gold);
-            font-size: .78rem;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-        }
-
-        .timeline-item h3 {
-            font-family: "Playfair Display", serif;
-            font-size: 1.45rem;
-        }
-
-        .timeline-company {
-            color: var(--text);
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .timeline-item p {
-            color: var(--muted);
-        }
-
-        /* =========================
-           EDUCATION / LANGUAGE
-        ========================= */
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .info-box {
-            padding: 30px;
-            border-radius: 23px;
-            border: 1px solid var(--border);
-            background: var(--card);
-        }
-
-        .info-box h3 {
-            font-family: "Playfair Display", serif;
-            font-size: 1.6rem;
-            margin-bottom: 20px;
-        }
-
-        .language {
-            margin-bottom: 20px;
-        }
-
-        .language-top {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-
-        .language-top span:last-child {
-            color: var(--gold);
-            font-size: .85rem;
-        }
-
-        .language-bar {
-            height: 5px;
-            border-radius: 99px;
-            background: rgba(255,255,255,.08);
-            overflow: hidden;
-        }
-
-        .language-bar span {
-            display: block;
-            height: 100%;
-            background: var(--gold);
-            border-radius: 99px;
-        }
-
-        /* =========================
-           PORTFOLIO TABS
-        ========================= */
-
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .tab-button {
-            border: 1px solid var(--border);
-            color: var(--muted);
-            background: rgba(255,255,255,.03);
-            padding: 10px 18px;
-            border-radius: 999px;
-            cursor: pointer;
-            transition: .3s;
-        }
-
-        .tab-button.active,
-        .tab-button:hover {
-            color: #101923;
-            background: var(--gold);
-            border-color: var(--gold);
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* =========================
-           PHOTO GALLERY
-        ========================= */
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .gallery-card {
-            overflow: hidden;
-            border-radius: 22px;
-            border: 1px solid var(--border);
-            background: var(--card);
-            transition: .35s ease;
-        }
-
-        .gallery-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(215,181,109,.55);
-        }
-
-        .gallery-image {
-            height: 340px;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .gallery-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: .5s ease;
-        }
-
-        .gallery-card:hover .gallery-image img {
-            transform: scale(1.04);
-        }
-
-        .gallery-caption {
-            padding: 20px;
-        }
-
-        .gallery-caption h3 {
-            font-family: "Playfair Display", serif;
-            font-size: 1.3rem;
-            margin-bottom: 5px;
-        }
-
-        .gallery-caption p {
-            color: var(--muted);
-            font-size: .9rem;
-        }
-
-        /* =========================
-           PDF CERTIFICATES
-        ========================= */
-
-        .certificate-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
-
-        .certificate-card {
-            border: 1px solid var(--border);
-            background: var(--card);
-            border-radius: 23px;
-            overflow: hidden;
-            transition: .35s ease;
-            box-shadow: 0 15px 45px rgba(0,0,0,.15);
-        }
-
-        .certificate-card:hover {
-            transform: translateY(-7px);
-            border-color: rgba(215,181,109,.55);
-        }
-
-        .certificate-preview {
-            height: 520px;
-            background: #e9edf2;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .certificate-preview iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: block;
-            background: white;
-        }
-
-        .certificate-info {
-            padding: 22px;
-        }
-
-        .certificate-info h3 {
-            font-family: "Playfair Display", serif;
-            font-size: 1.35rem;
-            margin-bottom: 7px;
-        }
-
-        .certificate-info p {
-            color: var(--muted);
-            font-size: .9rem;
-            margin-bottom: 18px;
-        }
-
-        .pdf-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 16px;
-            border-radius: 999px;
-            background: rgba(215,181,109,.1);
-            border: 1px solid var(--border);
-            color: var(--gold-light);
-            font-size: .85rem;
-            font-weight: 600;
-            transition: .3s;
-        }
-
-        .pdf-button:hover {
-            background: var(--gold);
-            color: #101923;
-        }
-
-        /* =========================
-           CONTACT
-        ========================= */
-
-        .contact-box {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 40px;
-            align-items: center;
-            padding: 45px;
-            border-radius: 28px;
-            border: 1px solid var(--border);
-            background:
-                radial-gradient(circle at 90% 20%, rgba(215,181,109,.12),            }
-        }
-
-        /* =========================
-           SECTIONS
-        ========================= */
-
-        section {
-            padding: 110px 0;
-        }
-
-        .section-heading {
-            max-width: 700px;
-            margin-bottom: 50px;
-        }
-
-        .section-label {
-            color: var(--gold);
-            text-transform: uppercase;
-            font-size: .75rem;
-            letter-spacing: 2px;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .section-title {
-            font-family: "Playfair Display", serif;
-            font-size: clamp(2.2rem, 5vw, 3.7rem);
-            line-height: 1.1;
-            margin-bottom: 18px;
-        }
-
-        .section-description {
-            color: var(--muted);
-        }
-
-        /* =========================
-           VIDEO
-        ========================= */
-
-        .video-wrapper {
-            border: 1px solid var(--border);
-            background: var(--card);
-            padding: 10px;
-            border-radius: 25px;
-            box-shadow: var(--shadow);
-        }
-
-        .video-wrapper video {
-            width: 100%;
-            max-height: 650px;
-            display: block;
-            border-radius: 18px;
-            background: #000;
-        }
-
-        /* =========================
-           CARDS
-        ========================= */
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .card {
-            padding: 28px;
-            border: 1px solid var(--border);
-            background: var(--card);
-            border-radius: 22px;
-            transition: .35s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-7px);
-            border-color: rgba(215,181,109,.5);
-        }
-
-        .card-number {
-            color: var(--gold);
-            font-size: .75rem;
-            letter-spacing: 2px;
-            margin-bottom: 18px;
-        }
-
-        .card h3 {
-            font-family: "Playfair Display", serif;
-            font-size: 1.45rem;
-            margin-bottom: 12px;
-        }
-
-        .card p {
-            color: var(--muted);
-            font-size: .94rem;
-        }
-
-        /* =========================
-           STRENGTHS
-        ========================= */
-
-        .strength-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-        }
-
-        .strength {
-            padding: 22px;
-            border-radius: 18px;
-            background: rgba(255,255,255,.035);
-            border: 1px solid rgba(255,255,255,.07);
-            transition: .3s;
-        }
-
-        .strength:hover {
-            border-color: var(--border);
-            transform: translateY(-4px);
-        }
-
-        .strength span {
-            color: var(--gold);
-            display: block;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-
-        .strength strong {
-            font-size: .95rem;
-        }
-
-        /* =========================
-           TIMELINE
-        ========================= */
-
-        .timeline {
-            position: relative;
-            max-width: 900px;
-        }
-
-        .timeline::before {
-            content: "";
-            position: absolute;
-            left: 9px;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: rgba(215,181,109,.3);
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-left: 45px;
-            margin-bottom: 40px;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: 4px;
-            top: 8px;
-            width: 11px;
-            height: 11px;
-            border-radius: 50%;
-            background: var(--gold);
-            box-shadow: 0 0 0 5px rgba(215,181,109,.1);
-        }
-
-        .timeline-date {
-            color: var(--gold);
-            font-size: .78rem;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-        }
-
-        .timeline-item h3 {
-            font-family: "Playfair Display", serif;
-            font-size: 1.45rem;
-        }
-
-        .timeline-company {
-            color: var(--text);
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .timeline-item p {
-            color: var(--muted);
-        }
-
-        /* =========================
-           EDUCATION / LANGUAGE
-        ========================= */
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .info-box {
-            padding: 30px;
-            border-radius: 23px;
-            border: 1px solid var(--border);
-            background: var(--card);
-        }
-
-        .info-box h3 {
-            font-family: "Playfair Display", serif;
-            font-size: 1.6rem;
-            margin-bottom: 20px;
-        }
-
-        .language {
-            margin-bottom: 20px;
-        }
-
-        .language-top {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-
-        .language-top span:last-child {
-            color: var(--gold);
-            font-size: .85rem;
-        }
-
-        .language-bar {
-            height: 5px;
-            border-radius: 99px;
-            background: rgba(255,255,255,.08);
-            overflow: hidden;
-        }
-
-        .language-bar span {
-            display: block;
-            height: 100%;
-            background: var(--gold);
-            border-radius: 99px;
-        }
-
-        /* =========================
-           PORTFOLIO TABS
-        ========================= */
-
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .tab-button {
-            border: 1px solid var(--border);
-            color: var(--muted);
-            background: rgba(255,255,255,.03);
-            padding: 10px 18px;
-            border-radius: 999px;
-            cursor: pointer;
-            transition: .3s;
-        }
-
-        .tab-button.active,
-        .tab-button:hover {
-            color: #101923;
-            background: var(--gold);
-            border-color: var(--gold);
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* =========================
-           PHOTO GALLERY
-        ========================= */
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .gallery-card {
-            overflow: hidden;
-            border-radius: 22px;
-            border: 1px solid var(--border);
-            background: var(--card);
-            transition: .35s ease;
-        }
-
-        .gallery-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(215,181,109,.55);
-        }
-
-        .gallery-image {
-            height: 340px;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .gallery-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: .5s ease;
-        }
-
-        .gallery-card:hover .gallery-image img {
-            transform: scale(1.04);
-        }
-
-        .gallery-caption {
-            padding: 20px;
-        }
-
-        .gallery-caption h3 {
-            font-family: "Playfair Display", serif;
-            font-size: 1.3rem;
-            margin-bottom: 5px;
-        }
-
-        .gallery-caption p {
-            color: var(--muted);
-            font-size: .9rem;
-        }
-
-        /* =========================
-           PDF CERTIFICATES
-        ========================= */
-
-        .certificate-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
-
-        .certificate-card {
-            border: 1px solid var(--border);
-            background: var(--card);
-            border-radius: 23px;
-            overflow: hidden;
-            transition: .35s ease;
-            box-shadow: 0 15px 45px rgba(0,0,0,.15);
-        }
-
-        .certificate-card:hover {
-            transform: translateY(-7px);
-            border-color: rgba(215,181,109,.55);
-        }
-
-        /*
-            PDF PREVIEW
-
-            File PDF tetap PDF.
-            Tidak perlu JPG/PNG.
-        */
-
-        .certificate-preview {
-            height: 520px;
-            background: #e9edf2;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .certificate-preview iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: block;
-            background: white;
-        }
-
-        .certificate-info {
-            padding: 22px;
-        }
-
-        .certificate-info h3 {
-            font-family: "Playfair Display", serif;
-            font-size: 1.35rem;
-            margin-bottom: 7px;
-        }
-
-        .certificate-info p {
-            color: var(--muted);
-            font-size: .9rem;
-            margin-bottom: 18px;
-        }
-
-        .pdf-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 16px;
-            border-radius: 999px;
-            background: rgba(215,181,109,.1);
-            border: 1px solid var(--border);
-            color: var(--gold-light);
-            font-size: .85rem;
-            font-weight: 600;
-            transition: .3s;
-        }
-
-        .pdf-button:hover {
-            background: var(--gold);
-            color: #101923;
-        }
-
-        /* =========================
-           CONTACT
-        ========================= */
-
-        .contact-box {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 40px;
-            align-items: center;
-            padding: 45px;
-            border-radius: 28px;
-            border: 1px solid var(--border);
-            background:
-                radial-gradient(circle at 90% 20%, rgba(215,181,109,.12), transparent 30%),
-                var(--card);
-        }
-
-        .contact-box h2 {
-            font-family: "Playfair Display", serif;
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            line-height: 1.1;
+        .section-heading h2 {
             margin-bottom: 15px;
+
+            color: var(--white);
+
+            font-size: clamp(30px, 4vw, 48px);
+            line-height: 1.15;
         }
 
-        .contact-box p {
+        .section-heading p {
             color: var(--muted);
-            max-width: 650px;
         }
 
-        .contact-details {
-            margin-top: 20px;
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            padding: 30px;
+
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.035),
+                    rgba(255,255,255,.01)
+                );
+
+            box-shadow: 0 12px 40px rgba(0,0,0,.15);
+
+            transition: .35s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(215,181,109,.45);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+
             display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            color: var(--muted);
-            font-size: .9rem;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 20px;
+
+            border-radius: 14px;
+
+            color: var(--gold);
+
+            background: rgba(215,181,109,.09);
+
+            font-size: 21px;
         }
 
-        .contact-details span {
-            color: var(--gold-light);
+        .card h3 {
+            margin-bottom: 10px;
+
+            color: var(--white);
+
+            font-size: 19px;
         }
+
+        .card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           VIDEO
+        ========================= */
+
+        .video-card {
+            overflow: hidden;
+
+            border: 1px solid var(--border);
+            border-radius: 26px;
+
+            background: var(--card);
+
+            box-shadow: var(--shadow);
+        }
+
+        .video-wrapper {
+            position: relative;
+
+            width: 100%;
+
+            aspect-ratio: 16 / 9;
+
+            background: #000;
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+        }
+
+        .video-info {
+            padding: 26px;
+        }
+
+        .video-info h3 {
+            margin-bottom: 8px;
+            color: var(--white);
+        }
+
+        .video-info p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           PROFILE INFO
+        ========================= */
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .info-item {
+            padding: 24px;
+
+            border: 1px solid var(--border);
+            border-radius: 18px;
+
+            background: rgba(255,255,255,.018);
+        }
+
+        .info-item strong {
+            display: block;
+
+            margin-bottom: 5px;
+
+            color: var(--gold);
+
+            font-size: 12px;
+
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .info-item span {
+            color: var(--white);
+        }
+
+
+        /* =========================
+           WHY BFD
+        ========================= */
+
+        .bfd-box {
+            position: relative;
+
+            padding: 45px;
+
+            overflow: hidden;
+
+            border: 1px solid var(--border);
+            border-radius: 28px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(215,181,109,.09),
+                    rgba(255,255,255,.015)
+                );
+        }
+
+        .bfd-box::after {
+            content: "BFD";
+
+            position: absolute;
+
+            right: -20px;
+            bottom: -60px;
+
+            color: rgba(215,181,109,.04);
+
+            font-size: 180px;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .bfd-box h3 {
+            position: relative;
+            z-index: 1;
+
+            margin-bottom: 18px;
+
+            color: var(--white);
+
+            font-size: 27px;
+        }
+
+        .bfd-box p {
+            position: relative;
+            z-index: 1;
+
+            max-width: 850px;
+
+            color: var(--muted);
+        }
+
+
+        /* =========================
+           STRENGTHS
+        ========================= */
+
+        .strength-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .strength {
+            padding: 22px;
+
+            border: 1px solid var(--border);
+            border-radius: 18px;
+
+            background: rgba(255,255,255,.015);
+
+            transition: .3s ease;
+        }
+
+        .strength:hover {
+            transform: translateY(-4px);
+            border-color: rgba(215,181,109,.45);
+        }
+
+        .strength-number {
+            margin-bottom: 12px;
+
+            color: var(--gold);
+
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .strength h3 {
+            color: var(--white);
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           TIMELINE
+        ========================= */
+
+        .timeline {
+            position: relative;
+
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            bottom: 0;
+            left: 13px;
+
+            width: 1px;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    var(--gold),
+                    rgba(215,181,109,.05)
+                );
+        }
+
+        .timeline-item {
+            position: relative;
+
+            padding-left: 55px;
+            margin-bottom: 45px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+
+            left: 6px;
+            top: 5px;
+
+            width: 15px;
+            height: 15px;
+
+            border: 3px solid var(--bg);
+
+            border-radius: 50%;
+
+            background: var(--gold);
+
+            box-shadow: 0 0 0 1px var(--gold);
+        }
+
+        .timeline-date {
+            margin-bottom: 7px;
+
+            color: var(--gold);
+
+            font-size: 12px;
+            font-weight: 800;
+
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timeline-item h3 {
+            margin-bottom: 4px;
+
+            color: var(--white);
+
+            font-size: 20px;
+        }
+
+        .timeline-company {
+            margin-bottom: 12px;
+
+            color: var(--muted);
+
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .timeline-item ul {
+            padding-left: 18px;
+
+            color: var(--muted);
+
+            font-size: 14px;
+        }
+
+        .timeline-item li {
+            margin-bottom: 5px;
+        }
+
+
+        /* =========================
+           LANGUAGE
+        ========================= */
+
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .language-card {
+            padding: 28px;
+
+            border: 1px solid var(--border);
+            border-radius: 20px;
+
+            background: rgba(255,255,255,.015);
+        }
+
+        .language-card h3 {
+            margin-bottom: 8px;
+
+            color: var(--white);
+        }
+
+        .language-level {
+            margin-bottom: 15px;
+
+            color: var(--gold);
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .language-bars {
+            display: flex;
+            gap: 5px;
+        }
+
+        .language-bars span {
+            flex: 1;
+
+            height: 4px;
+
+            border-radius: 10px;
+
+            background: rgba(255,255,255,.09);
+        }
+
+        .language-bars span.active {
+            background: var(--gold);
+        }
+
+
+        /* =========================
+           PORTFOLIO TABS
+        ========================= */
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+
+            margin-bottom: 35px;
+        }
+
+        .tab-button {
+            padding: 12px 22px;
+
+            border: 1px solid var(--border);
+            border-radius: 12px;
+
+            background: transparent;
+
+            color: var(--muted);
+
+            font-size: 14px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: .3s ease;
+        }
+
+        .tab-button:hover,
+        .tab-button.active {
+            color: #101923;
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+
+        /* =========================
+           PHOTO GALLERY
+        ========================= */
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-card {
+            overflow: hidden;
+
+            border: 1px solid var(--border);
+            border-radius: 22px;
+
+            background: var(--card);
+
+            transition: .35s ease;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(215,181,109,.55);
+        }
+
+        .gallery-image {
+            height: 280px;
+            overflow: hidden;
+            cursor: pointer;
+            background: var(--bg-soft);
+        }
+
+        .gallery-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: .5s ease;
+        }
+
+        .gallery-card:hover .gallery-image img {
+            transform: scale(1.04);
+        }
+
+        .gallery-caption {
+            padding: 20px;
+        }
+
+        .gallery-caption h3 {
+            margin-bottom: 5px;
+
+            color: var(--white);
+
+            font-size: 17px;
+        }
+
+        .gallery-caption p {
+            color: var(--muted);
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           CERTIFICATE IMAGE
+        ========================= */
+
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 800px);
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .certificate-card {
+            overflow: hidden;
+
+            border: 1px solid var(--border);
+            border-radius: 22px;
+
+            background: var(--card);
+
+            box-shadow: var(--shadow);
+        }
+
+        .certificate-image {
+            width: 100%;
+
+            padding: 20px;
+
+            background: #f5f5f5;
+
+            cursor: pointer;
+        }
+
+        .certificate-image img {
+            width: 100%;
+            height: auto;
+
+            display: block;
+
+            max-height: 700px;
+
+            object-fit: contain;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,.18);
+
+            transition: .4s ease;
+        }
+
+        .certificate-image:hover img {
+            transform: scale(1.015);
+        }
+
+        .certificate-info {
+            padding: 24px;
+        }
+
+        .certificate-info h3 {
+            margin-bottom: 8px;
+
+            color: var(--white);
+        }
+
+        .certificate-info p {
+            margin-bottom: 18px;
+
+            color: var(--muted);
+
+            font-size: 14px;
+        }
+
+        .pdf-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 11px 17px;
+
+            border: 0;
+            border-radius: 10px;
+
+            color: #101923;
+            background: var(--gold);
+
+            font-size: 13px;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: .3s ease;
+        }
+
+        .pdf-button:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+
+            padding: 40px;
+
+            border: 1px solid var(--border);
+            border-radius: 28px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(215,181,109,.08),
+                    rgba(255,255,255,.015)
+                );
+        }
+
+        .contact-text h2 {
+            margin-bottom: 15px;
+
+            color: var(--white);
+
+            font-size: 34px;
+        }
+
+        .contact-text p {
+            max-width: 550px;
+
+            color: var(--muted);
+        }
+
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+
+            padding: 15px 18px;
+
+            border: 1px solid rgba(255,255,255,.06);
+            border-radius: 14px;
+
+            background: rgba(255,255,255,.02);
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+
+            border-radius: 11px;
+
+            color: var(--gold);
+            background: rgba(215,181,109,.08);
+        }
+
+        .contact-item small {
+            display: block;
+
+            color: var(--muted);
+
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-item strong {
+            color: var(--white);
+
+            font-size: 14px;
+
+            word-break: break-word;
+        }
+
 
         /* =========================
            FOOTER
         ========================= */
 
         footer {
-            border-top: 1px solid rgba(255,255,255,.06);
-            padding: 30px 0;
-            color: var(--muted);
-            font-size: .82rem;
+            padding: 35px 0;
+
+            border-top: 1px solid rgba(255,255,255,.05);
         }
 
         .footer-inner {
             display: flex;
+            align-items: center;
             justify-content: space-between;
             gap: 20px;
-            flex-wrap: wrap;
         }
 
-        /* =========================
-           REVEAL
-        ========================= */
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity .8s ease, transform .8s ease;
+        .footer-logo {
+            color: var(--white);
+            font-weight: 800;
         }
 
-        .reveal.show {
-            opacity: 1;
-            transform: translateY(0);
+        .footer-logo span {
+            color: var(--gold);
         }
+
+        .footer-copy {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
 
         /* =========================
            LIGHTBOX
@@ -1308,12 +1320,18 @@
         .lightbox {
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,.9);
-            z-index: 9997;
+
+            z-index: 3000;
+
             display: none;
             align-items: center;
             justify-content: center;
+
             padding: 30px;
+
+            background: rgba(0,0,0,.88);
+
+            backdrop-filter: blur(10px);
         }
 
         .lightbox.active {
@@ -1321,23 +1339,59 @@
         }
 
         .lightbox img {
-            max-width: 95%;
-            max-height: 90vh;
+            max-width: min(1000px, 95vw);
+            max-height: 88vh;
+
+            object-fit: contain;
+
             border-radius: 12px;
+
             box-shadow: 0 30px 100px rgba(0,0,0,.6);
         }
 
         .lightbox-close {
             position: absolute;
+
             top: 20px;
             right: 25px;
-            font-size: 2rem;
+
+            width: 45px;
+            height: 45px;
+
+            border: 1px solid rgba(255,255,255,.15);
+            border-radius: 50%;
+
+            background: rgba(255,255,255,.05);
+
             color: white;
+
+            font-size: 25px;
+
             cursor: pointer;
         }
 
+
         /* =========================
-           RESPONSIVE
+           REVEAL ANIMATION
+        ========================= */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+
+            transition:
+                opacity .8s ease,
+                transform .8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* =========================
+           MOBILE
         ========================= */
 
         @media (max-width: 900px) {
@@ -1347,199 +1401,323 @@
                 gap: 50px;
             }
 
-            .hero-profile {
+            .hero-image-wrap {
                 order: -1;
             }
 
-            .profile-frame {
-                width: min(300px, 80vw);
+            .hero-image-frame {
+                width: min(330px, 90%);
             }
 
             .cards {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .strength-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .certificate-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .contact-box {
                 grid-template-columns: 1fr;
             }
+
         }
 
+
         @media (max-width: 700px) {
+
+            .container {
+                width: min(100% - 28px, 1180px);
+            }
 
             section {
                 padding: 80px 0;
             }
 
-            .nav-links {
-                position: absolute;
-                top: 76px;
-                left: 0;
-                width: 100%;
-                padding: 20px;
-                flex-direction: column;
-                align-items: flex-start;
-                background: rgba(7,17,31,.97);
-                border-bottom: 1px solid rgba(255,255,255,.06);
-                display: none;
-            }
-
-            .nav-links.active {
-                display: flex;
+            .nav-inner {
+                height: 68px;
             }
 
             .menu-toggle {
                 display: block;
             }
 
+            .nav-links {
+                position: absolute;
+
+                top: 68px;
+                left: 14px;
+                right: 14px;
+
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+
+                padding: 15px;
+
+                border: 1px solid var(--border);
+                border-radius: 18px;
+
+                background: rgba(7,17,28,.97);
+
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 10px;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 120px 0 80px;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+                letter-spacing: -1px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+
             .cards,
             .gallery-grid,
             .info-grid,
-            .strength-grid {
+            .strength-grid,
+            .language-grid {
                 grid-template-columns: 1fr;
             }
 
             .gallery-image {
-                height: 300px;
+                height: 220px;
             }
 
-            .certificate-preview {
-                height: 500px;
+            .certificate-image {
+                padding: 12px;
+            }
+
+            .certificate-image img {
+                max-height: none;
+            }
+
+            .bfd-box {
+                padding: 30px 25px;
             }
 
             .contact-box {
-                padding: 30px;
+                padding: 28px 22px;
             }
 
-            h1 {
-                font-size: clamp(2.8rem, 15vw, 4.5rem);
+            .contact-text h2 {
+                font-size: 28px;
             }
+
+            .tabs {
+                flex-wrap: wrap;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+
         }
 
+
+        /* =========================
+           REDUCED MOTION
+        ========================= */
+
         @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
 
             *,
             *::before,
             *::after {
-                scroll-behavior: auto !important;
                 animation-duration: .01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: .01ms !important;
             }
+
         }
+
     </style>
 </head>
 
+
 <body>
 
-    <!-- LOADER -->
+    <!-- =========================
+         LOADER
+    ========================= -->
 
     <div class="loader" id="loader">
-        <div class="loader-inner">
-            <div class="loader-logo">Bruno Parlin Pakpahan</div>
 
-            <div class="loader-line">
-                <span></span>
+        <div class="loader-content">
+
+            <div class="loader-logo">
+                BP
             </div>
+
+            <div class="loader-line"></div>
+
         </div>
+
     </div>
 
-    <!-- SCROLL PROGRESS -->
 
-    <div class="progress" id="progress"></div>
+    <!-- =========================
+         SCROLL PROGRESS
+    ========================= -->
 
-    <!-- NAVIGATION -->
+    <div
+        class="scroll-progress"
+        id="scrollProgress">
+    </div>
 
-    <nav>
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <header class="navbar">
+
         <div class="container nav-inner">
 
-            <a href="#home" class="logo">
-                Bruno Parlin Pakpahan
+            <a
+                href="#home"
+                class="logo">
+                Bruno<span>.</span>
             </a>
 
-            <button class="menu-toggle" id="menuToggle">
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Menü öffnen">
                 ☰
             </button>
 
-            <div class="nav-links" id="navLinks">
 
-                <a href="#home">Start</a>
-                <a href="#vorstellung">Vorstellung</a>
-                <a href="#profil">Profil</a>
-                <a href="#erfahrung">Erfahrung</a>
-                <a href="#portfolio">Portfolio</a>
-                <a href="#kontakt">Kontakt</a>
+            <ul
+                class="nav-links"
+                id="navLinks">
 
-            </div>
+                <li>
+                    <a href="#home">
+                        Start
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#profil">
+                        Profil
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#bfd">
+                        Warum BFD?
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#erfahrung">
+                        Erfahrung
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#portfolio">
+                        Portfolio
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#kontakt">
+                        Kontakt
+                    </a>
+                </li>
+
+            </ul>
 
         </div>
-    </nav>
 
-    <!-- HERO -->
+    </header>
+
 
     <main>
 
-        <section class="hero" id="home">
+
+        <!-- =========================
+             HERO
+        ========================= -->
+
+        <section
+            class="hero"
+            id="home">
 
             <div class="container hero-grid">
+
 
                 <div class="hero-content reveal">
 
                     <div class="eyebrow">
-                        Bewerbung für einen Bundesfreiwilligendienst
+                        Bewerbung für Bundesfreiwilligendienst
                     </div>
 
+
                     <h1>
-                        Bruno<br>
-                        <span>Parlin Pakpahan</span>
+                        Bruno Parlin
+                        <span>Pakpahan</span>
                     </h1>
 
-                    <p class="hero-text">
-                        Zuverlässig, lernbereit und teamorientiert.
-                        Mit beruflicher Erfahrung in Logistik, Produktion
-                        und Personenbeförderung möchte ich mich im sozialen
-                        Bereich engagieren und neue Erfahrungen sammeln.
+
+                    <p class="hero-subtitle">
+                        Motivierter Bewerber aus Indonesien mit
+                        beruflicher Erfahrung in Logistik, Produktion
+                        und Personenbeförderung. Bereit für neue
+                        Erfahrungen, persönliche Entwicklung und
+                        gesellschaftliches Engagement in Deutschland.
                     </p>
+
 
                     <div class="hero-buttons">
 
-                        <a href="#profil" class="btn btn-primary">
+                        <a
+                            href="#profil"
+                            class="btn btn-primary">
                             Mein Profil
                         </a>
 
-                        <a href="#portfolio" class="btn btn-outline">
-                            Portfolio ansehen
+                        <a
+                            href="#kontakt"
+                            class="btn btn-secondary">
+                            Kontakt aufnehmen
                         </a>
 
                     </div>
 
                 </div>
 
-                <div class="hero-profile reveal">
 
-                    <div class="profile-frame">
+                <div class="hero-image-wrap reveal">
+
+                    <div class="hero-image-frame">
 
                         <img
                             src="profil.png"
                             alt="Bruno Parlin Pakpahan"
-                        >
-
-                    </div>
-
-                    <div class="profile-badge">
-
-                        <strong>Bereit für neue Erfahrungen</strong>
-
-                        <small>
-                            BFD · Deutschland
-                        </small>
+                            class="hero-image">
 
                     </div>
 
@@ -1550,31 +1728,71 @@
         </section>
 
 
-        <!-- MARQUEE -->
+        <!-- =========================
+             MARQUEE
+        ========================= -->
 
         <div class="marquee">
 
             <div class="marquee-track">
 
-                <span>Bruno Parlin Pakpahan</span>
-                Zuverlässigkeit
-                <span>Teamfähigkeit</span>
-                Lernbereitschaft
-                <span>Verantwortungsbewusstsein</span>
-                Organisation
-                <span>Bruno Parlin Pakpahan</span>
-                Zuverlässigkeit
-                <span>Teamfähigkeit</span>
-                Lernbereitschaft
-                <span>Verantwortungsbewusstsein</span>
-                Organisation
+                <span>
+                    Zuverlässigkeit
+                </span>
+
+                <span>
+                    Teamfähigkeit
+                </span>
+
+                <span>
+                    Lernbereitschaft
+                </span>
+
+                <span>
+                    Verantwortungsbewusstsein
+                </span>
+
+                <span>
+                    Motivation
+                </span>
+
+                <span>
+                    Engagement
+                </span>
+
+
+                <span>
+                    Zuverlässigkeit
+                </span>
+
+                <span>
+                    Teamfähigkeit
+                </span>
+
+                <span>
+                    Lernbereitschaft
+                </span>
+
+                <span>
+                    Verantwortungsbewusstsein
+                </span>
+
+                <span>
+                    Motivation
+                </span>
+
+                <span>
+                    Engagement
+                </span>
 
             </div>
 
         </div>
 
 
-        <!-- VORSTELLUNG -->
+        <!-- =========================
+             VORSTELLUNG
+        ========================= -->
 
         <section id="vorstellung">
 
@@ -1582,33 +1800,58 @@
 
                 <div class="section-heading reveal">
 
-                    <div class="section-label">
-                        01 — Vorstellung
-                    </div>
+                    <span class="section-label">
+                        Persönliche Vorstellung
+                    </span>
 
-                    <h2 class="section-title">
-                        Persönlich vorgestellt.
+                    <h2>
+                        Lernen Sie mich kennen.
                     </h2>
 
-                    <p class="section-description">
-                        Ein kurzer persönlicher Einblick und eine Vorstellung
-                        meiner Motivation.
+                    <p>
+                        In meinem kurzen Vorstellungsvideo erzähle ich
+                        mehr über mich, meinen bisherigen Weg und meine
+                        Motivation für einen Bundesfreiwilligendienst
+                        in Deutschland.
                     </p>
 
                 </div>
 
-                <div class="video-wrapper reveal">
 
-                    <video controls preload="metadata">
+                <div class="video-card reveal">
 
-                        <source
-                            src="video/vorstellung.mp4"
-                            type="video/mp4"
-                        >
+                    <div class="video-wrapper">
 
-                        Ihr Browser unterstützt dieses Videoformat nicht.
+                        <video
+                            controls
+                            preload="metadata"
+                            playsinline>
 
-                    </video>
+                            <source
+                                src="vorstellung.mp4"
+                                type="video/mp4">
+
+                            Ihr Browser unterstützt dieses Videoformat
+                            nicht.
+
+                        </video>
+
+                    </div>
+
+
+                    <div class="video-info">
+
+                        <h3>
+                            Meine persönliche Vorstellung
+                        </h3>
+
+                        <p>
+                            Ein persönlicher Einblick in meine Motivation,
+                            meine Erfahrungen und meine Ziele für die
+                            Zukunft in Deutschland.
+                        </p>
+
+                    </div>
 
                 </div>
 
@@ -1617,7 +1860,9 @@
         </section>
 
 
-        <!-- PROFIL -->
+        <!-- =========================
+             PROFIL
+        ========================= -->
 
         <section id="profil">
 
@@ -1625,68 +1870,101 @@
 
                 <div class="section-heading reveal">
 
-                    <div class="section-label">
-                        02 — Kurzprofil
-                    </div>
+                    <span class="section-label">
+                        Kurzprofil
+                    </span>
 
-                    <h2 class="section-title">
+                    <h2>
                         Wer ich bin.
                     </h2>
 
-                    <p class="section-description">
-                        Ein Überblick über meine Persönlichkeit,
-                        Motivation und beruflichen Hintergrund.
+                    <p>
+                        Ich bin Absolvent einer berufsbildenden Schule
+                        im Bereich Computer- und Netzwerktechnik und
+                        verfüge über mehrere Jahre Berufserfahrung in
+                        verschiedenen praktischen Bereichen.
                     </p>
 
                 </div>
 
-                <div class="cards">
 
-                    <div class="card reveal">
+                <div class="info-grid">
 
-                        <div class="card-number">01</div>
 
-                        <h3>Über mich</h3>
+                    <div class="info-item reveal">
 
-                        <p>
-                            Ich bin Absolvent einer berufsbildenden
-                            Oberschule im Bereich Computer- und
-                            Netzwerktechnik. Durch meine bisherigen
-                            beruflichen Tätigkeiten habe ich gelernt,
-                            zuverlässig, verantwortungsbewusst und
-                            selbstständig zu arbeiten.
-                        </p>
+                        <strong>
+                            Name
+                        </strong>
+
+                        <span>
+                            Bruno Parlin Pakpahan
+                        </span>
 
                     </div>
 
-                    <div class="card reveal">
 
-                        <div class="card-number">02</div>
+                    <div class="info-item reveal">
 
-                        <h3>Meine Motivation</h3>
+                        <strong>
+                            Geburtsort
+                        </strong>
 
-                        <p>
-                            Mit einem Bundesfreiwilligendienst möchte ich
-                            mich gesellschaftlich engagieren, praktische
-                            Erfahrungen im sozialen Bereich sammeln und
-                            gleichzeitig meine Deutschkenntnisse weiter
-                            verbessern.
-                        </p>
+                        <span>
+                            Aekraja, Indonesien
+                        </span>
 
                     </div>
 
-                    <div class="card reveal">
 
-                        <div class="card-number">03</div>
+                    <div class="info-item reveal">
 
-                        <h3>Mein Ziel</h3>
+                        <strong>
+                            Staatsangehörigkeit
+                        </strong>
 
-                        <p>
-                            Ich möchte mich persönlich und beruflich
-                            weiterentwickeln, Verantwortung übernehmen und
-                            mich aktiv in ein neues Team und Arbeitsumfeld
-                            einbringen.
-                        </p>
+                        <span>
+                            Indonesisch
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-item reveal">
+
+                        <strong>
+                            Schulabschluss
+                        </strong>
+
+                        <span>
+                            SMK – Computer- und Netzwerktechnik
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-item reveal">
+
+                        <strong>
+                            Deutsch
+                        </strong>
+
+                        <span>
+                            B1 – Hören, Lesen, Sprechen und Schreiben
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-item reveal">
+
+                        <strong>
+                            Ziel
+                        </strong>
+
+                        <span>
+                            Bundesfreiwilligendienst in Deutschland
+                        </span>
 
                     </div>
 
@@ -1697,67 +1975,44 @@
         </section>
 
 
-        <!-- WARUM BFD -->
+        <!-- =========================
+             WARUM BFD
+        ========================= -->
 
-        <section>
+        <section id="bfd">
 
             <div class="container">
 
                 <div class="section-heading reveal">
 
-                    <div class="section-label">
-                        03 — Warum BFD?
-                    </div>
+                    <span class="section-label">
+                        Motivation
+                    </span>
 
-                    <h2 class="section-title">
-                        Engagement mit Perspektive.
+                    <h2>
+                        Warum möchte ich einen BFD machen?
                     </h2>
 
                 </div>
 
-                <div class="cards">
 
-                    <div class="card reveal">
+                <div class="bfd-box reveal">
 
-                        <div class="card-number">01</div>
+                    <h3>
+                        Engagement, Lernen und persönliche Entwicklung
+                    </h3>
 
-                        <h3>Menschen unterstützen</h3>
-
-                        <p>
-                            Ich möchte meine Zeit und meine Fähigkeiten
-                            sinnvoll einsetzen und Menschen im Alltag
-                            unterstützen.
-                        </p>
-
-                    </div>
-
-                    <div class="card reveal">
-
-                        <div class="card-number">02</div>
-
-                        <h3>Neue Erfahrungen</h3>
-
-                        <p>
-                            Der BFD bietet mir die Möglichkeit, einen neuen
-                            beruflichen Bereich kennenzulernen und praktische
-                            Erfahrungen zu sammeln.
-                        </p>
-
-                    </div>
-
-                    <div class="card reveal">
-
-                        <div class="card-number">03</div>
-
-                        <h3>Deutsch verbessern</h3>
-
-                        <p>
-                            Durch den täglichen Kontakt mit Menschen möchte
-                            ich meine deutschen Sprachkenntnisse weiter
-                            entwickeln und sicherer kommunizieren.
-                        </p>
-
-                    </div>
+                    <p>
+                        Ich möchte durch den Bundesfreiwilligendienst
+                        praktische Erfahrungen im sozialen Bereich sammeln
+                        und gleichzeitig meine Deutschkenntnisse weiter
+                        verbessern. Besonders wichtig sind mir der Kontakt
+                        mit Menschen, Teamarbeit und die Möglichkeit,
+                        Verantwortung zu übernehmen. Ich möchte mich aktiv
+                        einbringen, neue Perspektiven kennenlernen und
+                        mich sowohl persönlich als auch beruflich
+                        weiterentwickeln.
+                    </p>
 
                 </div>
 
@@ -1766,64 +2021,137 @@
         </section>
 
 
-        <!-- STÄRKEN -->
+        <!-- =========================
+             STÄRKEN
+        ========================= -->
 
-        <section>
+        <section id="staerken">
 
             <div class="container">
 
                 <div class="section-heading reveal">
 
-                    <div class="section-label">
-                        04 — Stärken
-                    </div>
+                    <span class="section-label">
+                        Kompetenzen
+                    </span>
 
-                    <h2 class="section-title">
+                    <h2>
                         Was ich mitbringe.
                     </h2>
 
+                    <p>
+                        Eigenschaften und Fähigkeiten, die ich in meiner
+                        bisherigen Ausbildung und Berufserfahrung
+                        entwickelt habe.
+                    </p>
+
                 </div>
+
 
                 <div class="strength-grid">
 
-                    <div class="strength reveal">
-                        <span>01</span>
-                        <strong>Zuverlässigkeit</strong>
-                    </div>
 
                     <div class="strength reveal">
-                        <span>02</span>
-                        <strong>Pünktlichkeit</strong>
+
+                        <div class="strength-number">
+                            01
+                        </div>
+
+                        <h3>
+                            Zuverlässigkeit
+                        </h3>
+
                     </div>
 
-                    <div class="strength reveal">
-                        <span>03</span>
-                        <strong>Teamfähigkeit</strong>
-                    </div>
 
                     <div class="strength reveal">
-                        <span>04</span>
-                        <strong>Verantwortungsbewusstsein</strong>
+
+                        <div class="strength-number">
+                            02
+                        </div>
+
+                        <h3>
+                            Teamfähigkeit
+                        </h3>
+
                     </div>
 
-                    <div class="strength reveal">
-                        <span>05</span>
-                        <strong>Einfühlungsvermögen</strong>
-                    </div>
 
                     <div class="strength reveal">
-                        <span>06</span>
-                        <strong>Belastbarkeit</strong>
+
+                        <div class="strength-number">
+                            03
+                        </div>
+
+                        <h3>
+                            Pünktlichkeit
+                        </h3>
+
                     </div>
 
-                    <div class="strength reveal">
-                        <span>07</span>
-                        <strong>Lernbereitschaft</strong>
-                    </div>
 
                     <div class="strength reveal">
-                        <span>08</span>
-                        <strong>Organisation</strong>
+
+                        <div class="strength-number">
+                            04
+                        </div>
+
+                        <h3>
+                            Einfühlungsvermögen
+                        </h3>
+
+                    </div>
+
+
+                    <div class="strength reveal">
+
+                        <div class="strength-number">
+                            05
+                        </div>
+
+                        <h3>
+                            Verantwortungsbewusstsein
+                        </h3>
+
+                    </div>
+
+
+                    <div class="strength reveal">
+
+                        <div class="strength-number">
+                            06
+                        </div>
+
+                        <h3>
+                            Belastbarkeit
+                        </h3>
+
+                    </div>
+
+
+                    <div class="strength reveal">
+
+                        <div class="strength-number">
+                            07
+                        </div>
+
+                        <h3>
+                            Lernbereitschaft
+                        </h3>
+
+                    </div>
+
+
+                    <div class="strength reveal">
+
+                        <div class="strength-number">
+                            08
+                        </div>
+
+                        <h3>
+                            Organisation
+                        </h3>
+
                     </div>
 
                 </div>
@@ -1833,7 +2161,9 @@
         </section>
 
 
-        <!-- ERFAHRUNG -->
+        <!-- =========================
+             BERUFSERFAHRUNG
+        ========================= -->
 
         <section id="erfahrung">
 
@@ -1841,17 +2171,24 @@
 
                 <div class="section-heading reveal">
 
-                    <div class="section-label">
-                        05 — Berufserfahrung
-                    </div>
+                    <span class="section-label">
+                        Berufserfahrung
+                    </span>
 
-                    <h2 class="section-title">
+                    <h2>
                         Mein beruflicher Weg.
                     </h2>
 
+                    <p>
+                        Mehrjährige praktische Erfahrung in Logistik,
+                        Produktion und Personenbeförderung.
+                    </p>
+
                 </div>
 
+
                 <div class="timeline">
+
 
                     <div class="timeline-item reveal">
 
@@ -1869,14 +2206,28 @@
                             GRAB Indonesia · Jakarta
                         </div>
 
-                        <p>
-                            Sichere Beförderung von Personen sowie
-                            zuverlässige Zustellung von Dokumenten,
-                            Paketen und Lebensmitteln. Flexible und
-                            effektive Routenplanung sowie freundlicher
-                            und professioneller Umgang mit
-                            unterschiedlichen Kunden.
-                        </p>
+                        <ul>
+
+                            <li>
+                                Sichere Beförderung von Personen,
+                                Dokumenten, Paketen und Lebensmitteln.
+                            </li>
+
+                            <li>
+                                Pünktliche und sorgfältige Auslieferung.
+                            </li>
+
+                            <li>
+                                Flexible und effiziente Routenplanung
+                                im dichten Stadtverkehr.
+                            </li>
+
+                            <li>
+                                Freundlicher und professioneller Umgang
+                                mit unterschiedlichen Kunden.
+                            </li>
+
+                        </ul>
 
                     </div>
 
@@ -1897,11 +2248,23 @@
                             PT. Serpong Alam Lestari · Bogor
                         </div>
 
-                        <p>
-                            Kommissionierung, Bestandskontrollen und
-                            Unterstützung eines reibungslosen
-                            Lagerbetriebs.
-                        </p>
+                        <ul>
+
+                            <li>
+                                Kommissionierung und Vorbereitung
+                                von Waren.
+                            </li>
+
+                            <li>
+                                Durchführung von Bestandskontrollen.
+                            </li>
+
+                            <li>
+                                Unterstützung eines reibungslosen
+                                Lagerbetriebs.
+                            </li>
+
+                        </ul>
 
                     </div>
 
@@ -1922,11 +2285,22 @@
                             PT. Bright Food International · Bogor
                         </div>
 
-                        <p>
-                            Bedienung von Maschinen, Qualitätskontrolle
-                            sowie Pflege und Instandhaltung des
-                            Arbeitsbereichs.
-                        </p>
+                        <ul>
+
+                            <li>
+                                Bedienung von Produktionsmaschinen.
+                            </li>
+
+                            <li>
+                                Durchführung von Qualitätskontrollen.
+                            </li>
+
+                            <li>
+                                Pflege und Instandhaltung der
+                                Arbeitsgeräte.
+                            </li>
+
+                        </ul>
 
                     </div>
 
@@ -1944,14 +2318,26 @@
                         </h3>
 
                         <div class="timeline-company">
-                            PT. Mulia Multi Mandiri · Indonesien
+                            PT. Mulia Multi Mandiri · Bogor, Indonesien
                         </div>
 
-                        <p>
-                            Be- und Entladen von Waren, Kontrolle von
-                            Menge und Zustand sowie Unterstützung
-                            logistischer Abläufe.
-                        </p>
+                        <ul>
+
+                            <li>
+                                Be- und Entladen von Waren.
+                            </li>
+
+                            <li>
+                                Kontrolle von Menge und Zustand
+                                der Waren.
+                            </li>
+
+                            <li>
+                                Unterstützung bei verschiedenen
+                                logistischen Tätigkeiten.
+                            </li>
+
+                        </ul>
 
                     </div>
 
@@ -1962,108 +2348,165 @@
         </section>
 
 
-        <!-- BILDUNG & SPRACHEN -->
+        <!-- =========================
+             BILDUNG & SPRACHEN
+        ========================= -->
 
-        <section>
+        <section id="bildung">
 
             <div class="container">
 
                 <div class="section-heading reveal">
 
-                    <div class="section-label">
-                        06 — Bildung & Sprachen
-                    </div>
+                    <span class="section-label">
+                        Bildung & Sprachen
+                    </span>
 
-                    <h2 class="section-title">
-                        Ausbildung und Kommunikation.
+                    <h2>
+                        Ausbildung und Sprachkenntnisse.
                     </h2>
 
                 </div>
 
-                <div class="info-grid">
 
-                    <div class="info-box reveal">
+                <div
+                    class="cards"
+                    style="margin-bottom: 25px;">
 
-                        <h3>Ausbildung</h3>
+
+                    <div class="card reveal">
+
+                        <div class="card-icon">
+                            🎓
+                        </div>
+
+                        <h3>
+                            Berufsausbildung
+                        </h3>
 
                         <p>
-                            <strong>
-                                Abschluss der berufsbildenden Oberschule
-                            </strong>
-                        </p>
+                            01.06.2015 – 01.03.2018<br><br>
 
-                        <p>
-                            Fachrichtung Computer- und Netzwerktechnik
-                        </p>
+                            SMK Swasta St. Nahanson Parapat<br>
+                            Tarutung, Indonesien<br><br>
 
-                        <p>
-                            SMK Swasta St. Nahanson Parapat
-                        </p>
-
-                        <p style="color:var(--muted); margin-top:10px;">
-                            01.06.2015 – 01.03.2018 · Tarutung, Indonesien
+                            Abschluss der berufsbildenden Oberschule
+                            (SMK), Fachrichtung Computer- und
+                            Netzwerktechnik.
                         </p>
 
                     </div>
 
 
-                    <div class="info-box reveal">
+                    <div class="card reveal">
 
-                        <h3>Sprachen</h3>
+                        <div class="card-icon">
+                            💻
+                        </div>
 
-                        <div class="language">
+                        <h3>
+                            Weitere Kompetenzen
+                        </h3>
 
-                            <div class="language-top">
+                        <p>
+                            Microsoft Office<br>
+                            Organisation<br>
+                            Teamarbeit<br>
+                            Verantwortungsbewusstsein<br>
+                            Lernbereitschaft
+                        </p>
 
-                                <span>Indonesisch</span>
+                    </div>
 
-                                <span>Muttersprache</span>
 
-                            </div>
+                    <div class="card reveal">
 
-                            <div class="language-bar">
+                        <div class="card-icon">
+                            🎯
+                        </div>
 
-                                <span style="width:100%"></span>
+                        <h3>
+                            Interessen
+                        </h3>
 
-                            </div>
+                        <p>
+                            Sport<br>
+                            Musik hören<br>
+                            Lesen<br>
+                            Reisen
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="language-grid">
+
+
+                    <div class="language-card reveal">
+
+                        <h3>
+                            Indonesisch
+                        </h3>
+
+                        <div class="language-level">
+                            Muttersprache
+                        </div>
+
+                        <div class="language-bars">
+
+                            <span class="active"></span>
+                            <span class="active"></span>
+                            <span class="active"></span>
+                            <span class="active"></span>
+                            <span class="active"></span>
 
                         </div>
 
+                    </div>
 
-                        <div class="language">
 
-                            <div class="language-top">
+                    <div class="language-card reveal">
 
-                                <span>Deutsch</span>
+                        <h3>
+                            Deutsch
+                        </h3>
 
-                                <span>B1</span>
+                        <div class="language-level">
+                            B1
+                        </div>
 
-                            </div>
+                        <div class="language-bars">
 
-                            <div class="language-bar">
-
-                                <span style="width:65%"></span>
-
-                            </div>
+                            <span class="active"></span>
+                            <span class="active"></span>
+                            <span class="active"></span>
+                            <span></span>
+                            <span></span>
 
                         </div>
 
+                    </div>
 
-                        <div class="language">
 
-                            <div class="language-top">
+                    <div class="language-card reveal">
 
-                                <span>Englisch</span>
+                        <h3>
+                            Englisch
+                        </h3>
 
-                                <span>A1</span>
+                        <div class="language-level">
+                            A1
+                        </div>
 
-                            </div>
+                        <div class="language-bars">
 
-                            <div class="language-bar">
-
-                                <span style="width:30%"></span>
-
-                            </div>
+                            <span class="active"></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
 
                         </div>
 
@@ -2076,7 +2519,9 @@
         </section>
 
 
-        <!-- PORTFOLIO -->
+        <!-- =========================
+             PORTFOLIO
+        ========================= -->
 
         <section id="portfolio">
 
@@ -2084,51 +2529,55 @@
 
                 <div class="section-heading reveal">
 
-                    <div class="section-label">
-                        07 — Portfolio
-                    </div>
+                    <span class="section-label">
+                        Portfolio
+                    </span>
 
-                    <h2 class="section-title">
-                        Einblicke in meinen Arbeitsalltag.
+                    <h2>
+                        Einblicke in meine Arbeit.
                     </h2>
 
-                    <p class="section-description">
-                        Fotos aus meinem beruflichen Alltag sowie
-                        Nachweise und Zertifikate.
+                    <p>
+                        Einige Eindrücke aus meinem beruflichen Alltag
+                        sowie ein Nachweis meiner bisherigen Tätigkeit.
                     </p>
 
                 </div>
 
 
-                <!-- TABS -->
-
-                <div class="tabs reveal">
+                <div class="tabs">
 
                     <button
                         class="tab-button active"
                         data-tab="fotos">
+
                         Fotos
+
                     </button>
+
 
                     <button
                         class="tab-button"
                         data-tab="zertifikate">
+
                         Zertifikate
+
                     </button>
 
                 </div>
 
 
-                <!-- FOTOS -->
+                <!-- =========================
+                     FOTOS
+                ========================= -->
 
                 <div
                     class="tab-content active"
                     id="fotos">
 
+
                     <div class="gallery-grid">
 
-
-                        <!-- FOTO 1 -->
 
                         <div class="gallery-card reveal">
 
@@ -2138,13 +2587,16 @@
 
                                 <img
                                     src="foto1.jpg"
-                                    alt="Arbeitsbeginn">
+                                    alt="Arbeitsbeginn – Absen beim Eintritt zur Arbeit"
+                                    loading="lazy">
 
                             </div>
 
                             <div class="gallery-caption">
 
-                                <h3>Arbeitsbeginn</h3>
+                                <h3>
+                                    Arbeitsbeginn
+                                </h3>
 
                                 <p>
                                     Dokumentation meines Arbeitsbeginns
@@ -2157,8 +2609,6 @@
                         </div>
 
 
-                        <!-- FOTO 2 -->
-
                         <div class="gallery-card reveal">
 
                             <div
@@ -2167,13 +2617,16 @@
 
                                 <img
                                     src="foto2.jpg"
-                                    alt="Arbeitsplatz">
+                                    alt="Arbeitsplatz"
+                                    loading="lazy">
 
                             </div>
 
                             <div class="gallery-caption">
 
-                                <h3>Arbeitsplatz</h3>
+                                <h3>
+                                    Arbeitsplatz
+                                </h3>
 
                                 <p>
                                     Ein Einblick in mein berufliches
@@ -2186,8 +2639,6 @@
                         </div>
 
 
-                        <!-- FOTO 3 -->
-
                         <div class="gallery-card reveal">
 
                             <div
@@ -2196,13 +2647,16 @@
 
                                 <img
                                     src="foto3.jpg"
-                                    alt="Staplertraining">
+                                    alt="Einweisung in die Bedienung eines Gabelstaplers"
+                                    loading="lazy">
 
                             </div>
 
                             <div class="gallery-caption">
 
-                                <h3>Staplertraining</h3>
+                                <h3>
+                                    Staplertraining
+                                </h3>
 
                                 <p>
                                     Praktische Einweisung in die
@@ -2216,8 +2670,6 @@
                         </div>
 
 
-                        <!-- FOTO 4 -->
-
                         <div class="gallery-card reveal">
 
                             <div
@@ -2226,13 +2678,16 @@
 
                                 <img
                                     src="foto4.jpg"
-                                    alt="Arbeitsende">
+                                    alt="Arbeitsende – Absen nach der Arbeit"
+                                    loading="lazy">
 
                             </div>
 
                             <div class="gallery-caption">
 
-                                <h3>Arbeitsende</h3>
+                                <h3>
+                                    Arbeitsende
+                                </h3>
 
                                 <p>
                                     Dokumentation des Arbeitsendes
@@ -2244,134 +2699,63 @@
 
                         </div>
 
+
                     </div>
 
                 </div>
 
 
                 <!-- =========================
-                     ZERTIFIKATE — PDF
+                     ZERTIFIKAT
                 ========================= -->
 
                 <div
                     class="tab-content"
                     id="zertifikate">
 
+
                     <div class="certificate-grid">
 
 
-                        <!-- ZERTIFIKAT 1 -->
-
                         <div class="certificate-card reveal">
 
-                            <div class="certificate-preview">
 
-                                <iframe
-                                    src="sertifikat.pdf#toolbar=0&navpanes=0&scrollbar=0"
-                                    title="Zertifikat 1">
-                                </iframe>
+                            <div
+                                class="certificate-image"
+                                onclick="openCertificate()">
+
+                                <img
+                                    src="sertifikat.png"
+                                    alt="Zertifikat Bruno Parlin Pakpahan"
+                                    loading="lazy">
 
                             </div>
+
 
                             <div class="certificate-info">
 
                                 <h3>
-                                    Zertifikat 1
+                                    Zertifikat
                                 </h3>
 
                                 <p>
-                                    Urkunde fuer mein Engagement und meinen Beitrag als Deutschlehrer be ErfolgLern
+                                    Urkunde für mein Engagement und
+                                    meinen Beitrag als Deutschlehrer
+                                    bei ErfolgLern.
                                 </p>
 
-                                <a
-                                    href="certificates/sertifikat.pdf"
-                                    target="_blank"
-                                    rel="noopener"
-                                    class="pdf-button">
 
-                                    📄 PDF öffnen
+                                <button
+                                    class="pdf-button"
+                                    type="button"
+                                    onclick="openCertificate()">
 
-                                </a>
+                                    🔍 Zertifikat vergrößern
 
-                            </div>
-
-                        </div>
-
-
-                        <!-- ZERTIFIKAT 2 -->
-
-                        <div class="certificate-card reveal">
-
-                            <div class="certificate-preview">
-
-                                <iframe
-                                    src="certificates/zertifikat2.pdf#toolbar=0&navpanes=0&scrollbar=0"
-                                    title="Zertifikat 2">
-                                </iframe>
+                                </button>
 
                             </div>
 
-                            <div class="certificate-info">
-
-                                <h3>
-                                    Zertifikat 2
-                                </h3>
-
-                                <p>
-                                    Nachweis meiner Weiterbildung
-                                    und beruflichen Qualifikation.
-                                </p>
-
-                                <a
-                                    href="certificates/zertifikat2.pdf"
-                                    target="_blank"
-                                    rel="noopener"
-                                    class="pdf-button">
-
-                                    📄 PDF öffnen
-
-                                </a>
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- ZERTIFIKAT 3 -->
-
-                        <div class="certificate-card reveal">
-
-                            <div class="certificate-preview">
-
-                                <iframe
-                                    src="certificates/zertifikat3.pdf#toolbar=0&navpanes=0&scrollbar=0"
-                                    title="Zertifikat 3">
-                                </iframe>
-
-                            </div>
-
-                            <div class="certificate-info">
-
-                                <h3>
-                                    Zertifikat 3
-                                </h3>
-
-                                <p>
-                                    Nachweis meiner Weiterbildung
-                                    und beruflichen Qualifikation.
-                                </p>
-
-                                <a
-                                    href="certificates/zertifikat3.pdf"
-                                    target="_blank"
-                                    rel="noopener"
-                                    class="pdf-button">
-
-                                    📄 PDF öffnen
-
-                                </a>
-
-                            </div>
 
                         </div>
 
@@ -2385,7 +2769,9 @@
         </section>
 
 
-        <!-- KONTAKT -->
+        <!-- =========================
+             KONTAKT
+        ========================= -->
 
         <section id="kontakt">
 
@@ -2393,49 +2779,76 @@
 
                 <div class="contact-box reveal">
 
-                    <div>
 
-                        <div class="section-label">
-                            08 — Kontakt
-                        </div>
+                    <div class="contact-text">
+
+                        <span class="section-label">
+                            Kontakt
+                        </span>
 
                         <h2>
-                            Vielen Dank für<br>
-                            Ihre Aufmerksamkeit.
+                            Ich freue mich auf Ihre Nachricht.
                         </h2>
 
                         <p>
-                            Ich freue mich über die Möglichkeit,
-                            mich persönlich vorzustellen und mehr
-                            über einen möglichen Bundesfreiwilligendienst
-                            zu erfahren.
+                            Wenn Sie mehr über meine Bewerbung,
+                            meine Erfahrungen oder meine Motivation
+                            für einen Bundesfreiwilligendienst
+                            erfahren möchten, können Sie mich
+                            gerne kontaktieren.
                         </p>
-
-                        <div class="contact-details">
-
-                            <div>
-                                <span>✉</span>
-                                brunoparlinpakpahan16@gmail.com
-                            </div>
-
-                            <div>
-                                <span>☎</span>
-                                +62 85183370310
-                            </div>
-
-                        </div>
 
                     </div>
 
-                    <div>
+
+                    <div class="contact-list">
+
 
                         <a
                             href="mailto:brunoparlinpakpahan16@gmail.com"
-                            class="btn btn-primary">
+                            class="contact-item">
 
-                            Kontakt aufnehmen
+                            <div class="contact-icon">
+                                ✉
+                            </div>
+
+                            <div>
+
+                                <small>
+                                    E-Mail
+                                </small>
+
+                                <strong>
+                                    brunoparlinpakpahan16@gmail.com
+                                </strong>
+
+                            </div>
 
                         </a>
+
+
+                        <a
+                            href="tel:+6285183370310"
+                            class="contact-item">
+
+                            <div class="contact-icon">
+                                ☎
+                            </div>
+
+                            <div>
+
+                                <small>
+                                    Telefon
+                                </small>
+
+                                <strong>
+                                    +62 85183370310
+                                </strong>
+
+                            </div>
+
+                        </a>
+
 
                     </div>
 
@@ -2448,19 +2861,20 @@
     </main>
 
 
-    <!-- FOOTER -->
+    <!-- =========================
+         FOOTER
+    ========================= -->
 
     <footer>
 
         <div class="container footer-inner">
 
-            <div>
-                © <span id="year"></span>
-                Bruno Parlin Pakpahan
+            <div class="footer-logo">
+                Bruno<span>.</span>
             </div>
 
-            <div>
-                Persönliches Portfolio · BFD Bewerbung
+            <div class="footer-copy">
+                © 2026 Bruno Parlin Pakpahan · Bewerbungsportfolio
             </div>
 
         </div>
@@ -2468,36 +2882,51 @@
     </footer>
 
 
-    <!-- LIGHTBOX -->
+    <!-- =========================
+         LIGHTBOX
+    ========================= -->
 
-    <div class="lightbox" id="lightbox">
+    <div
+        class="lightbox"
+        id="lightbox">
 
-        <div class="lightbox-close" id="lightboxClose">
+        <button
+            class="lightbox-close"
+            id="lightboxClose"
+            aria-label="Bild schließen">
+
             ×
-        </div>
+
+        </button>
+
 
         <img
-            id="lightboxImage"
             src=""
-            alt="Portfolio Bild">
+            alt="Vergrößerte Ansicht"
+            id="lightboxImage">
 
     </div>
 
 
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
     <script>
+
 
         /* =========================
            LOADER
         ========================= */
 
-        window.addEventListener("load", function () {
+        window.addEventListener("load", () => {
 
-            setTimeout(function () {
+            const loader =
+                document.getElementById("loader");
 
-                document
-                    .getElementById("loader")
-                    .classList
-                    .add("hide");
+            setTimeout(() => {
+
+                loader.classList.add("hidden");
 
             }, 500);
 
@@ -2505,12 +2934,41 @@
 
 
         /* =========================
-           YEAR
+           SCROLL PROGRESS
         ========================= */
 
-        document
-            .getElementById("year")
-            .textContent = new Date().getFullYear();
+        const scrollProgress =
+            document.getElementById("scrollProgress");
+
+
+        function updateScrollProgress() {
+
+            const scrollTop =
+                window.scrollY;
+
+            const documentHeight =
+                document.documentElement.scrollHeight
+                - window.innerHeight;
+
+            const progress =
+                documentHeight > 0
+                    ? (scrollTop / documentHeight) * 100
+                    : 0;
+
+            scrollProgress.style.width =
+                progress + "%";
+
+        }
+
+
+        window.addEventListener(
+            "scroll",
+            updateScrollProgress,
+            { passive: true }
+        );
+
+
+        updateScrollProgress();
 
 
         /* =========================
@@ -2523,47 +2981,21 @@
         const navLinks =
             document.getElementById("navLinks");
 
-        menuToggle.addEventListener("click", function () {
+
+        menuToggle.addEventListener("click", () => {
 
             navLinks.classList.toggle("active");
 
         });
 
 
-        document
-            .querySelectorAll(".nav-links a")
-            .forEach(function (link) {
+        navLinks.querySelectorAll("a").forEach(link => {
 
-                link.addEventListener("click", function () {
+            link.addEventListener("click", () => {
 
-                    navLinks.classList.remove("active");
-
-                });
+                navLinks.classList.remove("active");
 
             });
-
-
-        /* =========================
-           SCROLL PROGRESS
-        ========================= */
-
-        window.addEventListener("scroll", function () {
-
-            const scrollTop =
-                window.scrollY;
-
-            const documentHeight =
-                document.documentElement.scrollHeight
-                - window.innerHeight;
-
-            const percentage =
-                documentHeight > 0
-                    ? (scrollTop / documentHeight) * 100
-                    : 0;
-
-            document
-                .getElementById("progress")
-                .style.width = percentage + "%";
 
         });
 
@@ -2572,17 +3004,25 @@
            REVEAL ANIMATION
         ========================= */
 
-        const observer =
-            new IntersectionObserver(
-                function (entries) {
+        const revealElements =
+            document.querySelectorAll(".reveal");
 
-                    entries.forEach(function (entry) {
+
+        const revealObserver =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
 
                         if (entry.isIntersecting) {
 
-                            entry.target.classList.add("show");
+                            entry.target.classList.add(
+                                "visible"
+                            );
 
-                            observer.unobserve(entry.target);
+                            revealObserver.unobserve(
+                                entry.target
+                            );
 
                         }
 
@@ -2590,18 +3030,16 @@
 
                 },
                 {
-                    threshold: .12
+                    threshold: 0.12
                 }
             );
 
 
-        document
-            .querySelectorAll(".reveal")
-            .forEach(function (element) {
+        revealElements.forEach(element => {
 
-                observer.observe(element);
+            revealObserver.observe(element);
 
-            });
+        });
 
 
         /* =========================
@@ -2615,22 +3053,22 @@
             document.querySelectorAll(".tab-content");
 
 
-        tabButtons.forEach(function (button) {
+        tabButtons.forEach(button => {
 
-            button.addEventListener("click", function () {
+            button.addEventListener("click", () => {
 
                 const target =
-                    button.getAttribute("data-tab");
+                    button.dataset.tab;
 
 
-                tabButtons.forEach(function (btn) {
+                tabButtons.forEach(btn => {
 
                     btn.classList.remove("active");
 
                 });
 
 
-                tabContents.forEach(function (content) {
+                tabContents.forEach(content => {
 
                     content.classList.remove("active");
 
@@ -2639,31 +3077,18 @@
 
                 button.classList.add("active");
 
-                document
-                    .getElementById(target)
-                    .classList.add("active");
+
+                const targetContent =
+                    document.getElementById(target);
 
 
-                /*
-                    Wichtig:
+                if (targetContent) {
 
-                    Elemente innerhalb des neu geöffneten Tabs
-                    werden hier ebenfalls sichtbar gemacht.
-                */
+                    targetContent.classList.add(
+                        "active"
+                    );
 
-                document
-                    .querySelectorAll(
-                        "#" + target + " .reveal"
-                    )
-                    .forEach(function (element) {
-
-                        setTimeout(function () {
-
-                            element.classList.add("show");
-
-                        }, 50);
-
-                    });
+                }
 
             });
 
@@ -2671,7 +3096,7 @@
 
 
         /* =========================
-           PHOTO LIGHTBOX
+           GENERAL LIGHTBOX
         ========================= */
 
         const lightbox =
@@ -2686,19 +3111,28 @@
 
         document
             .querySelectorAll(".gallery-image")
-            .forEach(function (imageContainer) {
+            .forEach(imageContainer => {
 
                 imageContainer.addEventListener(
                     "click",
-                    function () {
+                    () => {
 
                         const image =
-                            imageContainer
-                                .getAttribute("data-image");
+                            imageContainer.dataset.image;
 
-                        lightboxImage.src = image;
+                        lightboxImage.src =
+                            image;
 
-                        lightbox.classList.add("active");
+                        lightboxImage.alt =
+                            "Vergrößerte Ansicht";
+
+                        lightbox.classList.add(
+                            "active"
+                        );
+
+                        document.body.classList.add(
+                            "no-scroll"
+                        );
 
                     }
                 );
@@ -2706,11 +3140,63 @@
             });
 
 
+        /* =========================
+           CERTIFICATE LIGHTBOX
+        ========================= */
+
+        function openCertificate() {
+
+            const certificate =
+                document.querySelector(
+                    ".certificate-image img"
+                );
+
+
+            if (!certificate) {
+                return;
+            }
+
+
+            lightboxImage.src =
+                certificate.src;
+
+            lightboxImage.alt =
+                "Zertifikat Bruno Parlin Pakpahan";
+
+
+            lightbox.classList.add(
+                "active"
+            );
+
+
+            document.body.classList.add(
+                "no-scroll"
+            );
+
+        }
+
+
+        /* =========================
+           CLOSE LIGHTBOX
+        ========================= */
+
         function closeLightbox() {
 
-            lightbox.classList.remove("active");
+            lightbox.classList.remove(
+                "active"
+            );
 
-            lightboxImage.src = "";
+
+            document.body.classList.remove(
+                "no-scroll"
+            );
+
+
+            setTimeout(() => {
+
+                lightboxImage.src = "";
+
+            }, 250);
 
         }
 
@@ -2723,9 +3209,11 @@
 
         lightbox.addEventListener(
             "click",
-            function (event) {
+            event => {
 
-                if (event.target === lightbox) {
+                if (
+                    event.target === lightbox
+                ) {
 
                     closeLightbox();
 
@@ -2737,9 +3225,12 @@
 
         document.addEventListener(
             "keydown",
-            function (event) {
+            event => {
 
-                if (event.key === "Escape") {
+                if (
+                    event.key === "Escape" &&
+                    lightbox.classList.contains("active")
+                ) {
 
                     closeLightbox();
 
@@ -2747,6 +3238,26 @@
 
             }
         );
+
+
+        /* =========================
+           PREVENT IMAGE DRAGGING
+        ========================= */
+
+        document
+            .querySelectorAll("img")
+            .forEach(img => {
+
+                img.addEventListener(
+                    "dragstart",
+                    event => {
+
+                        event.preventDefault();
+
+                    }
+                );
+
+            });
 
     </script>
 
