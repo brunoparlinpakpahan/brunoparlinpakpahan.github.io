@@ -1,1 +1,569 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Portfolio | Bruno Parlin Pakpahan</title>
+
+    <meta name="description"
+          content="Portfolio von Bruno Parlin Pakpahan – Bewerbung um einen Bundesfreiwilligendienst (BFD) in Deutschland.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fa;
+            color: #263238;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.96);
+            border-bottom: 1px solid #e5e7eb;
+            padding: 15px 30px;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #4b5563;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: #111827;
+        }
+
+        /* HERO */
+        .hero {
+            background: white;
+            padding: 90px 25px;
+        }
+
+        .hero-container {
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .profile-photo {
+            width: 190px;
+            height: 230px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: #e5e7eb;
+            flex-shrink: 0;
+        }
+
+        .hero-text h1 {
+            font-size: 46px;
+            color: #111827;
+            margin-bottom: 10px;
+        }
+
+        .hero-text h2 {
+            font-size: 22px;
+            font-weight: normal;
+            color: #4b5563;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            max-width: 650px;
+            color: #5b6470;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 22px;
+            background: #111827;
+            color: white;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background: #374151;
+        }
+
+        /* SECTIONS */
+        section {
+            max-width: 1000px;
+            margin: auto;
+            padding: 70px 25px;
+        }
+
+        section h2 {
+            font-size: 30px;
+            color: #111827;
+            margin-bottom: 25px;
+        }
+
+        .section-intro {
+            color: #667085;
+            max-width: 750px;
+        }
+
+        /* CARDS */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            color: #111827;
+        }
+
+        .card p {
+            color: #667085;
+        }
+
+        /* LANGUAGE */
+        .language {
+            margin: 18px 0;
+        }
+
+        .language-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        .bar {
+            height: 9px;
+            background: #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .bar span {
+            display: block;
+            height: 100%;
+            background: #374151;
+            border-radius: 10px;
+        }
+
+        /* CONTACT */
+        .contact {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .contact p {
+            margin: 8px 0;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            background: #111827;
+            color: #d1d5db;
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 750px) {
+
+            .nav-container {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 36px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <div class="nav-container">
+
+        <div class="logo">
+            Bruno Parlin Pakpahan
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#ueber-mich">Über mich</a></li>
+            <li><a href="#motivation">Motivation</a></li>
+            <li><a href="#bildung">Bildung</a></li>
+            <li><a href="#erfahrung">Erfahrung</a></li>
+            <li><a href="#sprachen">Sprachen</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+
+    </div>
+</nav>
+
+
+<!-- HERO -->
+<header class="hero">
+
+    <div class="hero-container">
+
+        <!--
+        Später hier dein Bewerbungsfoto einsetzen.
+        Dafür legen wir später einen Ordner "images" an.
+        -->
+
+        <img
+            src="images/profil.jpg"
+            alt="Bewerbungsfoto von Bruno Parlin Pakpahan"
+            class="profile-photo"
+        >
+
+        <div class="hero-text">
+
+            <h1>Bruno Parlin Pakpahan</h1>
+
+            <h2>Bewerbung um einen Bundesfreiwilligendienst (BFD)</h2>
+
+            <p>
+                Willkommen auf meiner persönlichen Bewerbungsseite.
+                Hier finden Sie Informationen über mich, meine Motivation,
+                meine Ausbildung und meine bisherigen Erfahrungen.
+            </p>
+
+            <a href="#kontakt" class="button">
+                Kontakt aufnehmen
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ÜBER MICH -->
+<section id="ueber-mich">
+
+    <h2>Über mich</h2>
+
+    <p class="section-intro">
+        Mein Name ist Bruno Parlin Pakpahan. Ich interessiere mich für
+        einen Bundesfreiwilligendienst in Deutschland und möchte mich
+        persönlich sowie beruflich weiterentwickeln.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Persönlichkeit</h3>
+            <p>
+                Ich bin motiviert, zuverlässig und bereit, Verantwortung
+                zu übernehmen. Neue Aufgaben und Erfahrungen sehe ich
+                als Möglichkeit, mich weiterzuentwickeln.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Interessen</h3>
+            <p>
+                Besonders interessieren mich soziale Tätigkeiten,
+                der Umgang mit Menschen und die Möglichkeit,
+                aktiv in einer Gemeinschaft mitzuwirken.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MOTIVATION -->
+<section id="motivation">
+
+    <h2>Meine Motivation</h2>
+
+    <p class="section-intro">
+        Ich möchte einen Bundesfreiwilligendienst absolvieren, weil ich
+        praktische Erfahrungen sammeln, meine Deutschkenntnisse verbessern
+        und gleichzeitig einen sinnvollen Beitrag für andere Menschen
+        leisten möchte.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Soziales Engagement</h3>
+            <p>
+                Ich möchte Menschen unterstützen und lernen, Verantwortung
+                in einem sozialen Umfeld zu übernehmen.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Persönliche Entwicklung</h3>
+            <p>
+                Der BFD bietet mir die Möglichkeit, neue Fähigkeiten zu
+                entwickeln und wertvolle praktische Erfahrungen zu sammeln.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- BILDUNG -->
+<section id="bildung">
+
+    <h2>Bildung</h2>
+
+    <div class="card">
+
+        <h3>Meine Ausbildung</h3>
+
+        <p>
+            <strong>Schulische / berufliche Ausbildung</strong>
+        </p>
+
+        <p>
+            Hier können später deine Schule, dein Abschluss,
+            Studiengang oder deine berufliche Ausbildung eingetragen werden.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ERFAHRUNG -->
+<section id="erfahrung">
+
+    <h2>Erfahrungen</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Berufliche Erfahrungen</h3>
+            <p>
+                Hier werden später deine bisherigen Arbeits-
+                oder Praktikumserfahrungen eingetragen.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Weitere Erfahrungen</h3>
+            <p>
+                Hier können beispielsweise ehrenamtliche Tätigkeiten,
+                Projekte oder andere relevante Erfahrungen stehen.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SPRACHEN -->
+<section id="sprachen">
+
+    <h2>Sprachkenntnisse</h2>
+
+    <div class="language">
+
+        <div class="language-title">
+            <span>Deutsch</span>
+            <span>---</span>
+        </div>
+
+        <div class="bar">
+            <span style="width: 50%;"></span>
+        </div>
+
+    </div>
+
+
+    <div class="language">
+
+        <div class="language-title">
+            <span>Englisch</span>
+            <span>---</span>
+        </div>
+
+        <div class="bar">
+            <span style="width: 70%;"></span>
+        </div>
+
+    </div>
+
+
+    <div class="language">
+
+        <div class="language-title">
+            <span>Indonesisch</span>
+            <span>Muttersprache</span>
+        </div>
+
+        <div class="bar">
+            <span style="width: 100%;"></span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ZERTIFIKATE -->
+<section id="zertifikate">
+
+    <h2>Zertifikate</h2>
+
+    <div class="card">
+
+        <p>
+            Hier können später deine Sprachzertifikate,
+            Kurszertifikate und weitere relevante Nachweise
+            als PDF hinzugefügt werden.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- LEBENSLAUF -->
+<section id="lebenslauf">
+
+    <h2>Lebenslauf</h2>
+
+    <div class="card">
+
+        <p>
+            Mein vollständiger Lebenslauf steht hier als PDF zur Verfügung.
+        </p>
+
+        <a href="documents/Lebenslauf.pdf" class="button">
+            Lebenslauf öffnen
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- KONTAKT -->
+<section id="kontakt">
+
+    <h2>Kontakt</h2>
+
+    <div class="contact">
+
+        <p>
+            <strong>Name:</strong>
+            Bruno Parlin Pakpahan
+        </p>
+
+        <p>
+            <strong>E-Mail:</strong>
+            DEINE-EMAIL@BEISPIEL.DE
+        </p>
+
+        <p>
+            <strong>Standort:</strong>
+            Indonesien
+        </p>
+
+        <p>
+            Bei Fragen zu meiner Bewerbung oder meinem Interesse
+            an einem Bundesfreiwilligendienst können Sie mich gerne
+            per E-Mail kontaktieren.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <p>
+        © 2026 Bruno Parlin Pakpahan
+    </p>
+
+    <p>
+        Portfolio – Bewerbung um einen Bundesfreiwilligendienst (BFD)
+    </p>
+
+</footer>
+
+</body>
+</html>
