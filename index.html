@@ -1,15 +1,19 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Bruno Parlin Pakpahan | BFD Bewerbung</title>
+    <title>Bruno Parlin Pakpahan | BFD Bewerbungsportfolio</title>
 
-    <meta name="description" content="Professionelles Bewerbungsportfolio von Bruno Parlin Pakpahan für einen Bundesfreiwilligendienst (BFD) in Deutschland.">
+    <meta name="description" content="Bewerbungsportfolio von Bruno Parlin Pakpahan für einen Bundesfreiwilligendienst in Deutschland.">
 
     <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
         * {
             margin: 0;
             padding: 0;
@@ -22,383 +26,994 @@
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            line-height: 1.7;
+            background: #f4f7fb;
             color: #263238;
-            background: #f4f7f9;
+            line-height: 1.7;
+            overflow-x: hidden;
         }
 
         a {
             color: inherit;
         }
 
-        /* NAVIGATION */
+
+        /* =====================================================
+           SCROLL PROGRESS
+        ===================================================== */
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(
+                90deg,
+                #17365d,
+                #4d8dcc,
+                #8bb8e8
+            );
+            z-index: 9999;
+        }
+
+
+        /* =====================================================
+           NAVIGATION
+        ===================================================== */
+
         nav {
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: #ffffff;
-            border-bottom: 1px solid #e5e7eb;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid rgba(0,0,0,0.07);
+
+            box-shadow: 0 5px 25px rgba(0,0,0,0.04);
         }
 
         .nav-container {
-            max-width: 1100px;
+            max-width: 1120px;
             margin: auto;
-            padding: 14px 20px;
+
+            padding: 14px 22px;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 20px;
-            font-weight: bold;
-            color: #17365d;
             text-decoration: none;
+            color: #17365d;
+
+            font-size: 18px;
+            font-weight: 800;
+
+            letter-spacing: -0.3px;
         }
 
         .nav-links {
             display: flex;
-            gap: 20px;
+            gap: 22px;
             list-style: none;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #374151;
-            font-size: 14px;
-            font-weight: 600;
+            color: #4b5563;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            transition: 0.25s ease;
         }
 
         .nav-links a:hover {
             color: #17365d;
         }
 
-        /* HERO */
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
         .hero {
-            background: linear-gradient(135deg, #17365d, #24558c);
+            position: relative;
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 80% 20%,
+                    rgba(120,170,220,0.25),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #112d4e,
+                    #17365d 55%,
+                    #24558c
+                );
+
             color: white;
-            padding: 70px 20px;
+
+            padding: 95px 20px 90px;
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 450px;
+            height: 450px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(255,255,255,0.10);
+
+            right: -150px;
+            top: -180px;
+
+            animation: floatCircle 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 250px;
+            height: 250px;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.035);
+
+            left: -100px;
+            bottom: -100px;
+
+            animation: floatCircle 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes floatCircle {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(25px);
+            }
+
         }
 
         .hero-container {
-            max-width: 1100px;
+            position: relative;
+            z-index: 2;
+
+            max-width: 1120px;
             margin: auto;
+
             display: grid;
-            grid-template-columns: 220px 1fr;
-            gap: 45px;
+            grid-template-columns: 240px 1fr;
+
+            gap: 55px;
             align-items: center;
         }
 
+
+        /* =====================================================
+           PROFILE PHOTO
+        ===================================================== */
+
+        .photo-wrapper {
+            position: relative;
+
+            width: 210px;
+            height: 260px;
+
+            margin: auto;
+        }
+
+        .photo-wrapper::before {
+            content: "";
+
+            position: absolute;
+
+            inset: -8px;
+
+            border-radius: 14px;
+
+            border: 1px solid rgba(255,255,255,0.35);
+
+            transform: rotate(-4deg);
+
+            transition: 0.4s ease;
+        }
+
+        .photo-wrapper:hover::before {
+            transform: rotate(3deg);
+        }
+
         .profile-photo {
-            width: 200px;
-            height: 250px;
+            position: relative;
+
+            width: 210px;
+            height: 260px;
+
             object-fit: cover;
-            object-position: center;
-            border-radius: 8px;
+
+            border-radius: 10px;
+
             border: 5px solid white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+
+            box-shadow:
+                0 25px 55px rgba(0,0,0,0.30);
+
             background: white;
+
+            transition: 0.4s ease;
+        }
+
+        .profile-photo:hover {
+            transform: translateY(-6px);
+        }
+
+
+        /* =====================================================
+           HERO TEXT
+        ===================================================== */
+
+        .hero-label {
+            display: inline-block;
+
+            padding: 6px 12px;
+
+            margin-bottom: 18px;
+
+            border-radius: 20px;
+
+            background: rgba(255,255,255,0.10);
+
+            border: 1px solid rgba(255,255,255,0.18);
+
+            font-size: 12px;
+            font-weight: 700;
+
+            letter-spacing: 0.5px;
         }
 
         .hero h1 {
-            font-size: 42px;
-            margin-bottom: 10px;
-            line-height: 1.2;
+            font-size: clamp(34px, 5vw, 52px);
+
+            line-height: 1.1;
+
+            margin-bottom: 12px;
+
+            letter-spacing: -1.5px;
         }
 
         .hero h2 {
-            font-size: 22px;
-            font-weight: normal;
-            margin-bottom: 18px;
-            color: #e8f1fa;
+            font-size: 21px;
+
+            font-weight: 400;
+
+            color: #dbeafe;
+
+            margin-bottom: 20px;
         }
 
-        .hero p {
+        .hero-description {
             max-width: 720px;
-            font-size: 17px;
-            color: #eef5fb;
+
+            color: #edf5fc;
+
+            font-size: 16px;
         }
+
+
+        /* =====================================================
+           BUTTONS
+        ===================================================== */
 
         .hero-buttons {
-            margin-top: 25px;
+            margin-top: 28px;
+
             display: flex;
-            gap: 12px;
             flex-wrap: wrap;
+
+            gap: 12px;
         }
 
         .btn {
-            display: inline-block;
-            padding: 11px 20px;
-            border-radius: 6px;
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 12px 20px;
+
+            border-radius: 7px;
+
             text-decoration: none;
-            font-weight: bold;
+
             font-size: 14px;
+            font-weight: 700;
+
+            transition: all 0.3s ease;
         }
 
         .btn-primary {
             background: white;
             color: #17365d;
+
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.22);
         }
 
         .btn-secondary {
-            border: 1px solid white;
+            border: 1px solid rgba(255,255,255,0.55);
             color: white;
+
+            background: rgba(255,255,255,0.04);
         }
 
-        .btn:hover {
-            opacity: 0.88;
+        .btn-secondary:hover {
+            background: white;
+            color: #17365d;
+
+            transform: translateY(-3px);
         }
 
-        /* MAIN */
+
+        /* =====================================================
+           MAIN
+        ===================================================== */
+
         main {
-            max-width: 1100px;
-            margin: 40px auto;
+            max-width: 1120px;
+
+            margin: 55px auto;
+
             padding: 0 20px;
         }
 
         section {
             background: white;
-            padding: 35px;
-            margin-bottom: 25px;
-            border-radius: 10px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+
+            padding: 38px;
+
+            margin-bottom: 28px;
+
+            border-radius: 12px;
+
+            border: 1px solid rgba(0,0,0,0.05);
+
+            box-shadow:
+                0 5px 25px rgba(31,55,80,0.05);
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
+        }
+
+        section:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 15px 35px rgba(31,55,80,0.09);
         }
 
         section h2 {
+            position: relative;
+
             color: #17365d;
+
             font-size: 27px;
-            margin-bottom: 22px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #e5e7eb;
+
+            margin-bottom: 25px;
+
+            padding-bottom: 12px;
+
+            border-bottom: 1px solid #e5e7eb;
         }
 
-        section h3 {
-            color: #17365d;
-            margin-bottom: 4px;
+        section h2::after {
+            content: "";
+
+            position: absolute;
+
+            bottom: -1px;
+            left: 0;
+
+            width: 55px;
+            height: 3px;
+
+            background: #24558c;
+
+            border-radius: 5px;
         }
 
-        /* ABOUT */
+
+        /* =====================================================
+           ABOUT
+        ===================================================== */
+
+        .about-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 30px;
+        }
+
         .about-text {
             font-size: 16px;
         }
 
-        /* MOTIVATION */
-        .motivation {
-            font-size: 16px;
+        .highlight-box {
+            padding: 22px;
+
+            border-left: 4px solid #24558c;
+
+            background: #f5f8fc;
+
+            border-radius: 7px;
         }
 
-        .motivation strong {
+        .highlight-box strong {
             color: #17365d;
         }
 
-        /* EXPERIENCE */
-        .timeline-item {
-            border-left: 3px solid #17365d;
-            padding-left: 20px;
-            margin-bottom: 30px;
+
+        /* =====================================================
+           MOTIVATION
+        ===================================================== */
+
+        .motivation-text {
+            font-size: 16px;
+            max-width: 900px;
         }
 
-        .timeline-item:last-child {
-            margin-bottom: 0;
+        .motivation-points {
+            margin-top: 25px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
         }
 
-        .date {
-            color: #667085;
-            font-size: 14px;
-            font-weight: bold;
+        .motivation-card {
+            padding: 20px;
+
+            background: #f7f9fc;
+
+            border: 1px solid #e5eaf0;
+
+            border-radius: 9px;
+
+            transition: 0.3s ease;
+        }
+
+        .motivation-card:hover {
+            transform: translateY(-5px);
+
+            border-color: #b9cee3;
+        }
+
+        .motivation-card .icon {
+            font-size: 25px;
+
+            margin-bottom: 10px;
+        }
+
+        .motivation-card strong {
+            display: block;
+
+            color: #17365d;
+
             margin-bottom: 5px;
         }
 
+        .motivation-card span {
+            font-size: 14px;
+
+            color: #667085;
+        }
+
+
+        /* =====================================================
+           EXPERIENCE TIMELINE
+        ===================================================== */
+
+        .timeline {
+            position: relative;
+
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: "";
+
+            position: absolute;
+
+            left: 5px;
+            top: 5px;
+            bottom: 5px;
+
+            width: 2px;
+
+            background: linear-gradient(
+                to bottom,
+                #17365d,
+                #9bb8d4
+            );
+        }
+
+        .timeline-item {
+            position: relative;
+
+            padding: 0 0 35px 25px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: "";
+
+            position: absolute;
+
+            left: -1px;
+            top: 6px;
+
+            width: 12px;
+            height: 12px;
+
+            border-radius: 50%;
+
+            background: white;
+
+            border: 3px solid #17365d;
+
+            box-shadow: 0 0 0 5px #eef3f8;
+        }
+
+        .date {
+            display: inline-block;
+
+            color: #24558c;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            margin-bottom: 5px;
+        }
+
+        .timeline-item h3 {
+            color: #17365d;
+
+            font-size: 19px;
+
+            margin-bottom: 2px;
+        }
+
         .company {
-            color: #5b6770;
-            font-weight: bold;
+            color: #667085;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
             margin-bottom: 10px;
         }
 
         .timeline-item ul {
-            padding-left: 20px;
+            padding-left: 18px;
         }
 
         .timeline-item li {
             margin-bottom: 5px;
+
+            color: #4b5563;
         }
 
-        /* EDUCATION */
-        .education-box {
-            border-left: 3px solid #17365d;
-            padding-left: 20px;
+
+        /* =====================================================
+           EDUCATION
+        ===================================================== */
+
+        .education {
+            display: grid;
+
+            grid-template-columns: 150px 1fr;
+
+            gap: 25px;
+
+            align-items: start;
         }
 
-        /* LANGUAGE */
+        .education-date {
+            color: #24558c;
+
+            font-size: 14px;
+
+            font-weight: 700;
+        }
+
+        .education-content h3 {
+            color: #17365d;
+
+            margin-bottom: 5px;
+        }
+
+        .education-content p {
+            color: #667085;
+        }
+
+
+        /* =====================================================
+           LANGUAGES
+        ===================================================== */
+
         .language-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
             gap: 18px;
         }
 
         .language-card {
-            border: 1px solid #e1e5e9;
-            border-radius: 8px;
-            padding: 20px;
-            background: #fafbfc;
+            padding: 23px;
+
+            border: 1px solid #e4e9ef;
+
+            border-radius: 9px;
+
+            background: #fafbfd;
+
+            transition: 0.3s ease;
+        }
+
+        .language-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 10px 25px rgba(31,55,80,0.08);
         }
 
         .language-card h3 {
-            margin-bottom: 8px;
+            color: #17365d;
+
+            margin-bottom: 7px;
         }
 
-        /* SKILLS */
+        .level {
+            display: inline-block;
+
+            margin-top: 8px;
+
+            padding: 4px 9px;
+
+            border-radius: 12px;
+
+            background: #eaf1f8;
+
+            color: #24558c;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           SKILLS
+        ===================================================== */
+
         .skills {
             display: flex;
+
             flex-wrap: wrap;
+
             gap: 10px;
         }
 
         .skill {
-            background: #eef3f8;
+            padding: 9px 14px;
+
+            background: #f1f5f9;
+
             color: #17365d;
-            padding: 8px 13px;
+
+            border: 1px solid #e1e8ef;
+
             border-radius: 20px;
+
             font-size: 14px;
+
             font-weight: 600;
+
+            transition: 0.25s ease;
         }
 
-        /* HOBBIES */
+        .skill:hover {
+            background: #17365d;
+
+            color: white;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================================
+           HOBBIES
+        ===================================================== */
+
         .hobbies {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
             gap: 15px;
         }
 
         .hobby {
             text-align: center;
-            border: 1px solid #e5e7eb;
-            padding: 18px 10px;
-            border-radius: 8px;
-            background: #fafbfc;
+
+            padding: 23px 12px;
+
+            border: 1px solid #e5e9ee;
+
+            border-radius: 9px;
+
+            background: #fafbfd;
+
+            transition: 0.3s ease;
+        }
+
+        .hobby:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 10px 25px rgba(31,55,80,0.08);
         }
 
         .hobby-icon {
             font-size: 28px;
+
             margin-bottom: 8px;
         }
 
-        /* PERSONAL DATA */
-        .personal-data {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px 30px;
-        }
-
-        .data-row {
-            padding: 10px 0;
-            border-bottom: 1px solid #eeeeee;
-        }
-
-        .data-label {
-            font-weight: bold;
+        .hobby strong {
             color: #17365d;
         }
 
-        /* CV */
+
+        /* =====================================================
+           CV
+        ===================================================== */
+
         .cv-box {
-            background: #f5f8fb;
-            border-radius: 8px;
-            padding: 25px;
             text-align: center;
+
+            padding: 35px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f5f8fc,
+                    #edf3f9
+                );
+
+            border-radius: 10px;
+
+            border: 1px solid #e1e8ef;
+        }
+
+        .cv-box h3 {
+            color: #17365d;
+
+            margin-bottom: 7px;
         }
 
         .cv-box p {
-            margin-bottom: 18px;
+            color: #667085;
+
+            margin-bottom: 20px;
         }
 
         .cv-button {
-            display: inline-block;
+            display: inline-flex;
+
+            padding: 12px 22px;
+
             background: #17365d;
+
             color: white;
-            padding: 12px 24px;
-            border-radius: 6px;
+
+            border-radius: 7px;
+
             text-decoration: none;
-            font-weight: bold;
+
+            font-weight: 700;
+
+            transition: 0.3s ease;
         }
 
         .cv-button:hover {
             background: #24558c;
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 25px rgba(23,54,93,0.20);
         }
 
-        /* CONTACT */
+
+        /* =====================================================
+           CONTACT
+        ===================================================== */
+
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
             gap: 18px;
         }
 
         .contact-item {
-            padding: 18px;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            background: #fafbfc;
+            padding: 20px;
+
+            border: 1px solid #e4e9ef;
+
+            border-radius: 9px;
+
+            background: #fafbfd;
+
+            transition: 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-4px);
+
+            border-color: #b9cee3;
         }
 
         .contact-item strong {
             display: block;
+
             color: #17365d;
-            margin-bottom: 5px;
+
+            margin-bottom: 4px;
         }
 
         .contact-item a {
             color: #24558c;
+
             text-decoration: none;
+
+            word-break: break-word;
         }
 
         .contact-item a:hover {
             text-decoration: underline;
         }
 
-        /* FOOTER */
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
         footer {
-            background: #17365d;
+            background: #112d4e;
+
             color: white;
+
             text-align: center;
-            padding: 25px 20px;
-            margin-top: 40px;
+
+            padding: 28px 20px;
+
+            margin-top: 55px;
+        }
+
+        footer strong {
+            color: white;
         }
 
         footer p {
-            font-size: 14px;
-            opacity: 0.9;
+            font-size: 13px;
+
+            opacity: 0.8;
         }
 
-        /* MOBILE */
-        @media (max-width: 800px) {
+
+        /* =====================================================
+           ANIMATION ON LOAD
+        ===================================================== */
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease both;
+        }
+
+        @keyframes fadeInUp {
+
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 850px) {
 
             .nav-container {
                 flex-direction: column;
+
                 gap: 10px;
             }
 
             .nav-links {
-                flex-wrap: wrap;
                 justify-content: center;
-                gap: 10px;
+
+                flex-wrap: wrap;
+
+                gap: 12px;
+            }
+
+            .hero {
+                padding: 70px 20px;
             }
 
             .hero-container {
                 grid-template-columns: 1fr;
+
                 text-align: center;
+
+                gap: 35px;
             }
 
-            .profile-photo {
+            .hero-description {
                 margin: auto;
-            }
-
-            .hero h1 {
-                font-size: 32px;
             }
 
             .hero-buttons {
                 justify-content: center;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .motivation-points {
+                grid-template-columns: 1fr;
             }
 
             .language-grid {
@@ -406,27 +1021,52 @@
             }
 
             .hobbies {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns:
+                    repeat(2, 1fr);
             }
 
-            .personal-data,
+            .education {
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
+
             .contact-grid {
                 grid-template-columns: 1fr;
             }
+
         }
+
 
         @media (max-width: 500px) {
 
+            .logo {
+                font-size: 16px;
+            }
+
+            .nav-links {
+                gap: 9px;
+            }
+
+            .nav-links a {
+                font-size: 11px;
+            }
+
             section {
-                padding: 25px 20px;
+                padding: 27px 20px;
             }
 
             .hero {
-                padding: 50px 20px;
+                padding: 60px 18px;
+            }
+
+            .photo-wrapper,
+            .profile-photo {
+                width: 185px;
+                height: 230px;
             }
 
             .hero h1 {
-                font-size: 28px;
+                font-size: 31px;
             }
 
             .hero h2 {
@@ -436,14 +1076,30 @@
             .hobbies {
                 grid-template-columns: 1fr 1fr;
             }
+
+            .timeline {
+                padding-left: 22px;
+            }
+
+            .timeline-item {
+                padding-left: 20px;
+            }
+
         }
+
     </style>
 </head>
 
+
 <body>
+
+    <!-- SCROLL PROGRESS -->
+    <div class="progress-bar" id="progressBar"></div>
+
 
     <!-- NAVIGATION -->
     <nav>
+
         <div class="nav-container">
 
             <a href="#top" class="logo">
@@ -451,15 +1107,35 @@
             </a>
 
             <ul class="nav-links">
-                <li><a href="#ueber-mich">Über mich</a></li>
-                <li><a href="#motivation">Motivation</a></li>
-                <li><a href="#erfahrung">Erfahrung</a></li>
-                <li><a href="#bildung">Bildung</a></li>
-                <li><a href="#sprachen">Sprachen</a></li>
-                <li><a href="#kontakt">Kontakt</a></li>
+
+                <li>
+                    <a href="#ueber-mich">Über mich</a>
+                </li>
+
+                <li>
+                    <a href="#motivation">Motivation</a>
+                </li>
+
+                <li>
+                    <a href="#erfahrung">Erfahrung</a>
+                </li>
+
+                <li>
+                    <a href="#bildung">Bildung</a>
+                </li>
+
+                <li>
+                    <a href="#sprachen">Sprachen</a>
+                </li>
+
+                <li>
+                    <a href="#kontakt">Kontakt</a>
+                </li>
+
             </ul>
 
         </div>
+
     </nav>
 
 
@@ -468,39 +1144,55 @@
 
         <div class="hero-container">
 
-            <!-- PROFILFOTO -->
-            <img
-                src="profil.png"
-                alt="Bewerbungsfoto von Bruno Parlin Pakpahan"
-                class="profile-photo"
-            >
+            <div class="photo-wrapper fade-in">
 
-            <div>
+                <img
+                    src="profil.png"
+                    alt="Bewerbungsfoto von Bruno Parlin Pakpahan"
+                    class="profile-photo"
+                >
 
-                <h1>Bruno Parlin Pakpahan</h1>
+            </div>
+
+
+            <div class="fade-in">
+
+                <span class="hero-label">
+                    BEWERBUNG · BUNDESFREIWILLIGENDIENST
+                </span>
+
+                <h1>
+                    Bruno Parlin Pakpahan
+                </h1>
 
                 <h2>
                     Bewerber für einen Bundesfreiwilligendienst (BFD)
                 </h2>
 
-                <p>
+                <p class="hero-description">
                     Motivierter und zuverlässiger Bewerber aus Indonesien
                     mit Berufserfahrung in Logistik, Produktion und
                     Personenbeförderung. Ich möchte mich im sozialen Bereich
-                    engagieren, meine Deutschkenntnisse verbessern und
-                    neue berufliche sowie persönliche Erfahrungen in
-                    Deutschland sammeln.
+                    engagieren, neue Erfahrungen sammeln und meine
+                    Deutschkenntnisse im Alltag weiterentwickeln.
                 </p>
+
 
                 <div class="hero-buttons">
 
-                    <a href="#kontakt" class="btn btn-primary">
+                    <a
+                        href="#kontakt"
+                        class="btn btn-primary"
+                    >
                         Kontakt aufnehmen
                     </a>
 
-                    <a href="documents/Lebenslauf.pdf"
-                       class="btn btn-secondary"
-                       target="_blank">
+
+                    <a
+                        href="documents/Lebenslauf.pdf"
+                        class="btn btn-secondary"
+                        target="_blank"
+                    >
                         Lebenslauf ansehen
                     </a>
 
@@ -515,29 +1207,51 @@
 
     <main>
 
+
         <!-- ÜBER MICH -->
         <section id="ueber-mich">
 
             <h2>Über mich</h2>
 
-            <p class="about-text">
-                Mein Name ist <strong>Bruno Parlin Pakpahan</strong>.
-                Ich habe eine berufsbildende Oberschule (SMK) mit der
-                Fachrichtung Computer- und Netzwerktechnik abgeschlossen.
-                In den vergangenen Jahren konnte ich praktische
-                Berufserfahrungen in den Bereichen Lager, Produktion,
-                Transport und Personenbeförderung sammeln.
-            </p>
+            <div class="about-grid">
 
-            <br>
+                <div>
 
-            <p class="about-text">
-                Ich bin zuverlässig, lernbereit, verantwortungsbewusst
-                und arbeite gerne im Team. Durch meine bisherigen
-                Tätigkeiten habe ich gelernt, sorgfältig zu arbeiten,
-                Verantwortung zu übernehmen und auch in anspruchsvollen
-                Situationen ruhig und lösungsorientiert zu handeln.
-            </p>
+                    <p class="about-text">
+                        Mein Name ist
+                        <strong>Bruno Parlin Pakpahan</strong>.
+                        Ich habe eine berufsbildende Oberschule (SMK)
+                        mit der Fachrichtung
+                        <strong>Computer- und Netzwerktechnik</strong>
+                        abgeschlossen.
+                    </p>
+
+                    <br>
+
+                    <p class="about-text">
+                        In den vergangenen Jahren konnte ich praktische
+                        Berufserfahrungen in den Bereichen Lager,
+                        Produktion, Transport und Personenbeförderung
+                        sammeln.
+                    </p>
+
+                </div>
+
+
+                <div class="highlight-box">
+
+                    <strong>Was mich auszeichnet</strong>
+
+                    <p>
+                        Zuverlässigkeit, Lernbereitschaft,
+                        Verantwortungsbewusstsein und Teamfähigkeit.
+                        Ich arbeite sorgfältig und bin bereit,
+                        neue Aufgaben und Herausforderungen anzunehmen.
+                    </p>
+
+                </div>
+
+            </div>
 
         </section>
 
@@ -547,30 +1261,72 @@
 
             <h2>Meine Motivation für den BFD</h2>
 
-            <p class="motivation">
-                Ich möchte einen <strong>Bundesfreiwilligendienst (BFD)</strong>
-                in Deutschland absolvieren, weil ich mich persönlich und
-                beruflich weiterentwickeln möchte.
+            <p class="motivation-text">
+
+                Ich möchte einen
+                <strong>Bundesfreiwilligendienst in Deutschland</strong>
+                absolvieren, weil ich mich persönlich und beruflich
+                weiterentwickeln möchte.
+
+                Besonders interessiert mich die Möglichkeit,
+                praktische Erfahrungen im sozialen Bereich zu sammeln,
+                Menschen zu unterstützen und gleichzeitig meine
+                Deutschkenntnisse im Alltag zu verbessern.
+
             </p>
 
-            <br>
 
-            <p class="motivation">
-                Besonders interessiert mich die Möglichkeit, praktische
-                Erfahrungen im sozialen Bereich zu sammeln und gleichzeitig
-                Menschen zu unterstützen. Dabei möchte ich meine
-                Deutschkenntnisse im Alltag verbessern und die deutsche
-                Gesellschaft und Kultur besser kennenlernen.
-            </p>
+            <div class="motivation-points">
 
-            <br>
 
-            <p class="motivation">
-                Ich bin bereit, Verantwortung zu übernehmen, Neues zu lernen
-                und mich aktiv in ein Team einzubringen. Mein Ziel ist es,
-                durch den BFD wertvolle Erfahrungen zu sammeln und mich
-                langfristig persönlich und beruflich weiterzuentwickeln.
-            </p>
+                <div class="motivation-card">
+
+                    <div class="icon">
+                        🤝
+                    </div>
+
+                    <strong>Menschen unterstützen</strong>
+
+                    <span>
+                        Ich möchte mich aktiv engagieren und
+                        Menschen im Alltag unterstützen.
+                    </span>
+
+                </div>
+
+
+                <div class="motivation-card">
+
+                    <div class="icon">
+                        📚
+                    </div>
+
+                    <strong>Neue Erfahrungen</strong>
+
+                    <span>
+                        Ich möchte neue praktische und soziale
+                        Erfahrungen sammeln.
+                    </span>
+
+                </div>
+
+
+                <div class="motivation-card">
+
+                    <div class="icon">
+                        🇩🇪
+                    </div>
+
+                    <strong>Deutsch verbessern</strong>
+
+                    <span>
+                        Der BFD bietet mir die Möglichkeit,
+                        Deutsch regelmäßig im Alltag anzuwenden.
+                    </span>
+
+                </div>
+
+            </div>
 
         </section>
 
@@ -580,127 +1336,149 @@
 
             <h2>Berufserfahrung</h2>
 
+            <div class="timeline">
 
-            <div class="timeline-item">
 
-                <div class="date">
-                    01.09.2024 – aktuell
+                <div class="timeline-item">
+
+                    <span class="date">
+                        01.09.2024 – aktuell
+                    </span>
+
+                    <h3>
+                        Selbstständiger Fahrer
+                    </h3>
+
+                    <div class="company">
+                        GRAB Indonesia · Jakarta, Indonesien
+                    </div>
+
+                    <ul>
+
+                        <li>
+                            Sichere Beförderung von Personen sowie
+                            Lieferung von Dokumenten, Paketen und
+                            Lebensmitteln
+                        </li>
+
+                        <li>
+                            Pünktliche und sorgfältige Auslieferung
+                        </li>
+
+                        <li>
+                            Flexible und effiziente Routenplanung
+                            im dichten Stadtverkehr
+                        </li>
+
+                        <li>
+                            Freundlicher und professioneller Umgang
+                            mit unterschiedlichen Kunden
+                        </li>
+
+                    </ul>
+
                 </div>
 
-                <h3>Selbstständiger Fahrer</h3>
 
-                <div class="company">
-                    GRAB Indonesia – Jakarta, Indonesien
+                <div class="timeline-item">
+
+                    <span class="date">
+                        01.06.2022 – 01.05.2024
+                    </span>
+
+                    <h3>
+                        Lagermitarbeiter / Warehouse Operator
+                    </h3>
+
+                    <div class="company">
+                        PT. Serpong Alam Lestari · Bogor, Indonesien
+                    </div>
+
+                    <ul>
+
+                        <li>
+                            Kommissionierung und Vorbereitung
+                            von Waren
+                        </li>
+
+                        <li>
+                            Kontrolle von Lagerbeständen
+                        </li>
+
+                        <li>
+                            Unterstützung eines reibungslosen
+                            Lagerbetriebs
+                        </li>
+
+                    </ul>
+
                 </div>
 
-                <ul>
-                    <li>
-                        Sichere Beförderung von Personen sowie Lieferung
-                        von Dokumenten, Paketen und Lebensmitteln
-                    </li>
 
-                    <li>
-                        Pünktliche und sorgfältige Auslieferung
-                    </li>
+                <div class="timeline-item">
 
-                    <li>
-                        Flexible und effiziente Routenplanung
-                        im dichten Stadtverkehr
-                    </li>
+                    <span class="date">
+                        01.03.2020 – 01.06.2022
+                    </span>
 
-                    <li>
-                        Freundlicher und professioneller Umgang
-                        mit unterschiedlichen Kunden
-                    </li>
-                </ul>
+                    <h3>
+                        Produktionsmitarbeiter
+                    </h3>
 
-            </div>
+                    <div class="company">
+                        PT. Bright Food International · Bogor, Indonesien
+                    </div>
 
+                    <ul>
 
-            <div class="timeline-item">
+                        <li>
+                            Bedienung von Produktionsmaschinen
+                        </li>
 
-                <div class="date">
-                    01.06.2022 – 01.05.2024
+                        <li>
+                            Durchführung von Qualitätskontrollen
+                        </li>
+
+                        <li>
+                            Pflege und Instandhaltung der Arbeitsmittel
+                        </li>
+
+                    </ul>
+
                 </div>
 
-                <h3>Lagermitarbeiter / Warehouse Operator</h3>
 
-                <div class="company">
-                    PT. Serpong Alam Lestari – Bogor, Indonesien
+                <div class="timeline-item">
+
+                    <span class="date">
+                        01.10.2018 – 01.02.2020
+                    </span>
+
+                    <h3>
+                        Helper – Lager / Transport
+                    </h3>
+
+                    <div class="company">
+                        PT. Mulia Multi Mandiri · Bogor, Indonesien
+                    </div>
+
+                    <ul>
+
+                        <li>
+                            Be- und Entladen von Waren
+                        </li>
+
+                        <li>
+                            Kontrolle von Menge und Zustand der Waren
+                        </li>
+
+                        <li>
+                            Unterstützung bei Transport und Logistik
+                        </li>
+
+                    </ul>
+
                 </div>
-
-                <ul>
-                    <li>
-                        Kommissionierung und Vorbereitung von Waren
-                    </li>
-
-                    <li>
-                        Kontrolle von Lagerbeständen
-                    </li>
-
-                    <li>
-                        Unterstützung eines reibungslosen
-                        Lagerbetriebs
-                    </li>
-                </ul>
-
-            </div>
-
-
-            <div class="timeline-item">
-
-                <div class="date">
-                    01.03.2020 – 01.06.2022
-                </div>
-
-                <h3>Produktionsmitarbeiter</h3>
-
-                <div class="company">
-                    PT. Bright Food International – Bogor, Indonesien
-                </div>
-
-                <ul>
-                    <li>
-                        Bedienung von Produktionsmaschinen
-                    </li>
-
-                    <li>
-                        Durchführung von Qualitätskontrollen
-                    </li>
-
-                    <li>
-                        Pflege und Instandhaltung der Arbeitsmittel
-                    </li>
-                </ul>
-
-            </div>
-
-
-            <div class="timeline-item">
-
-                <div class="date">
-                    01.10.2018 – 01.02.2020
-                </div>
-
-                <h3>Helper – Lager / Transport</h3>
-
-                <div class="company">
-                    PT. Mulia Multi Mandiri – Bogor, Indonesien
-                </div>
-
-                <ul>
-                    <li>
-                        Be- und Entladen von Waren
-                    </li>
-
-                    <li>
-                        Kontrolle von Menge und Zustand der Waren
-                    </li>
-
-                    <li>
-                        Unterstützung bei Transport und Logistik
-                    </li>
-                </ul>
 
             </div>
 
@@ -712,28 +1490,34 @@
 
             <h2>Bildung</h2>
 
-            <div class="education-box">
+            <div class="education">
 
-                <div class="date">
-                    01.06.2015 – 01.03.2018
+                <div class="education-date">
+                    2015 – 2018
                 </div>
 
-                <h3>
-                    Abschluss der berufsbildenden Oberschule (SMK)
-                </h3>
+                <div class="education-content">
 
-                <div class="company">
-                    SMK Swasta St. Nahanson Parapat
+                    <h3>
+                        Berufsbildende Oberschule (SMK)
+                    </h3>
+
+                    <p>
+                        <strong>
+                            SMK Swasta St. Nahanson Parapat
+                        </strong>
+                    </p>
+
+                    <p>
+                        Fachrichtung:
+                        Computer- und Netzwerktechnik
+                    </p>
+
+                    <p>
+                        Tarutung, Indonesien
+                    </p>
+
                 </div>
-
-                <p>
-                    Fachrichtung:
-                    <strong>Computer- und Netzwerktechnik</strong>
-                </p>
-
-                <p>
-                    Tarutung, Indonesien
-                </p>
 
             </div>
 
@@ -747,45 +1531,57 @@
 
             <div class="language-grid">
 
+
                 <div class="language-card">
 
-                    <h3>🇮🇩 Indonesisch</h3>
+                    <h3>
+                        🇮🇩 Indonesisch
+                    </h3>
 
                     <p>
                         Muttersprache
                     </p>
 
-                </div>
-
-
-                <div class="language-card">
-
-                    <h3>🇩🇪 Deutsch</h3>
-
-                    <p>
-                        Niveau B1
-                    </p>
-
-                    <p>
-                        Hören · Lesen · Sprechen · Schreiben
-                    </p>
+                    <span class="level">
+                        Muttersprache
+                    </span>
 
                 </div>
 
 
                 <div class="language-card">
 
-                    <h3>🇬🇧 Englisch</h3>
-
-                    <p>
-                        Niveau A1
-                    </p>
+                    <h3>
+                        🇩🇪 Deutsch
+                    </h3>
 
                     <p>
                         Hören · Lesen · Sprechen · Schreiben
                     </p>
 
+                    <span class="level">
+                        B1
+                    </span>
+
                 </div>
+
+
+                <div class="language-card">
+
+                    <h3>
+                        🇬🇧 Englisch
+                    </h3>
+
+                    <p>
+                        Hören · Lesen · Sprechen · Schreiben
+                    </p>
+
+                    <span class="level">
+                        A1
+                    </span>
+
+                </div>
+
 
             </div>
 
@@ -793,29 +1589,43 @@
 
 
         <!-- KOMPETENZEN -->
-        <section id="kompetenzen">
+        <section>
 
             <h2>Kompetenzen</h2>
 
             <div class="skills">
 
-                <span class="skill">Microsoft Office</span>
+                <span class="skill">
+                    Microsoft Office
+                </span>
 
-                <span class="skill">Teamfähigkeit</span>
+                <span class="skill">
+                    Teamfähigkeit
+                </span>
 
-                <span class="skill">Zuverlässigkeit</span>
+                <span class="skill">
+                    Zuverlässigkeit
+                </span>
 
-                <span class="skill">Pünktlichkeit</span>
+                <span class="skill">
+                    Pünktlichkeit
+                </span>
 
-                <span class="skill">Einfühlungsvermögen</span>
+                <span class="skill">
+                    Einfühlungsvermögen
+                </span>
 
-                <span class="skill">Verantwortungsbewusstsein</span>
+                <span class="skill">
+                    Verantwortungsbewusstsein
+                </span>
 
-                <span class="skill">Belastbarkeit</span>
+                <span class="skill">
+                    Belastbarkeit
+                </span>
 
-                <span class="skill">Lernbereitschaft</span>
-
-                <span class="skill">Organisation</span>
+                <span class="skill">
+                    Lernbereitschaft
+                </span>
 
             </div>
 
@@ -823,117 +1633,84 @@
 
 
         <!-- HOBBYS -->
-        <section id="hobbys">
+        <section>
 
             <h2>Hobbys und Interessen</h2>
 
             <div class="hobbies">
 
+
                 <div class="hobby">
 
-                    <div class="hobby-icon">⚽</div>
+                    <div class="hobby-icon">
+                        ⚽
+                    </div>
 
-                    <strong>Sport</strong>
+                    <strong>
+                        Sport
+                    </strong>
 
                 </div>
 
 
                 <div class="hobby">
 
-                    <div class="hobby-icon">🎵</div>
+                    <div class="hobby-icon">
+                        🎵
+                    </div>
 
-                    <strong>Musik hören</strong>
-
-                </div>
-
-
-                <div class="hobby">
-
-                    <div class="hobby-icon">📚</div>
-
-                    <strong>Lesen</strong>
+                    <strong>
+                        Musik hören
+                    </strong>
 
                 </div>
 
 
                 <div class="hobby">
 
-                    <div class="hobby-icon">✈️</div>
+                    <div class="hobby-icon">
+                        📚
+                    </div>
 
-                    <strong>Reisen</strong>
+                    <strong>
+                        Lesen
+                    </strong>
 
                 </div>
+
+
+                <div class="hobby">
+
+                    <div class="hobby-icon">
+                        ✈️
+                    </div>
+
+                    <strong>
+                        Reisen
+                    </strong>
+
+                </div>
+
 
             </div>
 
         </section>
 
 
-        <!-- PERSÖNLICHE DATEN -->
-        <section id="persoenliche-daten">
+        <!-- BEWERBUNGSUNTERLAGEN -->
+        <section id="unterlagen">
 
-            <h2>Persönliche Informationen</h2>
-
-            <div class="personal-data">
-
-                <div class="data-row">
-
-                    <span class="data-label">
-                        Geburtsdatum:
-                    </span>
-
-                    03.10.1999
-
-                </div>
-
-
-                <div class="data-row">
-
-                    <span class="data-label">
-                        Geburtsort:
-                    </span>
-
-                    Aekraja, Indonesien
-
-                </div>
-
-
-                <div class="data-row">
-
-                    <span class="data-label">
-                        Staatsangehörigkeit:
-                    </span>
-
-                    Indonesisch
-
-                </div>
-
-
-                <div class="data-row">
-
-                    <span class="data-label">
-                        Geschlecht:
-                    </span>
-
-                    Männlich
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- LEBENSLAUF -->
-        <section id="lebenslauf">
-
-            <h2>Lebenslauf</h2>
+            <h2>Bewerbungsunterlagen</h2>
 
             <div class="cv-box">
 
+                <h3>
+                    Mein Lebenslauf
+                </h3>
+
                 <p>
-                    Meinen vollständigen Lebenslauf können Sie
-                    hier als PDF ansehen.
+                    Hier können Sie meinen vollständigen
+                    Lebenslauf als PDF ansehen.
                 </p>
 
                 <a
@@ -941,7 +1718,7 @@
                     class="cv-button"
                     target="_blank"
                 >
-                    Lebenslauf als PDF öffnen
+                    Lebenslauf öffnen
                 </a>
 
             </div>
@@ -956,9 +1733,12 @@
 
             <div class="contact-grid">
 
+
                 <div class="contact-item">
 
-                    <strong>E-Mail</strong>
+                    <strong>
+                        E-Mail
+                    </strong>
 
                     <a href="mailto:brunoparlinpakpahan16@gmail.com">
                         brunoparlinpakpahan16@gmail.com
@@ -969,13 +1749,16 @@
 
                 <div class="contact-item">
 
-                    <strong>Telefon</strong>
+                    <strong>
+                        Telefon
+                    </strong>
 
                     <a href="tel:+6285183370310">
                         +62 85183370310
                     </a>
 
                 </div>
+
 
             </div>
 
@@ -988,10 +1771,35 @@
     <footer>
 
         <p>
-            © 2026 Bruno Parlin Pakpahan · Bewerbungsportfolio für den BFD
+            © 2026 <strong>Bruno Parlin Pakpahan</strong>
+            · Bewerbungsportfolio für den BFD
         </p>
 
     </footer>
+
+
+    <!-- SCROLL PROGRESS SCRIPT -->
+    <script>
+
+        window.addEventListener("scroll", function () {
+
+            const scrollTop =
+                document.documentElement.scrollTop;
+
+            const scrollHeight =
+                document.documentElement.scrollHeight -
+                document.documentElement.clientHeight;
+
+            const progress =
+                (scrollTop / scrollHeight) * 100;
+
+            document.getElementById("progressBar").style.width =
+                progress + "%";
+
+        });
+
+    </script>
+
 
 </body>
 </html>
