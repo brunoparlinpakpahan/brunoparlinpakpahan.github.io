@@ -1,1805 +1,2743 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Bruno Parlin Pakpahan | BFD Bewerbungsportfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bruno Parlin Pakpahan — BFD Portfolio</title>
+
+<meta name="description"
+content="Persönliches Portfolio von Bruno Parlin Pakpahan für den Bundesfreiwilligendienst.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+    --bg:#060c15;
+    --bg2:#0a1321;
+    --card:rgba(255,255,255,.045);
+    --card2:rgba(255,255,255,.075);
+
+    --gold:#d7b46a;
+    --gold2:#f1d99d;
+
+    --white:#f5f7fa;
+    --text:#dbe2ea;
+    --muted:#8997a9;
+
+    --line:rgba(255,255,255,.09);
+
+    --max:1180px;
+
+    --ease:cubic-bezier(.22,1,.36,1);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"DM Sans",sans-serif;
+    background:
+        radial-gradient(
+            circle at 80% 10%,
+            rgba(215,180,106,.08),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 10% 70%,
+            rgba(45,92,145,.08),
+            transparent 30%
+        ),
+        var(--bg);
+
+    color:var(--text);
+    line-height:1.7;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-1;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.018) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.018) 1px,
+            transparent 1px
+        );
+
+    background-size:70px 70px;
+
+    mask-image:linear-gradient(
+        to bottom,
+        black,
+        transparent 80%
+    );
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
 
-    <meta name="description" content="Bewerbungsportfolio von Bruno Parlin Pakpahan für einen Bundesfreiwilligendienst in Deutschland.">
-
-    <style>
+button{
+    font-family:inherit;
+}
 
-        /* =====================================================
-           RESET
-        ===================================================== */
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* =========================================================
+   SCROLL BAR
+========================================================= */
 
-        html {
-            scroll-behavior: smooth;
-        }
+.progress{
+    position:fixed;
+    top:0;
+    left:0;
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f4f7fb;
-            color: #263238;
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        a {
-            color: inherit;
-        }
-
-
-        /* =====================================================
-           SCROLL PROGRESS
-        ===================================================== */
-
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 4px;
-            background: linear-gradient(
-                90deg,
-                #17365d,
-                #4d8dcc,
-                #8bb8e8
-            );
-            z-index: 9999;
-        }
+    height:3px;
+    width:0;
 
+    background:linear-gradient(
+        90deg,
+        var(--gold),
+        var(--gold2)
+    );
 
-        /* =====================================================
-           NAVIGATION
-        ===================================================== */
+    z-index:9999;
+}
 
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
 
-            background: rgba(255,255,255,0.92);
-            backdrop-filter: blur(12px);
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
-            border-bottom: 1px solid rgba(0,0,0,0.07);
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
 
-            box-shadow: 0 5px 25px rgba(0,0,0,0.04);
-        }
+    z-index:1000;
 
-        .nav-container {
-            max-width: 1120px;
-            margin: auto;
+    transition:.5s var(--ease);
+}
 
-            padding: 14px 22px;
+header.scrolled{
+    background:rgba(6,12,21,.78);
+    backdrop-filter:blur(22px);
+    border-bottom:1px solid var(--line);
+}
 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.nav{
+    max-width:var(--max);
+    margin:auto;
 
-        .logo {
-            text-decoration: none;
-            color: #17365d;
+    height:82px;
 
-            font-size: 18px;
-            font-weight: 800;
+    padding:0 28px;
 
-            letter-spacing: -0.3px;
-        }
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
 
-        .nav-links {
-            display: flex;
-            gap: 22px;
-            list-style: none;
-        }
+.logo{
+    font-family:"Playfair Display",serif;
+    font-size:25px;
+    letter-spacing:.5px;
+}
 
-        .nav-links a {
-            text-decoration: none;
-            color: #4b5563;
+.logo span{
+    color:var(--gold);
+}
 
-            font-size: 13px;
-            font-weight: 700;
+.navlinks{
+    display:flex;
+    gap:27px;
 
-            transition: 0.25s ease;
-        }
+    list-style:none;
+}
 
-        .nav-links a:hover {
-            color: #17365d;
-        }
+.navlinks a{
+    position:relative;
 
+    font-size:13px;
+    color:#aeb9c8;
 
-        /* =====================================================
-           HERO
-        ===================================================== */
+    transition:.3s;
+}
 
-        .hero {
-            position: relative;
-            overflow: hidden;
+.navlinks a::after{
+    content:"";
 
-            background:
-                radial-gradient(
-                    circle at 80% 20%,
-                    rgba(120,170,220,0.25),
-                    transparent 35%
-                ),
-                linear-gradient(
-                    135deg,
-                    #112d4e,
-                    #17365d 55%,
-                    #24558c
-                );
+    position:absolute;
+    left:50%;
+    bottom:-9px;
 
-            color: white;
+    width:0;
+    height:1px;
 
-            padding: 95px 20px 90px;
-        }
+    background:var(--gold);
 
-        .hero::before {
-            content: "";
+    transform:translateX(-50%);
 
-            position: absolute;
+    transition:.35s;
+}
 
-            width: 450px;
-            height: 450px;
+.navlinks a:hover,
+.navlinks a.active{
+    color:white;
+}
 
-            border-radius: 50%;
+.navlinks a:hover::after,
+.navlinks a.active::after{
+    width:100%;
+}
 
-            border: 1px solid rgba(255,255,255,0.10);
 
-            right: -150px;
-            top: -180px;
+/* =========================================================
+   HERO
+========================================================= */
 
-            animation: floatCircle 8s ease-in-out infinite;
-        }
+.hero{
+    min-height:100vh;
 
-        .hero::after {
-            content: "";
+    display:flex;
+    align-items:center;
 
-            position: absolute;
+    padding:130px 28px 90px;
 
-            width: 250px;
-            height: 250px;
+    position:relative;
+    overflow:hidden;
+}
 
-            border-radius: 50%;
+.hero-orb{
+    position:absolute;
 
-            background: rgba(255,255,255,0.035);
+    width:500px;
+    height:500px;
 
-            left: -100px;
-            bottom: -100px;
+    border-radius:50%;
 
-            animation: floatCircle 10s ease-in-out infinite reverse;
-        }
+    background:
+        radial-gradient(
+            circle,
+            rgba(215,180,106,.13),
+            transparent 68%
+        );
 
-        @keyframes floatCircle {
+    filter:blur(15px);
 
-            0%, 100% {
-                transform: translateY(0);
-            }
+    right:-180px;
+    top:100px;
 
-            50% {
-                transform: translateY(25px);
-            }
+    animation:floatOrb 9s ease-in-out infinite;
+}
 
-        }
+.hero-orb2{
+    position:absolute;
 
-        .hero-container {
-            position: relative;
-            z-index: 2;
+    width:300px;
+    height:300px;
 
-            max-width: 1120px;
-            margin: auto;
+    border-radius:50%;
 
-            display: grid;
-            grid-template-columns: 240px 1fr;
+    background:
+        radial-gradient(
+            circle,
+            rgba(52,106,163,.10),
+            transparent 70%
+        );
 
-            gap: 55px;
-            align-items: center;
-        }
+    left:-130px;
+    bottom:-50px;
 
+    animation:floatOrb2 11s ease-in-out infinite;
+}
 
-        /* =====================================================
-           PROFILE PHOTO
-        ===================================================== */
+@keyframes floatOrb{
+    0%,100%{
+        transform:translate(0,0);
+    }
+    50%{
+        transform:translate(-30px,30px);
+    }
+}
 
-        .photo-wrapper {
-            position: relative;
+@keyframes floatOrb2{
+    0%,100%{
+        transform:translate(0,0);
+    }
+    50%{
+        transform:translate(30px,-25px);
+    }
+}
 
-            width: 210px;
-            height: 260px;
+.hero-inner{
+    max-width:var(--max);
+    width:100%;
 
-            margin: auto;
-        }
+    margin:auto;
 
-        .photo-wrapper::before {
-            content: "";
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
 
-            position: absolute;
+    gap:80px;
 
-            inset: -8px;
+    align-items:center;
 
-            border-radius: 14px;
+    position:relative;
+    z-index:2;
+}
 
-            border: 1px solid rgba(255,255,255,0.35);
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
 
-            transform: rotate(-4deg);
+    color:var(--gold);
 
-            transition: 0.4s ease;
-        }
+    font-size:11px;
+    font-weight:700;
 
-        .photo-wrapper:hover::before {
-            transform: rotate(3deg);
-        }
+    letter-spacing:3px;
+    text-transform:uppercase;
 
-        .profile-photo {
-            position: relative;
+    margin-bottom:24px;
+}
 
-            width: 210px;
-            height: 260px;
+.eyebrow::before{
+    content:"";
 
-            object-fit: cover;
+    width:32px;
+    height:1px;
 
-            border-radius: 10px;
+    background:var(--gold);
+}
 
-            border: 5px solid white;
+.hero h1{
+    font-family:"Playfair Display",serif;
 
-            box-shadow:
-                0 25px 55px rgba(0,0,0,0.30);
+    font-size:clamp(52px,7vw,86px);
 
-            background: white;
+    line-height:1.02;
 
-            transition: 0.4s ease;
-        }
+    font-weight:600;
 
-        .profile-photo:hover {
-            transform: translateY(-6px);
-        }
+    letter-spacing:-2px;
 
+    margin-bottom:28px;
+}
 
-        /* =====================================================
-           HERO TEXT
-        ===================================================== */
+.hero h1 em{
+    color:var(--gold);
+    font-style:normal;
+}
 
-        .hero-label {
-            display: inline-block;
+.hero-lead{
+    max-width:630px;
 
-            padding: 6px 12px;
+    color:#aeb9c8;
 
-            margin-bottom: 18px;
+    font-size:17px;
 
-            border-radius: 20px;
+    margin-bottom:34px;
+}
 
-            background: rgba(255,255,255,0.10);
+.hero-meta{
+    display:flex;
+    gap:20px;
 
-            border: 1px solid rgba(255,255,255,0.18);
+    flex-wrap:wrap;
 
-            font-size: 12px;
-            font-weight: 700;
+    margin-bottom:34px;
+}
 
-            letter-spacing: 0.5px;
-        }
+.meta{
+    padding:9px 14px;
 
-        .hero h1 {
-            font-size: clamp(34px, 5vw, 52px);
+    border:1px solid var(--line);
 
-            line-height: 1.1;
+    background:rgba(255,255,255,.025);
 
-            margin-bottom: 12px;
+    border-radius:30px;
 
-            letter-spacing: -1.5px;
-        }
+    color:#bdc7d3;
 
-        .hero h2 {
-            font-size: 21px;
+    font-size:12px;
 
-            font-weight: 400;
+    backdrop-filter:blur(10px);
+}
 
-            color: #dbeafe;
+.hero-actions{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
 
-            margin-bottom: 20px;
-        }
+.btn{
+    display:inline-flex;
 
-        .hero-description {
-            max-width: 720px;
+    align-items:center;
+    justify-content:center;
 
-            color: #edf5fc;
+    padding:14px 22px;
 
-            font-size: 16px;
-        }
+    border-radius:50px;
 
+    font-size:13px;
+    font-weight:600;
 
-        /* =====================================================
-           BUTTONS
-        ===================================================== */
+    border:1px solid var(--line);
 
-        .hero-buttons {
-            margin-top: 28px;
+    transition:.45s var(--ease);
+}
 
-            display: flex;
-            flex-wrap: wrap;
+.btn-primary{
+    background:var(--gold);
+    color:#101722;
 
-            gap: 12px;
-        }
+    border-color:var(--gold);
+}
 
-        .btn {
-            display: inline-flex;
+.btn-primary:hover{
+    transform:translateY(-5px);
 
-            align-items: center;
-            justify-content: center;
+    box-shadow:
+        0 15px 40px
+        rgba(215,180,106,.20);
+}
 
-            padding: 12px 20px;
+.btn-ghost:hover{
+    background:rgba(255,255,255,.06);
+    transform:translateY(-5px);
+}
 
-            border-radius: 7px;
 
-            text-decoration: none;
+/* =========================================================
+   HERO PHOTO
+========================================================= */
 
-            font-size: 14px;
-            font-weight: 700;
+.hero-visual{
+    display:flex;
+    justify-content:center;
+}
 
-            transition: all 0.3s ease;
-        }
+.photo-wrapper{
+    width:min(380px,80vw);
 
-        .btn-primary {
-            background: white;
-            color: #17365d;
+    position:relative;
 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
+    transform:rotate(2deg);
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.22);
-        }
+    transition:.7s var(--ease);
+}
 
-        .btn-secondary {
-            border: 1px solid rgba(255,255,255,0.55);
-            color: white;
+.photo-wrapper:hover{
+    transform:
+        rotate(0deg)
+        translateY(-12px);
+}
 
-            background: rgba(255,255,255,0.04);
-        }
+.photo-wrapper::before{
+    content:"";
 
-        .btn-secondary:hover {
-            background: white;
-            color: #17365d;
+    position:absolute;
 
-            transform: translateY(-3px);
-        }
+    inset:-15px;
 
+    border:1px solid
+        rgba(215,180,106,.25);
 
-        /* =====================================================
-           MAIN
-        ===================================================== */
+    transform:rotate(-4deg);
 
-        main {
-            max-width: 1120px;
+    transition:.7s var(--ease);
+}
 
-            margin: 55px auto;
+.photo-wrapper:hover::before{
+    transform:rotate(-1deg) scale(1.02);
+}
 
-            padding: 0 20px;
-        }
+.photo-wrapper::after{
+    content:"";
 
-        section {
-            background: white;
+    position:absolute;
 
-            padding: 38px;
+    inset:20px -20px -20px 20px;
 
-            margin-bottom: 28px;
+    border:1px solid
+        rgba(255,255,255,.06);
 
-            border-radius: 12px;
+    z-index:-1;
+}
 
-            border: 1px solid rgba(0,0,0,0.05);
+.photo{
+    position:relative;
 
-            box-shadow:
-                0 5px 25px rgba(31,55,80,0.05);
+    aspect-ratio:4/5;
 
-            transition:
-                transform 0.35s ease,
-                box-shadow 0.35s ease;
-        }
+    overflow:hidden;
 
-        section:hover {
-            transform: translateY(-3px);
+    border:1px solid
+        rgba(215,180,106,.5);
 
-            box-shadow:
-                0 15px 35px rgba(31,55,80,0.09);
-        }
+    background:#101b29;
+}
 
-        section h2 {
-            position: relative;
+.photo img{
+    width:100%;
+    height:100%;
 
-            color: #17365d;
+    object-fit:cover;
 
-            font-size: 27px;
+    transition:.8s var(--ease);
+}
 
-            margin-bottom: 25px;
+.photo-wrapper:hover .photo img{
+    transform:scale(1.04);
+}
 
-            padding-bottom: 12px;
+.photo-label{
+    position:absolute;
 
-            border-bottom: 1px solid #e5e7eb;
-        }
+    left:18px;
+    bottom:18px;
 
-        section h2::after {
-            content: "";
+    padding:9px 13px;
 
-            position: absolute;
+    background:rgba(5,10,18,.75);
 
-            bottom: -1px;
-            left: 0;
+    border:1px solid rgba(255,255,255,.12);
 
-            width: 55px;
-            height: 3px;
+    backdrop-filter:blur(12px);
 
-            background: #24558c;
+    font-size:11px;
 
-            border-radius: 5px;
-        }
+    color:#d9e0e8;
+}
 
 
-        /* =====================================================
-           ABOUT
-        ===================================================== */
+/* =========================================================
+   SECTION
+========================================================= */
 
-        .about-grid {
-            display: grid;
+section{
+    padding:115px 28px;
+}
 
-            grid-template-columns: 1fr 1fr;
+.container{
+    max-width:var(--max);
+    margin:auto;
+}
 
-            gap: 30px;
-        }
+.section-head{
+    margin-bottom:55px;
+}
 
-        .about-text {
-            font-size: 16px;
-        }
+.section-label{
+    color:var(--gold);
 
-        .highlight-box {
-            padding: 22px;
+    text-transform:uppercase;
 
-            border-left: 4px solid #24558c;
+    letter-spacing:3px;
 
-            background: #f5f8fc;
+    font-size:11px;
+    font-weight:700;
 
-            border-radius: 7px;
-        }
+    margin-bottom:13px;
+}
 
-        .highlight-box strong {
-            color: #17365d;
-        }
+.section-title{
+    font-family:"Playfair Display",serif;
 
+    font-size:clamp(36px,5vw,58px);
 
-        /* =====================================================
-           MOTIVATION
-        ===================================================== */
+    line-height:1.08;
 
-        .motivation-text {
-            font-size: 16px;
-            max-width: 900px;
-        }
+    letter-spacing:-1px;
 
-        .motivation-points {
-            margin-top: 25px;
+    color:var(--white);
+}
 
-            display: grid;
+.section-subtitle{
+    max-width:650px;
 
-            grid-template-columns:
-                repeat(3, 1fr);
+    color:var(--muted);
 
-            gap: 15px;
-        }
+    margin-top:16px;
 
-        .motivation-card {
-            padding: 20px;
+    font-size:15px;
+}
 
-            background: #f7f9fc;
 
-            border: 1px solid #e5eaf0;
+/* =========================================================
+   QUICK PROFILE
+========================================================= */
 
-            border-radius: 9px;
+.quick-grid{
+    display:grid;
 
-            transition: 0.3s ease;
-        }
+    grid-template-columns:
+        1.2fr .8fr;
 
-        .motivation-card:hover {
-            transform: translateY(-5px);
+    gap:22px;
+}
 
-            border-color: #b9cee3;
-        }
+.profile-card{
+    padding:42px;
 
-        .motivation-card .icon {
-            font-size: 25px;
+    border:1px solid var(--line);
 
-            margin-bottom: 10px;
-        }
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.065),
+            rgba(255,255,255,.025)
+        );
 
-        .motivation-card strong {
-            display: block;
+    backdrop-filter:blur(14px);
 
-            color: #17365d;
+    position:relative;
 
-            margin-bottom: 5px;
-        }
+    overflow:hidden;
 
-        .motivation-card span {
-            font-size: 14px;
+    transition:.5s var(--ease);
+}
 
-            color: #667085;
-        }
+.profile-card:hover{
+    transform:translateY(-6px);
 
+    border-color:
+        rgba(215,180,106,.25);
+}
 
-        /* =====================================================
-           EXPERIENCE TIMELINE
-        ===================================================== */
+.profile-card::after{
+    content:"";
 
-        .timeline {
-            position: relative;
+    position:absolute;
 
-            padding-left: 30px;
-        }
+    width:180px;
+    height:180px;
 
-        .timeline::before {
-            content: "";
+    border-radius:50%;
 
-            position: absolute;
+    background:
+        radial-gradient(
+            circle,
+            rgba(215,180,106,.09),
+            transparent 70%
+        );
 
-            left: 5px;
-            top: 5px;
-            bottom: 5px;
+    right:-80px;
+    top:-80px;
+}
 
-            width: 2px;
+.profile-card h3{
+    font-family:"Playfair Display",serif;
 
-            background: linear-gradient(
-                to bottom,
-                #17365d,
-                #9bb8d4
-            );
-        }
+    font-size:28px;
 
-        .timeline-item {
-            position: relative;
+    margin-bottom:16px;
+}
 
-            padding: 0 0 35px 25px;
-        }
+.profile-card p{
+    color:#aab5c3;
+    font-size:15px;
+}
 
-        .timeline-item:last-child {
-            padding-bottom: 0;
-        }
+.data-list{
+    display:grid;
+    gap:0;
+}
 
-        .timeline-item::before {
-            content: "";
+.data-row{
+    display:grid;
+    grid-template-columns:145px 1fr;
 
-            position: absolute;
+    padding:13px 0;
 
-            left: -1px;
-            top: 6px;
+    border-bottom:1px solid var(--line);
 
-            width: 12px;
-            height: 12px;
+    font-size:13px;
+}
 
-            border-radius: 50%;
+.data-row:last-child{
+    border-bottom:none;
+}
 
-            background: white;
+.data-row .label{
+    color:#738196;
+}
 
-            border: 3px solid #17365d;
+.data-row .value{
+    color:#e1e6ed;
+}
 
-            box-shadow: 0 0 0 5px #eef3f8;
-        }
 
-        .date {
-            display: inline-block;
+/* =========================================================
+   STAT STRIP
+========================================================= */
 
-            color: #24558c;
+.stats{
+    display:grid;
 
-            font-size: 13px;
+    grid-template-columns:
+        repeat(4,1fr);
 
-            font-weight: 700;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
 
-            margin-bottom: 5px;
-        }
+    margin-top:28px;
+}
 
-        .timeline-item h3 {
-            color: #17365d;
+.stat{
+    padding:27px 20px;
 
-            font-size: 19px;
+    text-align:center;
 
-            margin-bottom: 2px;
-        }
+    border-right:1px solid var(--line);
+}
 
-        .company {
-            color: #667085;
+.stat:last-child{
+    border-right:none;
+}
 
-            font-size: 14px;
+.stat strong{
+    display:block;
 
-            font-weight: 700;
+    font-family:"Playfair Display",serif;
 
-            margin-bottom: 10px;
-        }
+    color:var(--gold);
 
-        .timeline-item ul {
-            padding-left: 18px;
-        }
+    font-size:31px;
 
-        .timeline-item li {
-            margin-bottom: 5px;
+    margin-bottom:3px;
+}
 
-            color: #4b5563;
-        }
+.stat span{
+    color:#8491a3;
 
+    font-size:11px;
 
-        /* =====================================================
-           EDUCATION
-        ===================================================== */
+    text-transform:uppercase;
 
-        .education {
-            display: grid;
+    letter-spacing:1px;
+}
 
-            grid-template-columns: 150px 1fr;
 
-            gap: 25px;
+/* =========================================================
+   EXPERIENCE
+========================================================= */
 
-            align-items: start;
-        }
+.experience{
+    position:relative;
+}
 
-        .education-date {
-            color: #24558c;
+.experience::before{
+    content:"";
 
-            font-size: 14px;
+    position:absolute;
 
-            font-weight: 700;
-        }
+    left:50%;
 
-        .education-content h3 {
-            color: #17365d;
+    top:0;
+    bottom:0;
 
-            margin-bottom: 5px;
-        }
+    width:1px;
 
-        .education-content p {
-            color: #667085;
-        }
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            var(--gold),
+            transparent
+        );
 
+    opacity:.35;
+}
 
-        /* =====================================================
-           LANGUAGES
-        ===================================================== */
+.exp-item{
+    width:50%;
 
-        .language-grid {
-            display: grid;
+    padding:0 45px 60px;
 
-            grid-template-columns:
-                repeat(3, 1fr);
+    position:relative;
+}
 
-            gap: 18px;
-        }
+.exp-item:nth-child(even){
+    margin-left:50%;
+}
 
-        .language-card {
-            padding: 23px;
+.exp-dot{
+    position:absolute;
 
-            border: 1px solid #e4e9ef;
+    width:13px;
+    height:13px;
 
-            border-radius: 9px;
+    border-radius:50%;
 
-            background: #fafbfd;
+    background:var(--gold);
 
-            transition: 0.3s ease;
-        }
+    top:8px;
 
-        .language-card:hover {
-            transform: translateY(-5px);
+    box-shadow:
+        0 0 0 7px
+        rgba(215,180,106,.08);
+}
 
-            box-shadow:
-                0 10px 25px rgba(31,55,80,0.08);
-        }
+.exp-item:nth-child(odd) .exp-dot{
+    right:-7px;
+}
 
-        .language-card h3 {
-            color: #17365d;
+.exp-item:nth-child(even) .exp-dot{
+    left:-6px;
+}
 
-            margin-bottom: 7px;
-        }
+.exp-date{
+    color:var(--gold);
 
-        .level {
-            display: inline-block;
+    font-size:11px;
+    font-weight:700;
 
-            margin-top: 8px;
+    letter-spacing:2px;
 
-            padding: 4px 9px;
+    text-transform:uppercase;
 
-            border-radius: 12px;
+    margin-bottom:10px;
+}
 
-            background: #eaf1f8;
+.exp-card{
+    padding:28px;
 
-            color: #24558c;
+    border:1px solid var(--line);
 
-            font-size: 12px;
+    background:var(--card);
 
-            font-weight: 700;
-        }
+    transition:.5s var(--ease);
+}
 
+.exp-card:hover{
+    transform:translateY(-6px);
 
-        /* =====================================================
-           SKILLS
-        ===================================================== */
+    background:var(--card2);
 
-        .skills {
-            display: flex;
+    border-color:
+        rgba(215,180,106,.25);
+}
 
-            flex-wrap: wrap;
+.exp-card h3{
+    font-family:"Playfair Display",serif;
 
-            gap: 10px;
-        }
+    font-size:25px;
 
-        .skill {
-            padding: 9px 14px;
+    margin-bottom:4px;
+}
 
-            background: #f1f5f9;
+.exp-company{
+    color:#c2ccd7;
 
-            color: #17365d;
+    font-size:13px;
 
-            border: 1px solid #e1e8ef;
+    margin-bottom:13px;
+}
 
-            border-radius: 20px;
+.exp-card p{
+    color:var(--muted);
 
-            font-size: 14px;
+    font-size:13px;
+}
 
-            font-weight: 600;
 
-            transition: 0.25s ease;
-        }
+/* =========================================================
+   BFD MOTIVATION
+========================================================= */
 
-        .skill:hover {
-            background: #17365d;
+.bfd-grid{
+    display:grid;
 
-            color: white;
+    grid-template-columns:
+        repeat(3,1fr);
 
-            transform: translateY(-2px);
-        }
+    gap:18px;
+}
 
+.bfd-card{
+    padding:35px;
 
-        /* =====================================================
-           HOBBIES
-        ===================================================== */
+    min-height:260px;
 
-        .hobbies {
-            display: grid;
+    border:1px solid var(--line);
 
-            grid-template-columns:
-                repeat(4, 1fr);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.018)
+        );
 
-            gap: 15px;
-        }
+    position:relative;
 
-        .hobby {
-            text-align: center;
+    overflow:hidden;
 
-            padding: 23px 12px;
+    transition:.5s var(--ease);
+}
 
-            border: 1px solid #e5e9ee;
+.bfd-card:hover{
+    transform:translateY(-9px);
 
-            border-radius: 9px;
+    border-color:
+        rgba(215,180,106,.38);
+}
 
-            background: #fafbfd;
+.bfd-number{
+    position:absolute;
 
-            transition: 0.3s ease;
-        }
+    right:22px;
+    top:8px;
 
-        .hobby:hover {
-            transform: translateY(-5px);
+    font-family:"Playfair Display",serif;
 
-            box-shadow:
-                0 10px 25px rgba(31,55,80,0.08);
-        }
+    font-size:65px;
 
-        .hobby-icon {
-            font-size: 28px;
+    color:rgba(215,180,106,.09);
+}
 
-            margin-bottom: 8px;
-        }
+.bfd-icon{
+    width:44px;
+    height:44px;
 
-        .hobby strong {
-            color: #17365d;
-        }
+    border:1px solid
+        rgba(215,180,106,.35);
 
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-        /* =====================================================
-           CV
-        ===================================================== */
+    color:var(--gold);
 
-        .cv-box {
-            text-align: center;
+    margin-bottom:28px;
 
-            padding: 35px;
+    font-size:18px;
+}
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #f5f8fc,
-                    #edf3f9
-                );
+.bfd-card h3{
+    font-family:"Playfair Display",serif;
 
-            border-radius: 10px;
+    font-size:25px;
 
-            border: 1px solid #e1e8ef;
-        }
+    margin-bottom:10px;
+}
 
-        .cv-box h3 {
-            color: #17365d;
+.bfd-card p{
+    color:var(--muted);
 
-            margin-bottom: 7px;
-        }
+    font-size:13px;
+}
 
-        .cv-box p {
-            color: #667085;
 
-            margin-bottom: 20px;
-        }
+/* =========================================================
+   EDUCATION
+========================================================= */
 
-        .cv-button {
-            display: inline-flex;
+.education{
+    display:grid;
 
-            padding: 12px 22px;
+    grid-template-columns:
+        180px 1fr;
 
-            background: #17365d;
+    gap:30px;
 
-            color: white;
+    padding:38px;
 
-            border-radius: 7px;
+    border:1px solid var(--line);
 
-            text-decoration: none;
+    background:var(--card);
 
-            font-weight: 700;
+    transition:.5s var(--ease);
+}
 
-            transition: 0.3s ease;
-        }
+.education:hover{
+    border-color:
+        rgba(215,180,106,.28);
 
-        .cv-button:hover {
-            background: #24558c;
+    transform:translateY(-5px);
+}
 
-            transform: translateY(-3px);
+.edu-year{
+    color:var(--gold);
 
-            box-shadow:
-                0 10px 25px rgba(23,54,93,0.20);
-        }
+    font-size:12px;
+    font-weight:700;
 
+    letter-spacing:1px;
+}
 
-        /* =====================================================
-           CONTACT
-        ===================================================== */
+.education h3{
+    font-family:"Playfair Display",serif;
 
-        .contact-grid {
-            display: grid;
+    font-size:29px;
 
-            grid-template-columns:
-                repeat(2, 1fr);
+    margin-bottom:7px;
+}
 
-            gap: 18px;
-        }
+.education p{
+    color:var(--muted);
 
-        .contact-item {
-            padding: 20px;
+    font-size:14px;
+}
 
-            border: 1px solid #e4e9ef;
 
-            border-radius: 9px;
+/* =========================================================
+   SKILLS
+========================================================= */
 
-            background: #fafbfd;
+.skills-layout{
+    display:grid;
 
-            transition: 0.3s ease;
-        }
+    grid-template-columns:
+        1fr 1fr;
 
-        .contact-item:hover {
-            transform: translateY(-4px);
+    gap:18px;
+}
 
-            border-color: #b9cee3;
-        }
+.skill-box{
+    padding:30px;
 
-        .contact-item strong {
-            display: block;
+    border:1px solid var(--line);
 
-            color: #17365d;
+    background:var(--card);
 
-            margin-bottom: 4px;
-        }
+    transition:.5s var(--ease);
+}
 
-        .contact-item a {
-            color: #24558c;
+.skill-box:hover{
+    transform:translateY(-5px);
 
-            text-decoration: none;
+    border-color:
+        rgba(215,180,106,.25);
+}
 
-            word-break: break-word;
-        }
+.skill-box h3{
+    font-family:"Playfair Display",serif;
 
-        .contact-item a:hover {
-            text-decoration: underline;
-        }
+    font-size:23px;
 
+    margin-bottom:20px;
+}
 
-        /* =====================================================
-           FOOTER
-        ===================================================== */
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
 
-        footer {
-            background: #112d4e;
+.tag{
+    padding:7px 11px;
 
-            color: white;
+    border-radius:30px;
 
-            text-align: center;
+    border:1px solid var(--line);
 
-            padding: 28px 20px;
+    background:rgba(255,255,255,.025);
 
-            margin-top: 55px;
-        }
+    color:#bdc7d2;
 
-        footer strong {
-            color: white;
-        }
+    font-size:11px;
+}
 
-        footer p {
-            font-size: 13px;
 
-            opacity: 0.8;
-        }
+/* =========================================================
+   PORTFOLIO
+========================================================= */
 
+.tabs{
+    display:flex;
+    gap:8px;
 
-        /* =====================================================
-           ANIMATION ON LOAD
-        ===================================================== */
+    margin-bottom:28px;
+}
 
-        .fade-in {
-            animation: fadeInUp 0.8s ease both;
-        }
+.tab{
+    border:1px solid var(--line);
 
-        @keyframes fadeInUp {
+    background:transparent;
 
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
+    color:#8e9bad;
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+    padding:10px 19px;
 
-        }
+    border-radius:30px;
 
+    cursor:pointer;
 
-        /* =====================================================
-           MOBILE
-        ===================================================== */
+    transition:.35s;
+}
 
-        @media (max-width: 850px) {
+.tab:hover,
+.tab.active{
+    background:var(--gold);
 
-            .nav-container {
-                flex-direction: column;
+    color:#111722;
 
-                gap: 10px;
-            }
+    border-color:var(--gold);
+}
 
-            .nav-links {
-                justify-content: center;
+.panel{
+    display:none;
+}
 
-                flex-wrap: wrap;
+.panel.active{
+    display:block;
 
-                gap: 12px;
-            }
+    animation:panelIn .5s var(--ease);
+}
 
-            .hero {
-                padding: 70px 20px;
-            }
+@keyframes panelIn{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
 
-            .hero-container {
-                grid-template-columns: 1fr;
+.gallery{
+    display:grid;
 
-                text-align: center;
+    grid-template-columns:
+        repeat(4,1fr);
 
-                gap: 35px;
-            }
+    gap:13px;
+}
 
-            .hero-description {
-                margin: auto;
-            }
+.gallery-item{
+    aspect-ratio:1;
 
-            .hero-buttons {
-                justify-content: center;
-            }
+    overflow:hidden;
 
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
+    position:relative;
 
-            .motivation-points {
-                grid-template-columns: 1fr;
-            }
+    cursor:pointer;
 
-            .language-grid {
-                grid-template-columns: 1fr;
-            }
+    background:#101a28;
 
-            .hobbies {
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
+    border:1px solid var(--line);
+}
 
-            .education {
-                grid-template-columns: 1fr;
-                gap: 5px;
-            }
+.gallery-item img{
+    width:100%;
+    height:100%;
 
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
+    object-fit:cover;
 
-        }
+    transition:.7s var(--ease);
+}
 
+.gallery-item:hover img{
+    transform:scale(1.08);
+}
 
-        @media (max-width: 500px) {
+.gallery-overlay{
+    position:absolute;
 
-            .logo {
-                font-size: 16px;
-            }
+    inset:0;
 
-            .nav-links {
-                gap: 9px;
-            }
+    display:flex;
+    align-items:flex-end;
 
-            .nav-links a {
-                font-size: 11px;
-            }
+    padding:18px;
 
-            section {
-                padding: 27px 20px;
-            }
+    background:
+        linear-gradient(
+            transparent 35%,
+            rgba(0,0,0,.78)
+        );
 
-            .hero {
-                padding: 60px 18px;
-            }
+    opacity:0;
 
-            .photo-wrapper,
-            .profile-photo {
-                width: 185px;
-                height: 230px;
-            }
+    transition:.45s;
+}
 
-            .hero h1 {
-                font-size: 31px;
-            }
+.gallery-item:hover .gallery-overlay{
+    opacity:1;
+}
 
-            .hero h2 {
-                font-size: 18px;
-            }
+.gallery-overlay span{
+    font-size:11px;
+    color:white;
+}
 
-            .hobbies {
-                grid-template-columns: 1fr 1fr;
-            }
 
-            .timeline {
-                padding-left: 22px;
-            }
+/* =========================================================
+   CERTIFICATES
+========================================================= */
 
-            .timeline-item {
-                padding-left: 20px;
-            }
+.certificates{
+    display:grid;
 
-        }
+    grid-template-columns:
+        repeat(3,1fr);
 
-    </style>
+    gap:18px;
+}
+
+.certificate{
+    overflow:hidden;
+
+    border:1px solid var(--line);
+
+    background:var(--card);
+
+    transition:.5s var(--ease);
+}
+
+.certificate:hover{
+    transform:translateY(-7px);
+
+    border-color:
+        rgba(215,180,106,.3);
+}
+
+.certificate-img{
+    aspect-ratio:4/3;
+
+    overflow:hidden;
+
+    background:#101a28;
+}
+
+.certificate-img img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.7s var(--ease);
+}
+
+.certificate:hover img{
+    transform:scale(1.04);
+}
+
+.certificate-info{
+    padding:20px;
+}
+
+.certificate-info h3{
+    font-family:"Playfair Display",serif;
+
+    font-size:21px;
+
+    margin-bottom:4px;
+}
+
+.certificate-info p{
+    color:var(--muted);
+
+    font-size:12px;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact{
+    position:relative;
+
+    padding:65px 45px;
+
+    text-align:center;
+
+    border:1px solid
+        rgba(215,180,106,.25);
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(215,180,106,.10),
+            transparent 50%
+        ),
+        var(--card);
+
+    overflow:hidden;
+}
+
+.contact h2{
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(38px,5vw,58px);
+
+    line-height:1.05;
+
+    margin-bottom:17px;
+}
+
+.contact p{
+    max-width:650px;
+
+    margin:0 auto 30px;
+
+    color:var(--muted);
+
+    font-size:14px;
+}
+
+.contact-info{
+    display:flex;
+
+    justify-content:center;
+
+    gap:28px;
+
+    flex-wrap:wrap;
+
+    margin-top:30px;
+
+    color:#bbc5d0;
+
+    font-size:12px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    padding:35px 25px;
+
+    text-align:center;
+
+    border-top:1px solid var(--line);
+
+    color:#657286;
+
+    font-size:11px;
+}
+
+footer span{
+    color:var(--gold);
+}
+
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
+.lightbox{
+    position:fixed;
+
+    inset:0;
+
+    z-index:5000;
+
+    background:rgba(0,0,0,.93);
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:25px;
+}
+
+.lightbox.open{
+    display:flex;
+}
+
+.lightbox img{
+    max-width:92vw;
+    max-height:88vh;
+
+    object-fit:contain;
+}
+
+.close{
+    position:absolute;
+
+    right:28px;
+    top:20px;
+
+    font-size:38px;
+
+    color:white;
+
+    cursor:pointer;
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(35px);
+
+    transition:
+        opacity .8s var(--ease),
+        transform .8s var(--ease);
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:none;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+    .navlinks{
+        display:none;
+    }
+
+    .hero-inner{
+        grid-template-columns:1fr;
+
+        text-align:center;
+    }
+
+    .hero-lead{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-meta,
+    .hero-actions{
+        justify-content:center;
+    }
+
+    .hero-visual{
+        order:-1;
+    }
+
+    .photo-wrapper{
+        width:270px;
+    }
+
+    .quick-grid{
+        grid-template-columns:1fr;
+    }
+
+    .bfd-grid{
+        grid-template-columns:1fr;
+    }
+
+    .gallery{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .certificates{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .experience::before{
+        left:7px;
+    }
+
+    .exp-item,
+    .exp-item:nth-child(even){
+        width:100%;
+
+        margin-left:0;
+
+        padding-left:38px;
+        padding-right:0;
+    }
+
+    .exp-item:nth-child(odd) .exp-dot,
+    .exp-item:nth-child(even) .exp-dot{
+        left:1px;
+        right:auto;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .stat:nth-child(2){
+        border-right:none;
+    }
+
+    .stat{
+        border-bottom:1px solid var(--line);
+    }
+
+    .skills-layout{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    section{
+        padding:85px 20px;
+    }
+
+    .hero{
+        padding-left:20px;
+        padding-right:20px;
+    }
+
+    .hero h1{
+        font-size:49px;
+    }
+
+    .data-row{
+        grid-template-columns:1fr;
+        gap:3px;
+    }
+
+    .education{
+        grid-template-columns:1fr;
+        gap:10px;
+    }
+
+    .gallery{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .certificates{
+        grid-template-columns:1fr;
+    }
+
+    .contact{
+        padding:45px 22px;
+    }
+
+}
+
+</style>
 </head>
 
 
 <body>
 
-    <!-- SCROLL PROGRESS -->
-    <div class="progress-bar" id="progressBar"></div>
+<div class="progress" id="progress"></div>
 
 
-    <!-- NAVIGATION -->
-    <nav>
+<!-- =========================================================
+     NAV
+========================================================= -->
 
-        <div class="nav-container">
+<header id="header">
 
-            <a href="#top" class="logo">
-                Bruno Parlin Pakpahan
-            </a>
+<nav class="nav">
 
-            <ul class="nav-links">
+<a href="#home" class="logo">
+    Bruno<span>.</span>
+</a>
 
-                <li>
-                    <a href="#ueber-mich">Über mich</a>
-                </li>
+<ul class="navlinks">
 
-                <li>
-                    <a href="#motivation">Motivation</a>
-                </li>
+<li>
+<a href="#about">Profil</a>
+</li>
 
-                <li>
-                    <a href="#erfahrung">Erfahrung</a>
-                </li>
+<li>
+<a href="#experience">Erfahrung</a>
+</li>
 
-                <li>
-                    <a href="#bildung">Bildung</a>
-                </li>
+<li>
+<a href="#bfd">BFD</a>
+</li>
 
-                <li>
-                    <a href="#sprachen">Sprachen</a>
-                </li>
+<li>
+<a href="#skills">Kompetenzen</a>
+</li>
 
-                <li>
-                    <a href="#kontakt">Kontakt</a>
-                </li>
+<li>
+<a href="#portfolio">Portfolio</a>
+</li>
 
-            </ul>
+<li>
+<a href="#contact">Kontakt</a>
+</li>
 
-        </div>
+</ul>
 
-    </nav>
+</nav>
 
+</header>
 
-    <!-- HERO -->
-    <header class="hero" id="top">
 
-        <div class="hero-container">
+<!-- =========================================================
+     HERO
+========================================================= -->
 
-            <div class="photo-wrapper fade-in">
+<section class="hero" id="home">
 
-                <img
-                    src="profil.png"
-                    alt="Bewerbungsfoto von Bruno Parlin Pakpahan"
-                    class="profile-photo"
-                >
+<div class="hero-orb"></div>
+<div class="hero-orb2"></div>
 
-            </div>
+<div class="hero-inner">
 
+<div class="reveal">
 
-            <div class="fade-in">
+<div class="eyebrow">
+BFD Bewerber · Indonesien
+</div>
 
-                <span class="hero-label">
-                    BEWERBUNG · BUNDESFREIWILLIGENDIENST
-                </span>
+<h1>
+Bruno<br>
+Parlin <em>Pakpahan</em>
+</h1>
 
-                <h1>
-                    Bruno Parlin Pakpahan
-                </h1>
+<p class="hero-lead">
+Zuverlässiger und lernbereiter Bewerber mit
+mehrjähriger Berufserfahrung in Logistik,
+Produktion und Personenbeförderung.
+Ich möchte mich im Bundesfreiwilligendienst
+sozial engagieren und neue Perspektiven gewinnen.
+</p>
 
-                <h2>
-                    Bewerber für einen Bundesfreiwilligendienst (BFD)
-                </h2>
 
-                <p class="hero-description">
-                    Motivierter und zuverlässiger Bewerber aus Indonesien
-                    mit Berufserfahrung in Logistik, Produktion und
-                    Personenbeförderung. Ich möchte mich im sozialen Bereich
-                    engagieren, neue Erfahrungen sammeln und meine
-                    Deutschkenntnisse im Alltag weiterentwickeln.
-                </p>
+<div class="hero-meta">
 
+<div class="meta">
+📍 Jakarta, Indonesien
+</div>
 
-                <div class="hero-buttons">
+<div class="meta">
+🇩🇪 Deutsch B1
+</div>
 
-                    <a
-                        href="#kontakt"
-                        class="btn btn-primary"
-                    >
-                        Kontakt aufnehmen
-                    </a>
+<div class="meta">
+🎯 BFD
+</div>
 
+</div>
 
-                    <a
-                        href="documents/Lebenslauf.pdf"
-                        class="btn btn-secondary"
-                        target="_blank"
-                    >
-                        Lebenslauf ansehen
-                    </a>
 
-                </div>
+<div class="hero-actions">
 
-            </div>
+<a href="#about" class="btn btn-primary">
+Profil ansehen
+</a>
 
-        </div>
+<a href="#contact" class="btn btn-ghost">
+Kontakt
+</a>
 
-    </header>
+</div>
 
+</div>
 
-    <main>
 
+<div class="hero-visual reveal">
 
-        <!-- ÜBER MICH -->
-        <section id="ueber-mich">
+<div class="photo-wrapper">
 
-            <h2>Über mich</h2>
+<div class="photo">
 
-            <div class="about-grid">
+<img
+src="profil.png"
+alt="Bruno Parlin Pakpahan"
+>
 
-                <div>
+<div class="photo-label">
+BFD Bewerber · 2026
+</div>
 
-                    <p class="about-text">
-                        Mein Name ist
-                        <strong>Bruno Parlin Pakpahan</strong>.
-                        Ich habe eine berufsbildende Oberschule (SMK)
-                        mit der Fachrichtung
-                        <strong>Computer- und Netzwerktechnik</strong>
-                        abgeschlossen.
-                    </p>
+</div>
 
-                    <br>
+</div>
 
-                    <p class="about-text">
-                        In den vergangenen Jahren konnte ich praktische
-                        Berufserfahrungen in den Bereichen Lager,
-                        Produktion, Transport und Personenbeförderung
-                        sammeln.
-                    </p>
+</div>
 
-                </div>
+</div>
 
+</section>
 
-                <div class="highlight-box">
 
-                    <strong>Was mich auszeichnet</strong>
+<!-- =========================================================
+     PROFIL
+========================================================= -->
 
-                    <p>
-                        Zuverlässigkeit, Lernbereitschaft,
-                        Verantwortungsbewusstsein und Teamfähigkeit.
-                        Ich arbeite sorgfältig und bin bereit,
-                        neue Aufgaben und Herausforderungen anzunehmen.
-                    </p>
+<section id="about">
 
-                </div>
+<div class="container">
 
-            </div>
+<div class="section-head reveal">
 
-        </section>
+<div class="section-label">
+Kurzprofil
+</div>
 
+<h2 class="section-title">
+Wer ich bin.
+</h2>
 
-        <!-- MOTIVATION -->
-        <section id="motivation">
+<p class="section-subtitle">
+Die wichtigsten Informationen zu meiner Person
+auf einen Blick.
+</p>
 
-            <h2>Meine Motivation für den BFD</h2>
+</div>
 
-            <p class="motivation-text">
 
-                Ich möchte einen
-                <strong>Bundesfreiwilligendienst in Deutschland</strong>
-                absolvieren, weil ich mich persönlich und beruflich
-                weiterentwickeln möchte.
+<div class="quick-grid">
 
-                Besonders interessiert mich die Möglichkeit,
-                praktische Erfahrungen im sozialen Bereich zu sammeln,
-                Menschen zu unterstützen und gleichzeitig meine
-                Deutschkenntnisse im Alltag zu verbessern.
 
-            </p>
+<div class="profile-card reveal">
 
+<h3>
+Persönliches Profil
+</h3>
 
-            <div class="motivation-points">
+<p>
+Mein Name ist <strong>Bruno Parlin Pakpahan</strong>.
+Ich habe eine berufsbildende Ausbildung im Bereich
+Computer- und Netzwerktechnik abgeschlossen und
+mehrjährige praktische Berufserfahrung gesammelt.
 
+Ich bin zuverlässig, verantwortungsbewusst,
+teamorientiert und offen dafür, neue Aufgaben zu
+lernen.
 
-                <div class="motivation-card">
+Im Bundesfreiwilligendienst möchte ich mich
+sinnvoll engagieren, Menschen unterstützen,
+meine Deutschkenntnisse verbessern und neue
+berufliche Erfahrungen sammeln.
+</p>
 
-                    <div class="icon">
-                        🤝
-                    </div>
+</div>
 
-                    <strong>Menschen unterstützen</strong>
 
-                    <span>
-                        Ich möchte mich aktiv engagieren und
-                        Menschen im Alltag unterstützen.
-                    </span>
+<div class="profile-card reveal">
 
-                </div>
+<div class="data-list">
 
+<div class="data-row">
+<span class="label">Geburtsdatum</span>
+<span class="value">03.10.1999</span>
+</div>
 
-                <div class="motivation-card">
+<div class="data-row">
+<span class="label">Geburtsort</span>
+<span class="value">Aekraja, Indonesien</span>
+</div>
 
-                    <div class="icon">
-                        📚
-                    </div>
+<div class="data-row">
+<span class="label">Staatsangehörigkeit</span>
+<span class="value">Indonesisch</span>
+</div>
 
-                    <strong>Neue Erfahrungen</strong>
+<div class="data-row">
+<span class="label">Wohnort</span>
+<span class="value">Jakarta, Indonesien</span>
+</div>
 
-                    <span>
-                        Ich möchte neue praktische und soziale
-                        Erfahrungen sammeln.
-                    </span>
+<div class="data-row">
+<span class="label">Deutsch</span>
+<span class="value">B1</span>
+</div>
 
-                </div>
+<div class="data-row">
+<span class="label">Englisch</span>
+<span class="value">A1</span>
+</div>
 
+</div>
 
-                <div class="motivation-card">
+</div>
 
-                    <div class="icon">
-                        🇩🇪
-                    </div>
+</div>
 
-                    <strong>Deutsch verbessern</strong>
 
-                    <span>
-                        Der BFD bietet mir die Möglichkeit,
-                        Deutsch regelmäßig im Alltag anzuwenden.
-                    </span>
+<div class="stats reveal">
 
-                </div>
+<div class="stat">
+<strong>4+</strong>
+<span>Berufserfahrung</span>
+</div>
 
-            </div>
+<div class="stat">
+<strong>B1</strong>
+<span>Deutsch</span>
+</div>
 
-        </section>
+<div class="stat">
+<strong>3</strong>
+<span>Sprachen</span>
+</div>
 
+<div class="stat">
+<strong>SMK</strong>
+<span>Ausbildung</span>
+</div>
 
-        <!-- BERUFSERFAHRUNG -->
-        <section id="erfahrung">
+</div>
 
-            <h2>Berufserfahrung</h2>
+</div>
 
-            <div class="timeline">
+</section>
 
 
-                <div class="timeline-item">
+<!-- =========================================================
+     EXPERIENCE
+========================================================= -->
 
-                    <span class="date">
-                        01.09.2024 – aktuell
-                    </span>
+<section id="experience">
 
-                    <h3>
-                        Selbstständiger Fahrer
-                    </h3>
+<div class="container">
 
-                    <div class="company">
-                        GRAB Indonesia · Jakarta, Indonesien
-                    </div>
+<div class="section-head reveal">
 
-                    <ul>
+<div class="section-label">
+Beruflicher Werdegang
+</div>
 
-                        <li>
-                            Sichere Beförderung von Personen sowie
-                            Lieferung von Dokumenten, Paketen und
-                            Lebensmitteln
-                        </li>
+<h2 class="section-title">
+Meine Erfahrung.
+</h2>
 
-                        <li>
-                            Pünktliche und sorgfältige Auslieferung
-                        </li>
+<p class="section-subtitle">
+Praktische Erfahrung in unterschiedlichen
+Arbeitsbereichen hat meine Zuverlässigkeit,
+Belastbarkeit und Teamfähigkeit geprägt.
+</p>
 
-                        <li>
-                            Flexible und effiziente Routenplanung
-                            im dichten Stadtverkehr
-                        </li>
+</div>
 
-                        <li>
-                            Freundlicher und professioneller Umgang
-                            mit unterschiedlichen Kunden
-                        </li>
 
-                    </ul>
+<div class="experience">
 
-                </div>
 
+<div class="exp-item reveal">
 
-                <div class="timeline-item">
+<div class="exp-dot"></div>
 
-                    <span class="date">
-                        01.06.2022 – 01.05.2024
-                    </span>
+<div class="exp-date">
+09/2024 — Heute
+</div>
 
-                    <h3>
-                        Lagermitarbeiter / Warehouse Operator
-                    </h3>
+<div class="exp-card">
 
-                    <div class="company">
-                        PT. Serpong Alam Lestari · Bogor, Indonesien
-                    </div>
+<h3>
+Selbstständiger Fahrer
+</h3>
 
-                    <ul>
+<div class="exp-company">
+GRAB Indonesia · Jakarta
+</div>
 
-                        <li>
-                            Kommissionierung und Vorbereitung
-                            von Waren
-                        </li>
+<p>
+Sichere Beförderung von Personen sowie
+zuverlässige Lieferung von Dokumenten,
+Paketen und Lebensmitteln. Flexible
+Routenplanung und professioneller Umgang
+mit unterschiedlichen Kunden.
+</p>
 
-                        <li>
-                            Kontrolle von Lagerbeständen
-                        </li>
+</div>
 
-                        <li>
-                            Unterstützung eines reibungslosen
-                            Lagerbetriebs
-                        </li>
+</div>
 
-                    </ul>
 
-                </div>
+<div class="exp-item reveal">
 
+<div class="exp-dot"></div>
 
-                <div class="timeline-item">
+<div class="exp-date">
+06/2022 — 05/2024
+</div>
 
-                    <span class="date">
-                        01.03.2020 – 01.06.2022
-                    </span>
+<div class="exp-card">
 
-                    <h3>
-                        Produktionsmitarbeiter
-                    </h3>
+<h3>
+Lagermitarbeiter
+</h3>
 
-                    <div class="company">
-                        PT. Bright Food International · Bogor, Indonesien
-                    </div>
+<div class="exp-company">
+PT. Serpong Alam Lestari · Bogor
+</div>
 
-                    <ul>
+<p>
+Kommissionierung, Bestandskontrolle und
+Unterstützung eines reibungslosen
+Lagerbetriebs.
+</p>
 
-                        <li>
-                            Bedienung von Produktionsmaschinen
-                        </li>
+</div>
 
-                        <li>
-                            Durchführung von Qualitätskontrollen
-                        </li>
+</div>
 
-                        <li>
-                            Pflege und Instandhaltung der Arbeitsmittel
-                        </li>
 
-                    </ul>
+<div class="exp-item reveal">
 
-                </div>
+<div class="exp-dot"></div>
 
+<div class="exp-date">
+03/2020 — 06/2022
+</div>
 
-                <div class="timeline-item">
+<div class="exp-card">
 
-                    <span class="date">
-                        01.10.2018 – 01.02.2020
-                    </span>
+<h3>
+Produktionsmitarbeiter
+</h3>
 
-                    <h3>
-                        Helper – Lager / Transport
-                    </h3>
+<div class="exp-company">
+PT. Bright Food International · Bogor
+</div>
 
-                    <div class="company">
-                        PT. Mulia Multi Mandiri · Bogor, Indonesien
-                    </div>
+<p>
+Bedienung von Maschinen,
+Qualitätskontrolle sowie Pflege und
+Instandhaltung des Arbeitsbereichs.
+</p>
 
-                    <ul>
+</div>
 
-                        <li>
-                            Be- und Entladen von Waren
-                        </li>
+</div>
 
-                        <li>
-                            Kontrolle von Menge und Zustand der Waren
-                        </li>
 
-                        <li>
-                            Unterstützung bei Transport und Logistik
-                        </li>
+<div class="exp-item reveal">
 
-                    </ul>
+<div class="exp-dot"></div>
 
-                </div>
+<div class="exp-date">
+10/2018 — 02/2020
+</div>
 
-            </div>
+<div class="exp-card">
 
-        </section>
+<h3>
+Helper — Lager & Transport
+</h3>
 
+<div class="exp-company">
+PT. Mulia Multi Mandiri · Indonesien
+</div>
 
-        <!-- BILDUNG -->
-        <section id="bildung">
+<p>
+Be- und Entladen von Waren, Kontrolle
+von Menge und Zustand sowie Unterstützung
+bei logistischen Abläufen.
+</p>
 
-            <h2>Bildung</h2>
+</div>
 
-            <div class="education">
+</div>
 
-                <div class="education-date">
-                    2015 – 2018
-                </div>
+</div>
 
-                <div class="education-content">
+</div>
 
-                    <h3>
-                        Berufsbildende Oberschule (SMK)
-                    </h3>
+</section>
 
-                    <p>
-                        <strong>
-                            SMK Swasta St. Nahanson Parapat
-                        </strong>
-                    </p>
 
-                    <p>
-                        Fachrichtung:
-                        Computer- und Netzwerktechnik
-                    </p>
+<!-- =========================================================
+     BFD
+========================================================= -->
 
-                    <p>
-                        Tarutung, Indonesien
-                    </p>
+<section id="bfd">
 
-                </div>
+<div class="container">
 
-            </div>
+<div class="section-head reveal">
 
-        </section>
+<div class="section-label">
+Motivation
+</div>
 
+<h2 class="section-title">
+Warum BFD?
+</h2>
 
-        <!-- SPRACHEN -->
-        <section id="sprachen">
+<p class="section-subtitle">
+Was ich während meines
+Bundesfreiwilligendienstes lernen
+und beitragen möchte.
+</p>
 
-            <h2>Sprachkenntnisse</h2>
+</div>
 
-            <div class="language-grid">
 
+<div class="bfd-grid">
 
-                <div class="language-card">
 
-                    <h3>
-                        🇮🇩 Indonesisch
-                    </h3>
+<div class="bfd-card reveal">
 
-                    <p>
-                        Muttersprache
-                    </p>
+<div class="bfd-number">
+01
+</div>
 
-                    <span class="level">
-                        Muttersprache
-                    </span>
+<div class="bfd-icon">
+✦
+</div>
 
-                </div>
+<h3>
+Soziales Engagement
+</h3>
 
+<p>
+Ich möchte Menschen unterstützen,
+Verantwortung übernehmen und mich
+aktiv in eine soziale Einrichtung
+einbringen.
+</p>
 
-                <div class="language-card">
+</div>
 
-                    <h3>
-                        🇩🇪 Deutsch
-                    </h3>
 
-                    <p>
-                        Hören · Lesen · Sprechen · Schreiben
-                    </p>
+<div class="bfd-card reveal">
 
-                    <span class="level">
-                        B1
-                    </span>
+<div class="bfd-number">
+02
+</div>
 
-                </div>
+<div class="bfd-icon">
+◇
+</div>
 
+<h3>
+Deutsch verbessern
+</h3>
 
-                <div class="language-card">
+<p>
+Der tägliche Austausch mit Menschen
+gibt mir die Möglichkeit, meine
+Deutschkenntnisse weiterzuentwickeln.
+</p>
 
-                    <h3>
-                        🇬🇧 Englisch
-                    </h3>
+</div>
 
-                    <p>
-                        Hören · Lesen · Sprechen · Schreiben
-                    </p>
 
-                    <span class="level">
-                        A1
-                    </span>
+<div class="bfd-card reveal">
 
-                </div>
+<div class="bfd-number">
+03
+</div>
 
+<div class="bfd-icon">
+◎
+</div>
 
-            </div>
+<h3>
+Neue Erfahrungen
+</h3>
 
-        </section>
+<p>
+Ich möchte neue Arbeitsbereiche
+kennenlernen, Verantwortung übernehmen
+und mich persönlich weiterentwickeln.
+</p>
 
+</div>
 
-        <!-- KOMPETENZEN -->
-        <section>
+</div>
 
-            <h2>Kompetenzen</h2>
+</div>
 
-            <div class="skills">
+</section>
 
-                <span class="skill">
-                    Microsoft Office
-                </span>
 
-                <span class="skill">
-                    Teamfähigkeit
-                </span>
+<!-- =========================================================
+     EDUCATION
+========================================================= -->
 
-                <span class="skill">
-                    Zuverlässigkeit
-                </span>
+<section>
 
-                <span class="skill">
-                    Pünktlichkeit
-                </span>
+<div class="container">
 
-                <span class="skill">
-                    Einfühlungsvermögen
-                </span>
+<div class="section-head reveal">
 
-                <span class="skill">
-                    Verantwortungsbewusstsein
-                </span>
+<div class="section-label">
+Ausbildung
+</div>
 
-                <span class="skill">
-                    Belastbarkeit
-                </span>
+<h2 class="section-title">
+Mein Bildungsweg.
+</h2>
 
-                <span class="skill">
-                    Lernbereitschaft
-                </span>
+</div>
 
-            </div>
 
-        </section>
+<div class="education reveal">
 
+<div class="edu-year">
+06/2015 — 03/2018
+</div>
 
-        <!-- HOBBYS -->
-        <section>
+<div>
 
-            <h2>Hobbys und Interessen</h2>
+<h3>
+Computer- und Netzwerktechnik
+</h3>
 
-            <div class="hobbies">
+<p>
+Abschluss der berufsbildenden Oberschule (SMK)
+</p>
 
+<p>
+SMK Swasta St. Nahanson Parapat
+· Tarutung, Indonesien
+</p>
 
-                <div class="hobby">
+</div>
 
-                    <div class="hobby-icon">
-                        ⚽
-                    </div>
+</div>
 
-                    <strong>
-                        Sport
-                    </strong>
+</div>
 
-                </div>
+</section>
 
 
-                <div class="hobby">
+<!-- =========================================================
+     SKILLS
+========================================================= -->
 
-                    <div class="hobby-icon">
-                        🎵
-                    </div>
+<section id="skills">
 
-                    <strong>
-                        Musik hören
-                    </strong>
+<div class="container">
 
-                </div>
+<div class="section-head reveal">
 
+<div class="section-label">
+Kompetenzen
+</div>
 
-                <div class="hobby">
+<h2 class="section-title">
+Was ich mitbringe.
+</h2>
 
-                    <div class="hobby-icon">
-                        📚
-                    </div>
+</div>
 
-                    <strong>
-                        Lesen
-                    </strong>
 
-                </div>
+<div class="skills-layout">
 
 
-                <div class="hobby">
+<div class="skill-box reveal">
 
-                    <div class="hobby-icon">
-                        ✈️
-                    </div>
+<h3>
+Sprachen
+</h3>
 
-                    <strong>
-                        Reisen
-                    </strong>
+<div class="tags">
 
-                </div>
+<span class="tag">
+Indonesisch · Muttersprache
+</span>
 
+<span class="tag">
+Deutsch · B1
+</span>
 
-            </div>
+<span class="tag">
+Englisch · A1
+</span>
 
-        </section>
+</div>
 
+</div>
 
-        <!-- BEWERBUNGSUNTERLAGEN -->
-        <section id="unterlagen">
 
-            <h2>Bewerbungsunterlagen</h2>
+<div class="skill-box reveal">
 
-            <div class="cv-box">
+<h3>
+Persönliche Stärken
+</h3>
 
-                <h3>
-                    Mein Lebenslauf
-                </h3>
+<div class="tags">
 
-                <p>
-                    Hier können Sie meinen vollständigen
-                    Lebenslauf als PDF ansehen.
-                </p>
+<span class="tag">Zuverlässigkeit</span>
+<span class="tag">Pünktlichkeit</span>
+<span class="tag">Teamfähigkeit</span>
+<span class="tag">Verantwortungsbewusstsein</span>
+<span class="tag">Lernbereitschaft</span>
+<span class="tag">Belastbarkeit</span>
+<span class="tag">Einfühlungsvermögen</span>
+<span class="tag">Organisation</span>
 
-                <a
-                    href="documents/Lebenslauf.pdf"
-                    class="cv-button"
-                    target="_blank"
-                >
-                    Lebenslauf öffnen
-                </a>
+</div>
 
-            </div>
+</div>
 
-        </section>
 
+<div class="skill-box reveal">
 
-        <!-- KONTAKT -->
-        <section id="kontakt">
+<h3>
+Fachliche Kenntnisse
+</h3>
 
-            <h2>Kontakt</h2>
+<div class="tags">
 
-            <div class="contact-grid">
+<span class="tag">Microsoft Office</span>
+<span class="tag">Computertechnik</span>
+<span class="tag">Netzwerktechnik</span>
+<span class="tag">Logistik</span>
+<span class="tag">Lagerarbeit</span>
 
+</div>
 
-                <div class="contact-item">
+</div>
 
-                    <strong>
-                        E-Mail
-                    </strong>
 
-                    <a href="mailto:brunoparlinpakpahan16@gmail.com">
-                        brunoparlinpakpahan16@gmail.com
-                    </a>
+<div class="skill-box reveal">
 
-                </div>
+<h3>
+Interessen
+</h3>
 
+<div class="tags">
 
-                <div class="contact-item">
+<span class="tag">Sport</span>
+<span class="tag">Musik</span>
+<span class="tag">Lesen</span>
+<span class="tag">Reisen</span>
 
-                    <strong>
-                        Telefon
-                    </strong>
+</div>
 
-                    <a href="tel:+6285183370310">
-                        +62 85183370310
-                    </a>
+</div>
 
-                </div>
+</div>
 
+</div>
 
-            </div>
+</section>
 
-        </section>
 
-    </main>
+<!-- =========================================================
+     PORTFOLIO
+========================================================= -->
 
+<section id="portfolio">
 
-    <!-- FOOTER -->
-    <footer>
+<div class="container">
 
-        <p>
-            © 2026 <strong>Bruno Parlin Pakpahan</strong>
-            · Bewerbungsportfolio für den BFD
-        </p>
+<div class="section-head reveal">
 
-    </footer>
+<div class="section-label">
+Portfolio
+</div>
 
+<h2 class="section-title">
+Fotos & Zertifikate.
+</h2>
 
-    <!-- SCROLL PROGRESS SCRIPT -->
-    <script>
+<p class="section-subtitle">
+Ein visueller Einblick in meine Aktivitäten
+und vorhandenen Nachweise.
+</p>
 
-        window.addEventListener("scroll", function () {
+</div>
 
-            const scrollTop =
-                document.documentElement.scrollTop;
 
-            const scrollHeight =
-                document.documentElement.scrollHeight -
-                document.documentElement.clientHeight;
+<div class="tabs reveal">
 
-            const progress =
-                (scrollTop / scrollHeight) * 100;
+<button
+class="tab active"
+onclick="switchTab('photos',this)">
+Fotos
+</button>
 
-            document.getElementById("progressBar").style.width =
-                progress + "%";
+<button
+class="tab"
+onclick="switchTab('certificates',this)">
+Zertifikate
+</button>
 
-        });
+</div>
 
-    </script>
 
+<div id="photos" class="panel active">
+
+<div class="gallery">
+
+
+<div
+class="gallery-item"
+onclick="openImage('photos/foto1.jpg')">
+
+<img
+src="photos/foto1.jpg"
+alt="Portfolio Foto 1"
+>
+
+<div class="gallery-overlay">
+<span>
+Persönlicher Einblick
+</span>
+</div>
+
+</div>
+
+
+<div
+class="gallery-item"
+onclick="openImage('photos/foto2.jpg')">
+
+<img
+src="photos/foto2.jpg"
+alt="Portfolio Foto 2"
+>
+
+<div class="gallery-overlay">
+<span>
+Aktivität & Erfahrung
+</span>
+</div>
+
+</div>
+
+
+<div
+class="gallery-item"
+onclick="openImage('photos/foto3.jpg')">
+
+<img
+src="photos/foto3.jpg"
+alt="Portfolio Foto 3"
+>
+
+<div class="gallery-overlay">
+<span>
+Persönlicher Einblick
+</span>
+</div>
+
+</div>
+
+
+<div
+class="gallery-item"
+onclick="openImage('photos/foto4.jpg')">
+
+<img
+src="photos/foto4.jpg"
+alt="Portfolio Foto 4"
+>
+
+<div class="gallery-overlay">
+<span>
+Aktivität & Erfahrung
+</span>
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<div id="certificates" class="panel">
+
+<div class="certificates">
+
+
+<div class="certificate">
+
+<div class="certificate-img">
+
+<img
+src="certificates/zertifikat1.jpg"
+alt="Zertifikat 1"
+>
+
+</div>
+
+<div class="certificate-info">
+
+<h3>
+Zertifikat
+</h3>
+
+<p>
+Qualifikation / Weiterbildung
+</p>
+
+</div>
+
+</div>
+
+
+<div class="certificate">
+
+<div class="certificate-img">
+
+<img
+src="certificates/zertifikat2.jpg"
+alt="Zertifikat 2"
+>
+
+</div>
+
+<div class="certificate-info">
+
+<h3>
+Zertifikat
+</h3>
+
+<p>
+Qualifikation / Weiterbildung
+</p>
+
+</div>
+
+</div>
+
+
+<div class="certificate">
+
+<div class="certificate-img">
+
+<img
+src="certificates/zertifikat3.jpg"
+alt="Zertifikat 3"
+>
+
+</div>
+
+<div class="certificate-info">
+
+<h3>
+Zertifikat
+</h3>
+
+<p>
+Qualifikation / Weiterbildung
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
+
+<section id="contact">
+
+<div class="container">
+
+<div class="contact reveal">
+
+<div class="section-label">
+Kontakt
+</div>
+
+<h2>
+Lassen Sie uns<br>
+in Kontakt treten.
+</h2>
+
+<p>
+Vielen Dank für Ihr Interesse an meinem
+Portfolio. Für Fragen zu meiner Person,
+meiner Motivation oder einer möglichen
+BFD-Einsatzstelle können Sie mich gerne
+kontaktieren.
+</p>
+
+<a
+href="mailto:brunoparlinpakpahan16@gmail.com"
+class="btn btn-primary">
+
+E-Mail schreiben
+
+</a>
+
+
+<div class="contact-info">
+
+<span>
+✉ brunoparlinpakpahan16@gmail.com
+</span>
+
+<span>
+☎ +62 851 8337 0310
+</span>
+
+<span>
+📍 Jakarta, Indonesien
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer>
+
+© 2026
+<span>Bruno Parlin Pakpahan</span>
+· Persönliches BFD Portfolio
+
+</footer>
+
+
+<!-- =========================================================
+     LIGHTBOX
+========================================================= -->
+
+<div
+class="lightbox"
+id="lightbox"
+onclick="closeImage()">
+
+<div class="close">
+×
+</div>
+
+<img
+id="lightboxImage"
+src=""
+alt="Portfolio Bild"
+>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+const header =
+document.getElementById("header");
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>40){
+
+header.classList.add("scrolled");
+
+}else{
+
+header.classList.remove("scrolled");
+
+}
+
+});
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+window.addEventListener("scroll",()=>{
+
+const scroll =
+window.scrollY;
+
+const height =
+document.documentElement.scrollHeight
+- window.innerHeight;
+
+document.getElementById("progress")
+.style.width =
+(scroll / height * 100) + "%";
+
+});
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+const observer =
+new IntersectionObserver(
+entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("visible");
+
+}
+
+});
+
+},
+{
+threshold:.12
+}
+);
+
+document
+.querySelectorAll(".reveal")
+.forEach(el=>{
+
+observer.observe(el);
+
+});
+
+
+/* =========================================================
+   ACTIVE NAVIGATION
+========================================================= */
+
+const sections =
+document.querySelectorAll("section[id]");
+
+const links =
+document.querySelectorAll(".navlinks a");
+
+window.addEventListener("scroll",()=>{
+
+let current="";
+
+sections.forEach(section=>{
+
+const top =
+section.offsetTop - 180;
+
+if(window.scrollY >= top){
+
+current =
+section.getAttribute("id");
+
+}
+
+});
+
+links.forEach(link=>{
+
+link.classList.remove("active");
+
+if(
+link.getAttribute("href")
+===
+"#"+current
+){
+
+link.classList.add("active");
+
+}
+
+});
+
+});
+
+
+/* =========================================================
+   TABS
+========================================================= */
+
+function switchTab(id,button){
+
+document
+.querySelectorAll(".panel")
+.forEach(panel=>{
+
+panel.classList.remove("active");
+
+});
+
+document
+.querySelectorAll(".tab")
+.forEach(tab=>{
+
+tab.classList.remove("active");
+
+});
+
+document
+.getElementById(id)
+.classList.add("active");
+
+button.classList.add("active");
+
+}
+
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
+function openImage(src){
+
+const lightbox =
+document.getElementById("lightbox");
+
+const image =
+document.getElementById("lightboxImage");
+
+image.src=src;
+
+lightbox.classList.add("open");
+
+}
+
+
+function closeImage(){
+
+document
+.getElementById("lightbox")
+.classList.remove("open");
+
+}
+
+
+document.addEventListener(
+"keydown",
+event=>{
+
+if(event.key==="Escape"){
+
+closeImage();
+
+}
+
+});
+
+</script>
 
 </body>
 </html>
