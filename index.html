@@ -1,1585 +1,1111 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Bruno Parlin Pakpahan | BFD Bewerbung</title>
-
-<meta name="description" content="Persönliches Portfolio von Bruno Parlin Pakpahan – Bewerber für einen Bundesfreiwilligendienst in Deutschland.">
-<meta name="theme-color" content="#07111f">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-
-/* =========================================================
-   RESET
-========================================================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: "DM Sans", sans-serif;
-    background: #07111f;
-    color: #eef3f8;
-    overflow-x: hidden;
-    line-height: 1.7;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-button {
-    font: inherit;
-}
-
-img {
-    max-width: 100%;
-    display: block;
-}
-
-
-/* =========================================================
-   VARIABLES
-========================================================= */
-
-:root {
-    --bg: #07111f;
-    --bg2: #0b1728;
-    --card: rgba(255,255,255,.055);
-    --card-border: rgba(255,255,255,.10);
-
-    --gold: #d8b878;
-    --gold-light: #f1d79d;
-    --gold-soft: rgba(216,184,120,.18);
-
-    --white: #f7f9fc;
-    --muted: #9da9b8;
-
-    --blue-glow: rgba(42,117,190,.18);
-    --gold-glow: rgba(216,184,120,.12);
-
-    --radius: 24px;
-}
-
-
-/* =========================================================
-   BACKGROUND
-========================================================= */
-
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -10;
-
-    background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-
-    background-size: 55px 55px;
-
-    mask-image: linear-gradient(to bottom, black, transparent 85%);
-    pointer-events: none;
-}
-
-.noise {
-    position: fixed;
-    inset: 0;
-    z-index: -5;
-    opacity: .035;
-    pointer-events: none;
-
-    background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
-}
-
-.orb {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(80px);
-    pointer-events: none;
-    z-index: -4;
-    animation: orbFloat 14s ease-in-out infinite alternate;
-}
-
-.orb.one {
-    width: 420px;
-    height: 420px;
-    background: rgba(31,101,170,.18);
-    top: -160px;
-    left: -120px;
-}
-
-.orb.two {
-    width: 360px;
-    height: 360px;
-    background: rgba(216,184,120,.11);
-    right: -120px;
-    top: 25%;
-    animation-delay: -5s;
-}
-
-.orb.three {
-    width: 300px;
-    height: 300px;
-    background: rgba(58,115,174,.12);
-    left: 35%;
-    bottom: -140px;
-    animation-delay: -9s;
-}
-
-@keyframes orbFloat {
-    from {
-        transform: translate3d(0,0,0) scale(1);
-    }
-
-    to {
-        transform: translate3d(40px,-35px,0) scale(1.08);
-    }
-}
-
-
-/* =========================================================
-   LOADING SCREEN
-========================================================= */
-
-.loader {
-    position: fixed;
-    inset: 0;
-    background: #07111f;
-    z-index: 9999;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    transition: opacity .8s ease, visibility .8s ease;
-}
-
-.loader.hide {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.loader-inner {
-    text-align: center;
-}
-
-.loader-name {
-    font-family: "Manrope", sans-serif;
-    font-size: clamp(22px, 4vw, 38px);
-    font-weight: 800;
-    letter-spacing: .04em;
-}
-
-.loader-line {
-    width: 150px;
-    height: 1px;
-    background: rgba(255,255,255,.15);
-    margin: 18px auto;
-    overflow: hidden;
-}
-
-.loader-line span {
-    display: block;
-    width: 50%;
-    height: 100%;
-    background: var(--gold);
-    animation: loading 1.2s ease-in-out infinite;
-}
-
-@keyframes loading {
-    0% {
-        transform: translateX(-100%);
-    }
-
-    100% {
-        transform: translateX(300%);
-    }
-}
-
-
-/* =========================================================
-   SCROLL PROGRESS
-========================================================= */
-
-.progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 3px;
-    width: 0%;
-    background: linear-gradient(90deg, var(--gold), var(--gold-light));
-    z-index: 9998;
-    box-shadow: 0 0 18px rgba(216,184,120,.5);
-}
-
-
-/* =========================================================
-   NAVBAR
-========================================================= */
-
-.navbar {
-    position: fixed;
-    top: 18px;
-    left: 50%;
-    transform: translateX(-50%);
-
-    width: min(1120px, calc(100% - 30px));
-
-    z-index: 1000;
-
-    padding: 12px 15px 12px 20px;
-
-    border: 1px solid rgba(255,255,255,.08);
-    border-radius: 18px;
-
-    background: rgba(7,17,31,.58);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    box-shadow:
-        0 15px 50px rgba(0,0,0,.22),
-        inset 0 1px rgba(255,255,255,.04);
-}
-
-.logo {
-    font-family: "Manrope", sans-serif;
-    font-weight: 800;
-    letter-spacing: -.03em;
-    white-space: nowrap;
-}
-
-.logo span {
-    color: var(--gold);
-}
-
-.nav-links {
-    display: flex;
-    gap: 4px;
-}
-
-.nav-links a {
-    position: relative;
-    padding: 9px 14px;
-    color: #9eabbc;
-    font-size: 13px;
-    border-radius: 11px;
-    transition: .3s ease;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    color: var(--white);
-    background: rgba(255,255,255,.055);
-}
-
-.nav-links a.active::after {
-    content: "";
-    position: absolute;
-    bottom: 4px;
-    left: 50%;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: var(--gold);
-    transform: translateX(-50%);
-}
-
-.menu-btn {
-    display: none;
-    width: 42px;
-    height: 42px;
-    border: 1px solid rgba(255,255,255,.1);
-    background: rgba(255,255,255,.04);
-    color: white;
-    border-radius: 12px;
-    cursor: pointer;
-}
-
-
-/* =========================================================
-   GENERAL
-========================================================= */
-
-.container {
-    width: min(1120px, calc(100% - 40px));
-    margin: auto;
-}
-
-section {
-    position: relative;
-    padding: 110px 0;
-}
-
-.section-label {
-    color: var(--gold);
-    text-transform: uppercase;
-    letter-spacing: .18em;
-    font-size: 11px;
-    font-weight: 700;
-    margin-bottom: 15px;
-}
-
-.section-title {
-    font-family: "Manrope", sans-serif;
-    font-size: clamp(30px, 5vw, 54px);
-    line-height: 1.05;
-    letter-spacing: -.045em;
-    margin-bottom: 20px;
-}
-
-.section-title span {
-    color: var(--gold);
-}
-
-.section-description {
-    max-width: 650px;
-    color: var(--muted);
-    font-size: 16px;
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding-top: 130px;
-    overflow: hidden;
-}
-
-.hero-grid {
-    display: grid;
-    grid-template-columns: 1.05fr .95fr;
-    align-items: center;
-    gap: 80px;
-}
-
-.hero-kicker {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-
-    padding: 8px 13px;
-
-    border: 1px solid rgba(216,184,120,.22);
-    background: rgba(216,184,120,.06);
-    border-radius: 100px;
-
-    color: #d9c69f;
-    font-size: 12px;
-    margin-bottom: 24px;
-}
-
-.status-dot {
-    width: 7px;
-    height: 7px;
-    background: #8fd6a8;
-    border-radius: 50%;
-    box-shadow: 0 0 12px rgba(143,214,168,.6);
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0%,100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-
-    50% {
-        transform: scale(1.4);
-        opacity: .6;
-    }
-}
-
-.hero h1 {
-    font-family: "Manrope", sans-serif;
-    font-size: clamp(50px, 8vw, 92px);
-    line-height: .94;
-    letter-spacing: -.065em;
-    margin-bottom: 25px;
-}
-
-.hero h1 .name-line {
-    display: block;
-}
-
-.hero h1 .gold {
-    color: var(--gold);
-}
-
-.hero-role {
-    min-height: 34px;
-    font-size: clamp(17px, 2vw, 21px);
-    color: #bdc8d5;
-    margin-bottom: 22px;
-}
-
-.typing {
-    color: var(--gold-light);
-}
-
-.cursor {
-    display: inline-block;
-    width: 2px;
-    height: 20px;
-    background: var(--gold);
-    margin-left: 5px;
-    animation: blink .8s infinite;
-}
-
-@keyframes blink {
-    50% { opacity: 0; }
-}
-
-.hero-text {
-    max-width: 650px;
-    color: var(--muted);
-    font-size: 16px;
-}
-
-.hero-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 34px;
-}
-
-.btn {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-
-    min-height: 50px;
-    padding: 0 20px;
-
-    border-radius: 14px;
-
-    font-size: 13px;
-    font-weight: 700;
-
-    transition: transform .3s ease, box-shadow .3s ease, background .3s ease;
-    overflow: hidden;
-}
-
-.btn:hover {
-    transform: translateY(-3px);
-}
-
-.btn-primary {
-    color: #101923;
-    background: linear-gradient(135deg, #e7cc91, #c8a864);
-    box-shadow: 0 12px 30px rgba(216,184,120,.16);
-}
-
-.btn-primary::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
-    transform: skewX(-20deg);
-    transition: left .7s ease;
-}
-
-.btn-primary:hover::after {
-    left: 140%;
-}
-
-.btn-secondary {
-    border: 1px solid rgba(255,255,255,.1);
-    background: rgba(255,255,255,.04);
-    color: white;
-}
-
-.btn-secondary:hover {
-    background: rgba(255,255,255,.08);
-}
-
-
-/* =========================================================
-   HERO PHOTO
-========================================================= */
-
-.hero-photo-area {
-    position: relative;
-    display: flex;
-    justify-content: center;
-}
-
-.photo-glow {
-    position: absolute;
-    width: 80%;
-    height: 80%;
-    border-radius: 50%;
-    background: rgba(216,184,120,.10);
-    filter: blur(65px);
-    animation: photoGlow 6s ease-in-out infinite alternate;
-}
-
-@keyframes photoGlow {
-    from {
-        transform: scale(.9);
-        opacity: .5;
-    }
-
-    to {
-        transform: scale(1.1);
-        opacity: .9;
-    }
-}
-
-.photo-frame {
-    position: relative;
-    width: min(410px, 85vw);
-    aspect-ratio: .82;
-
-    padding: 10px;
-
-    border-radius: 34px;
-
-    background:
-        linear-gradient(145deg,
-        rgba(255,255,255,.18),
-        rgba(216,184,120,.4),
-        rgba(255,255,255,.04));
-
-    box-shadow:
-        0 40px 100px rgba(0,0,0,.45),
-        0 0 80px rgba(216,184,120,.08);
-
-    transform: rotate(2deg);
-    transition: transform .5s ease;
-}
-
-.photo-frame:hover {
-    transform: rotate(0deg) translateY(-8px);
-}
-
-.photo-inner {
-    height: 100%;
-    border-radius: 27px;
-    overflow: hidden;
-    background: #101c2c;
-    position: relative;
-}
-
-.photo-inner img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.photo-inner::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(to bottom,
-        transparent 50%,
-        rgba(4,10,18,.35));
-    pointer-events: none;
-}
-
-.photo-tag {
-    position: absolute;
-    left: -22px;
-    bottom: 35px;
-
-    padding: 13px 17px;
-
-    background: rgba(9,18,30,.78);
-    backdrop-filter: blur(15px);
-
-    border: 1px solid rgba(255,255,255,.1);
-    border-radius: 15px;
-
-    box-shadow: 0 20px 50px rgba(0,0,0,.3);
-
-    font-size: 12px;
-    color: #d7e0ea;
-}
-
-.photo-tag strong {
-    display: block;
-    color: var(--gold-light);
-    font-size: 15px;
-}
-
-
-/* =========================================================
-   MARQUEE
-========================================================= */
-
-.marquee-wrap {
-    border-top: 1px solid rgba(255,255,255,.06);
-    border-bottom: 1px solid rgba(255,255,255,.06);
-    padding: 17px 0;
-    overflow: hidden;
-    background: rgba(255,255,255,.018);
-}
-
-.marquee {
-    display: flex;
-    width: max-content;
-    animation: marquee 28s linear infinite;
-}
-
-.marquee span {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-
-    margin-right: 28px;
-
-    color: #6f7c8e;
-
-    text-transform: uppercase;
-    letter-spacing: .18em;
-    font-size: 11px;
-    font-weight: 700;
-}
-
-.marquee b {
-    color: var(--gold);
-    font-size: 13px;
-}
-
-@keyframes marquee {
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(-50%);
-    }
-}
-
-
-/* =========================================================
-   VIDEO
-========================================================= */
-
-.video-section {
-    padding-top: 100px;
-}
-
-.video-layout {
-    display: grid;
-    grid-template-columns: .75fr 1.25fr;
-    gap: 55px;
-    align-items: center;
-}
-
-.video-copy {
-    color: var(--muted);
-}
-
-.video-copy p {
-    margin-top: 20px;
-}
-
-.video-note {
-    display: inline-flex;
-    margin-top: 25px;
-    padding: 10px 13px;
-    border-radius: 12px;
-    background: rgba(255,255,255,.04);
-    border: 1px solid rgba(255,255,255,.08);
-    color: #aeb9c7;
-    font-size: 12px;
-}
-
-.video-box {
-    position: relative;
-    border-radius: 25px;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,.11);
-    background: #030912;
-    box-shadow: 0 35px 80px rgba(0,0,0,.35);
-}
-
-.video-box::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    pointer-events: none;
-    border: 1px solid rgba(216,184,120,.14);
-    border-radius: 25px;
-}
-
-.video-box video {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-}
-
-
-/* =========================================================
-   PROFILE
-========================================================= */
-
-.profile-grid {
-    display: grid;
-    grid-template-columns: 1.15fr .85fr;
-    gap: 70px;
-    align-items: center;
-}
-
-.profile-text {
-    color: var(--muted);
-    font-size: 16px;
-}
-
-.profile-text p + p {
-    margin-top: 17px;
-}
-
-.info-card {
-    border: 1px solid var(--card-border);
-    background: linear-gradient(145deg, rgba(255,255,255,.065), rgba(255,255,255,.025));
-    border-radius: var(--radius);
-    padding: 28px;
-    backdrop-filter: blur(15px);
-}
-
-.info-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 16px 0;
-    border-bottom: 1px solid rgba(255,255,255,.07);
-}
-
-.info-row:last-child {
-    border-bottom: 0;
-}
-
-.info-label {
-    color: #778497;
-    font-size: 12px;
-}
-
-.info-value {
-    color: #e4eaf1;
-    text-align: right;
-    font-size: 13px;
-    font-weight: 600;
-}
-
-
-/* =========================================================
-   WHY BFD
-========================================================= */
-
-.bfd-section {
-    overflow: hidden;
-}
-
-.bfd-intro {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    gap: 40px;
-    margin-bottom: 50px;
-}
-
-.bfd-intro .section-description {
-    max-width: 480px;
-}
-
-.bfd-grid {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 16px;
-}
-
-.bfd-card {
-    position: relative;
-    padding: 30px;
-    min-height: 250px;
-
-    border: 1px solid rgba(255,255,255,.08);
-    border-radius: 22px;
-
-    background: linear-gradient(
-        145deg,
-        rgba(255,255,255,.065),
-        rgba(255,255,255,.025)
-    );
-
-    overflow: hidden;
-    transition: transform .45s ease, border-color .45s ease;
-}
-
-.bfd-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(216,184,120,.28);
-}
-
-.bfd-card::before {
-    content: "";
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    right: -70px;
-    top: -70px;
-    border-radius: 50%;
-    background: var(--gold-glow);
-    filter: blur(20px);
-}
-
-.bfd-number {
-    font-family: "Manrope", sans-serif;
-    font-size: 12px;
-    color: var(--gold);
-    letter-spacing: .1em;
-}
-
-.bfd-card h3 {
-    margin-top: 55px;
-    font-family: "Manrope", sans-serif;
-    font-size: 22px;
-    letter-spacing: -.03em;
-}
-
-.bfd-card p {
-    margin-top: 12px;
-    color: var(--muted);
-    font-size: 14px;
-}
-
-
-/* =========================================================
-   STRENGTHS
-========================================================= */
-
-.strengths-grid {
-    display: grid;
-    grid-template-columns: repeat(5,1fr);
-    gap: 10px;
-    margin-top: 50px;
-}
-
-.strength {
-    padding: 20px 16px;
-    border-radius: 16px;
-    border: 1px solid rgba(255,255,255,.07);
-    background: rgba(255,255,255,.035);
-    text-align: center;
-    color: #d4dce6;
-    font-size: 13px;
-    transition: .35s ease;
-}
-
-.strength:hover {
-    transform: translateY(-5px);
-    border-color: rgba(216,184,120,.25);
-    background: rgba(216,184,120,.06);
-}
-
-.strength::before {
-    content: "✦";
-    display: block;
-    color: var(--gold);
-    margin-bottom: 7px;
-}
-
-
-/* =========================================================
-   EXPERIENCE SNAPSHOT
-========================================================= */
-
-.experience-grid {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 16px;
-    margin-top: 50px;
-}
-
-.experience-card {
-    padding: 27px;
-    border: 1px solid rgba(255,255,255,.08);
-    border-radius: 20px;
-    background: rgba(255,255,255,.035);
-    transition: .35s ease;
-}
-
-.experience-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(216,184,120,.22);
-}
-
-.experience-date {
-    font-size: 11px;
-    color: var(--gold);
-    letter-spacing: .12em;
-    text-transform: uppercase;
-}
-
-.experience-card h3 {
-    font-family: "Manrope", sans-serif;
-    margin: 10px 0 4px;
-    font-size: 19px;
-}
-
-.experience-company {
-    color: #8e9cad;
-    font-size: 13px;
-}
-
-.experience-card p {
-    color: var(--muted);
-    font-size: 13px;
-    margin-top: 14px;
-}
-
-
-/* =========================================================
-   LANGUAGE
-========================================================= */
-
-.languages {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 15px;
-    margin-top: 45px;
-}
-
-.language-card {
-    padding: 24px;
-    border: 1px solid rgba(255,255,255,.08);
-    border-radius: 18px;
-    background: rgba(255,255,255,.035);
-}
-
-.language-top {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 13px;
-}
-
-.language-name {
-    font-weight: 700;
-}
-
-.language-level {
-    color: var(--gold);
-    font-size: 12px;
-}
-
-.language-bar {
-    height: 4px;
-    border-radius: 10px;
-    background: rgba(255,255,255,.08);
-    overflow: hidden;
-}
-
-.language-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--gold), var(--gold-light));
-    border-radius: inherit;
-}
-
-
-/* =========================================================
-   GALLERY
-========================================================= */
-
-.portfolio-tabs {
-    display: flex;
-    gap: 8px;
-    margin: 35px 0 25px;
-}
-
-.tab-btn {
-    border: 1px solid rgba(255,255,255,.08);
-    background: rgba(255,255,255,.035);
-    color: #9ba7b6;
-    padding: 10px 17px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 12px;
-    transition: .3s ease;
-}
-
-.tab-btn.active,
-.tab-btn:hover {
-    background: rgba(216,184,120,.10);
-    color: var(--gold-light);
-    border-color: rgba(216,184,120,.22);
-}
-
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 12px;
-}
-
-.gallery-item {
-    aspect-ratio: 1;
-    border-radius: 18px;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,.08);
-    cursor: pointer;
-    position: relative;
-    background: #101a29;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform .6s ease;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.08);
-}
-
-.gallery-item::after {
-    content: "↗";
-    position: absolute;
-    right: 13px;
-    bottom: 13px;
-
-    width: 32px;
-    height: 32px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: rgba(5,12,21,.7);
-    backdrop-filter: blur(8px);
-
-    color: white;
-    opacity: 0;
-    transition: .3s ease;
-}
-
-.gallery-item:hover::after {
-    opacity: 1;
-}
-
-
-/* =========================================================
-   CERTIFICATES
-========================================================= */
-
-.certificates {
-    display: none;
-    grid-template-columns: repeat(3,1fr);
-    gap: 15px;
-}
-
-.certificates.show {
-    display: grid;
-}
-
-.certificate {
-    border: 1px solid rgba(255,255,255,.08);
-    border-radius: 18px;
-    overflow: hidden;
-    background: rgba(255,255,255,.035);
-    cursor: pointer;
-}
-
-.certificate img {
-    width: 100%;
-    aspect-ratio: 1.4;
-    object-fit: cover;
-    transition: .5s ease;
-}
-
-.certificate:hover img {
-    transform: scale(1.04);
-}
-
-.certificate-info {
-    padding: 16px;
-}
-
-.certificate-info h3 {
-    font-size: 14px;
-}
-
-.certificate-info p {
-    font-size: 11px;
-    color: #8490a0;
-    margin-top: 3px;
-}
-
-
-/* =========================================================
-   LIGHTBOX
-========================================================= */
-
-.lightbox {
-    position: fixed;
-    inset: 0;
-    z-index: 5000;
-
-    display: none;
-    align-items: center;
-    justify-content: center;
-
-    padding: 25px;
-
-    background: rgba(2,7,13,.92);
-    backdrop-filter: blur(15px);
-}
-
-.lightbox.show {
-    display: flex;
-}
-
-.lightbox img {
-    max-width: min(1000px, 95vw);
-    max-height: 88vh;
-    border-radius: 16px;
-    box-shadow: 0 40px 100px rgba(0,0,0,.5);
-}
-
-.lightbox-close {
-    position: absolute;
-    top: 22px;
-    right: 25px;
-
-    width: 45px;
-    height: 45px;
-
-    border-radius: 50%;
-    border: 1px solid rgba(255,255,255,.12);
-
-    background: rgba(255,255,255,.06);
-    color: white;
-
-    font-size: 24px;
-    cursor: pointer;
-}
-
-
-/* =========================================================
-   CONTACT
-========================================================= */
-
-.contact-box {
-    position: relative;
-    overflow: hidden;
-
-    padding: clamp(35px, 7vw, 75px);
-
-    border: 1px solid rgba(216,184,120,.16);
-    border-radius: 30px;
-
-    background:
-        radial-gradient(circle at 80% 10%, rgba(216,184,120,.12), transparent 30%),
-        linear-gradient(145deg, rgba(255,255,255,.07), rgba(255,255,255,.025));
-}
-
-.contact-box h2 {
-    max-width: 700px;
-    font-family: "Manrope", sans-serif;
-    font-size: clamp(32px, 5vw, 60px);
-    line-height: 1;
-    letter-spacing: -.05em;
-}
-
-.contact-box h2 span {
-    color: var(--gold);
-}
-
-.contact-box p {
-    max-width: 650px;
-    color: var(--muted);
-    margin-top: 20px;
-}
-
-.contact-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 30px;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer {
-    padding: 35px 0 45px;
-    color: #6f7c8c;
-    font-size: 12px;
-}
-
-.footer-inner {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    padding-top: 25px;
-    border-top: 1px solid rgba(255,255,255,.06);
-}
-
-.footer-name {
-    color: #aeb8c5;
-}
-
-
-/* =========================================================
-   REVEAL ANIMATION
-========================================================= */
-
-.reveal {
-    opacity: 0;
-    transform: translateY(35px);
-    transition:
-        opacity .8s ease,
-        transform .8s cubic-bezier(.2,.7,.2,1);
-}
-
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.delay-1 { transition-delay: .1s; }
-.delay-2 { transition-delay: .2s; }
-.delay-3 { transition-delay: .3s; }
-.delay-4 { transition-delay: .4s; }
-
-
-/* =========================================================
-   FLOATING SCROLL INDICATOR
-========================================================= */
-
-.scroll-hint {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-
-    color: #657386;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: .2em;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
-
-.scroll-line {
-    width: 1px;
-    height: 42px;
-    background: linear-gradient(to bottom, var(--gold), transparent);
-    animation: scrollLine 1.8s infinite;
-}
-
-@keyframes scrollLine {
-    0% { transform: scaleY(0); transform-origin: top; }
-    50% { transform: scaleY(1); transform-origin: top; }
-    51% { transform-origin: bottom; }
-    100% { transform: scaleY(0); transform-origin: bottom; }
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 900px) {
-
-    .navbar {
-        top: 10px;
-    }
-
-    .menu-btn {
-        display: block;
-    }
-
-    .nav-links {
-        position: absolute;
-        top: calc(100% + 8px);
-        left: 0;
-        right: 0;
-
-        padding: 10px;
-
-        flex-direction: column;
-
-        border-radius: 16px;
-        border: 1px solid rgba(255,255,255,.08);
-
-        background: rgba(7,17,31,.95);
-        backdrop-filter: blur(20px);
-
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-8px);
-
-        transition: .3s ease;
-    }
-
-    .nav-links.open {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
-
-    .nav-links a {
-        padding: 13px;
-    }
-
-    .hero-grid,
-    .video-layout,
-    .profile-grid {
-        grid-template-columns: 1fr;
-        gap: 55px;
-    }
-
-    .hero {
-        padding-top: 150px;
-    }
-
-    .hero-photo-area {
-        order: -1;
-    }
-
-    .photo-frame {
-        width: min(350px, 80vw);
-    }
-
-    .hero h1 {
-        font-size: clamp(48px, 14vw, 78px);
-    }
-
-    .bfd-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .bfd-intro {
-        display: block;
-    }
-
-    .bfd-intro .section-description {
-        margin-top: 20px;
-    }
-
-    .strengths-grid {
-        grid-template-columns: repeat(2,1fr);
-    }
-
-    .experience-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .languages {
-        grid-template-columns: 1fr;
-    }
-
-    .gallery {
-        grid-template-columns: repeat(2,1fr);
-    }
-
-    .certificates {
-        grid-template-columns: 1fr;
-    }
-
-    .footer-inner {
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 520px) {
-
-    section {
-        padding: 80px 0;
-    }
-
-    .container {
-        width: min(100% - 28px, 1120px);
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .btn {
-        width: 100%;
-    }
-
-    .photo-tag {
-        left: -5px;
-        bottom: 20px;
-    }
-
-    .strengths-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .gallery {
-        gap: 8px;
-    }
-
-    .contact-buttons {
-        flex-direction: column;
-    }
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bruno Parlin Pakpahan | Persönliches Portfolio</title>
+
+    <meta name="description"
+          content="Persönliches Portfolio von Bruno Parlin Pakpahan – Bewerbung für einen Bundesfreiwilligendienst (BFD) in Deutschland.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #07111f;
+            --bg2: #0b1728;
+            --card: rgba(16, 31, 50, .78);
+            --card2: rgba(20, 38, 60, .65);
+            --gold: #d7b56d;
+            --gold-light: #f0d99a;
+            --text: #f5f7fa;
+            --muted: #aeb9c8;
+            --border: rgba(215,181,109,.22);
+            --white-soft: rgba(255,255,255,.07);
+            --shadow: 0 25px 70px rgba(0,0,0,.35);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            background:
+                radial-gradient(circle at 15% 10%, rgba(215,181,109,.08), transparent 30%),
+                radial-gradient(circle at 85% 30%, rgba(40,90,150,.12), transparent 30%),
+                var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background:
+                linear-gradient(
+                    rgba(255,255,255,.015) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.015) 1px,
+                    transparent 1px
+                );
+            background-size: 70px 70px;
+            mask-image: linear-gradient(to bottom, black, transparent);
+            z-index: -2;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        .container {
+            width: min(1160px, 92%);
+            margin: auto;
+        }
+
+        /* =========================
+           LOADER
+        ========================= */
+
+        .loader {
+            position: fixed;
+            inset: 0;
+            background: var(--bg);
+            display: grid;
+            place-items: center;
+            z-index: 9999;
+            transition: .7s ease;
+        }
+
+        .loader.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-inner {
+            text-align: center;
+        }
+
+        .loader-logo {
+            font-family: "Playfair Display", serif;
+            font-size: 2.3rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .loader-line {
+            width: 160px;
+            height: 2px;
+            background: rgba(255,255,255,.12);
+            overflow: hidden;
+        }
+
+        .loader-line span {
+            display: block;
+            height: 100%;
+            width: 50%;
+            background: var(--gold);
+            animation: loading 1.2s infinite;
+        }
+
+        @keyframes loading {
+            from {
+                transform: translateX(-100%);
+            }
+
+            to {
+                transform: translateX(300%);
+            }
+        }
+
+        /* =========================
+           PROGRESS
+        ========================= */
+
+        .progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0;
+            background: var(--gold);
+            z-index: 9998;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(7,17,31,.78);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255,255,255,.05);
+        }
+
+        .nav-inner {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: "Playfair Display", serif;
+            font-size: 1.25rem;
+            color: var(--gold);
+            letter-spacing: .5px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: .9rem;
+            color: var(--muted);
+            transition: .3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-light);
+        }
+
+        .menu-toggle {
+            display: none;
+            border: 0;
+            background: transparent;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 120px 0 80px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 14px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            color: var(--gold-light);
+            background: rgba(215,181,109,.05);
+            font-size: .82rem;
+            margin-bottom: 25px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--gold);
+            box-shadow: 0 0 15px var(--gold);
+        }
+
+        h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(3.1rem, 7vw, 6rem);
+            line-height: .98;
+            font-weight: 600;
+            letter-spacing: -2px;
+            margin-bottom: 28px;
+        }
+
+        h1 span {
+            color: var(--gold);
+        }
+
+        .hero-text {
+            max-width: 680px;
+            color: var(--muted);
+            font-size: 1.05rem;
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 13px 22px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            transition: .3s ease;
+            font-weight: 600;
+            font-size: .9rem;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: #101923;
+            border-color: var(--gold);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(215,181,109,.2);
+        }
+
+        .btn-outline {
+            color: var(--text);
+            background: rgba(255,255,255,.03);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold-light);
+            transform: translateY(-3px);
+        }
+
+        /* Hero Profile */
+
+        .hero-profile {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-frame {
+            width: min(360px, 85vw);
+            aspect-ratio: 4 / 5;
+            border-radius: 28px;
+            padding: 10px;
+            background: linear-gradient(
+                145deg,
+                rgba(215,181,109,.75),
+                rgba(215,181,109,.08)
+            );
+            box-shadow: var(--shadow);
+            transform: rotate(2deg);
+        }
+
+        .profile-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 21px;
+            background: #111;
+        }
+
+        .profile-badge {
+            position: absolute;
+            left: -20px;
+            bottom: 30px;
+            background: rgba(12,26,43,.94);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 16px 18px;
+            backdrop-filter: blur(15px);
+            box-shadow: var(--shadow);
+        }
+
+        .profile-badge strong {
+            display: block;
+            color: var(--gold-light);
+        }
+
+        .profile-badge small {
+            color: var(--muted);
+        }
+
+        /* =========================
+           MARQUEE
+        ========================= */
+
+        .marquee {
+            overflow: hidden;
+            border-top: 1px solid rgba(255,255,255,.06);
+            border-bottom: 1px solid rgba(255,255,255,.06);
+            padding: 16px 0;
+            white-space: nowrap;
+        }
+
+        .marquee-track {
+            display: inline-flex;
+            gap: 35px;
+            animation: marquee 24s linear infinite;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: .72rem;
+        }
+
+        .marquee-track span {
+            color: var(--gold);
+        }
+
+        @keyframes marquee {
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section {
+            padding: 110px 0;
+        }
+
+        .section-heading {
+            max-width: 700px;
+            margin-bottom: 50px;
+        }
+
+        .section-label {
+            color: var(--gold);
+            text-transform: uppercase;
+            font-size: .75rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(2.2rem, 5vw, 3.7rem);
+            line-height: 1.1;
+            margin-bottom: 18px;
+        }
+
+        .section-description {
+            color: var(--muted);
+        }
+
+        /* =========================
+           VIDEO
+        ========================= */
+
+        .video-wrapper {
+            border: 1px solid var(--border);
+            background: var(--card);
+            padding: 10px;
+            border-radius: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            max-height: 650px;
+            display: block;
+            border-radius: 18px;
+            background: #000;
+        }
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            padding: 28px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            border-radius: 22px;
+            transition: .35s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(215,181,109,.5);
+        }
+
+        .card-number {
+            color: var(--gold);
+            font-size: .75rem;
+            letter-spacing: 2px;
+            margin-bottom: 18px;
+        }
+
+        .card h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 1.45rem;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: .94rem;
+        }
+
+        /* =========================
+           STRENGTHS
+        ========================= */
+
+        .strength-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .strength {
+            padding: 22px;
+            border-radius: 18px;
+            background: rgba(255,255,255,.035);
+            border: 1px solid rgba(255,255,255,.07);
+            transition: .3s;
+        }
+
+        .strength:hover {
+            border-color: var(--border);
+            transform: translateY(-4px);
+        }
+
+        .strength span {
+            color: var(--gold);
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .strength strong {
+            font-size: .95rem;
+        }
+
+        /* =========================
+           TIMELINE
+        ========================= */
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 9px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: rgba(215,181,109,.3);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 45px;
+            margin-bottom: 40px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 4px;
+            top: 8px;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: var(--gold);
+            box-shadow: 0 0 0 5px rgba(215,181,109,.1);
+        }
+
+        .timeline-date {
+            color: var(--gold);
+            font-size: .78rem;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 1.45rem;
+        }
+
+        .timeline-company {
+            color: var(--text);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .timeline-item p {
+            color: var(--muted);
+        }
+
+        /* =========================
+           EDUCATION / LANGUAGE
+        ========================= */
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .info-box {
+            padding: 30px;
+            border-radius: 23px;
+            border: 1px solid var(--border);
+            background: var(--card);
+        }
+
+        .info-box h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+
+        .language {
+            margin-bottom: 20px;
+        }
+
+        .language-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .language-top span:last-child {
+            color: var(--gold);
+            font-size: .85rem;
+        }
+
+        .language-bar {
+            height: 5px;
+            border-radius: 99px;
+            background: rgba(255,255,255,.08);
+            overflow: hidden;
+        }
+
+        .language-bar span {
+            display: block;
+            height: 100%;
+            background: var(--gold);
+            border-radius: 99px;
+        }
+
+        /* =========================
+           PORTFOLIO TABS
+        ========================= */
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            border: 1px solid var(--border);
+            color: var(--muted);
+            background: rgba(255,255,255,.03);
+            padding: 10px 18px;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .tab-button.active,
+        .tab-button:hover {
+            color: #101923;
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* =========================
+           PHOTO GALLERY
+        ========================= */
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-card {
+            overflow: hidden;
+            border-radius: 22px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            transition: .35s ease;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(215,181,109,.55);
+        }
+
+        .gallery-image {
+            height: 340px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .5s ease;
+        }
+
+        .gallery-card:hover .gallery-image img {
+            transform: scale(1.04);
+        }
+
+        .gallery-caption {
+            padding: 20px;
+        }
+
+        .gallery-caption h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .gallery-caption p {
+            color: var(--muted);
+            font-size: .9rem;
+        }
+
+        /* =========================
+           PDF CERTIFICATES
+        ========================= */
+
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .certificate-card {
+            border: 1px solid var(--border);
+            background: var(--card);
+            border-radius: 23px;
+            overflow: hidden;
+            transition: .35s ease;
+            box-shadow: 0 15px 45px rgba(0,0,0,.15);
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(215,181,109,.55);
+        }
+
+        /*
+            PDF PREVIEW
+
+            File PDF tetap PDF.
+            Tidak perlu JPG/PNG.
+        */
+
+        .certificate-preview {
+            height: 520px;
+            background: #e9edf2;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .certificate-preview iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+            background: white;
+        }
+
+        .certificate-info {
+            padding: 22px;
+        }
+
+        .certificate-info h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 1.35rem;
+            margin-bottom: 7px;
+        }
+
+        .certificate-info p {
+            color: var(--muted);
+            font-size: .9rem;
+            margin-bottom: 18px;
+        }
+
+        .pdf-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: rgba(215,181,109,.1);
+            border: 1px solid var(--border);
+            color: var(--gold-light);
+            font-size: .85rem;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .pdf-button:hover {
+            background: var(--gold);
+            color: #101923;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact-box {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 40px;
+            align-items: center;
+            padding: 45px;
+            border-radius: 28px;
+            border: 1px solid var(--border);
+            background:
+                radial-gradient(circle at 90% 20%, rgba(215,181,109,.12), transparent 30%),
+                var(--card);
+        }
+
+        .contact-box h2 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+
+        .contact-box p {
+            color: var(--muted);
+            max-width: 650px;
+        }
+
+        .contact-details {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            color: var(--muted);
+            font-size: .9rem;
+        }
+
+        .contact-details span {
+            color: var(--gold-light);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,.06);
+            padding: 30px 0;
+            color: var(--muted);
+            font-size: .82rem;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* =========================
+           REVEAL
+        ========================= */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity .8s ease, transform .8s ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================
+           LIGHTBOX
+        ========================= */
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.9);
+            z-index: 9997;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 95%;
+            max-height: 90vh;
+            border-radius: 12px;
+            box-shadow: 0 30px 100px rgba(0,0,0,.6);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .hero-profile {
+                order: -1;
+            }
+
+            .profile-frame {
+                width: min(300px, 80vw);
+            }
+
+            .cards {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .strength-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .certificate-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-box {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            section {
+                padding: 80px 0;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 76px;
+                left: 0;
+                width: 100%;
+                padding: 20px;
+                flex-direction: column;
+                align-items: flex-start;
+                background: rgba(7,17,31,.97);
+                border-bottom: 1px solid rgba(255,255,255,.06);
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .cards,
+            .gallery-grid,
+            .info-grid,
+            .strength-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-image {
+                height: 300px;
+            }
+
+            .certificate-preview {
+                height: 500px;
+            }
+
+            .contact-box {
+                padding: 30px;
+            }
+
+            h1 {
+                font-size: clamp(2.8rem, 15vw, 4.5rem);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
 </head>
-
 
 <body>
 
-<!-- ======================================================
-     LOADER
-====================================================== -->
+    <!-- LOADER -->
 
-<div class="loader" id="loader">
-    <div class="loader-inner">
-        <div class="loader-name">
-            Bruno <span style="color:#d8b878;">Parlin Pakpahan</span>
-        </div>
+    <div class="loader" id="loader">
+        <div class="loader-inner">
+            <div class="loader-logo">Bruno Parlin Pakpahan</div>
 
-        <div class="loader-line">
-            <span></span>
-        </div>
-
-        <div style="font-size:10px;color:#657386;letter-spacing:.18em;text-transform:uppercase;">
-            Persönliches Portfolio
+            <div class="loader-line">
+                <span></span>
+            </div>
         </div>
     </div>
-</div>
 
+    <!-- SCROLL PROGRESS -->
 
-<div class="noise"></div>
+    <div class="progress" id="progress"></div>
 
-<div class="orb one"></div>
-<div class="orb two"></div>
-<div class="orb three"></div>
+    <!-- NAVIGATION -->
 
-<div class="progress" id="progress"></div>
+    <nav>
+        <div class="container nav-inner">
 
+            <a href="#home" class="logo">
+                Bruno Parlin Pakpahan
+            </a>
 
-<!-- ======================================================
-     NAVIGATION
-====================================================== -->
+            <button class="menu-toggle" id="menuToggle">
+                ☰
+            </button>
 
-<nav class="navbar">
+            <div class="nav-links" id="navLinks">
 
-    <a href="#start" class="logo">
-        Portfolio<span>.</span>
-    </a>
-
-    <div class="nav-links" id="navLinks">
-        <a href="#profil">Profil</a>
-        <a href="#erfahrung">Erfahrung</a>
-        <a href="#bfd">BFD</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#kontakt">Kontakt</a>
-    </div>
-
-    <button class="menu-btn" id="menuBtn" aria-label="Menü öffnen">
-        ☰
-    </button>
-
-</nav>
-
-
-<!-- ======================================================
-     HERO
-====================================================== -->
-
-<main id="start">
-
-<section class="hero">
-
-    <div class="container">
-
-        <div class="hero-grid">
-
-            <div class="hero-content reveal">
-
-                <div class="hero-kicker">
-                    <span class="status-dot"></span>
-                    Bewerbung für den Bundesfreiwilligendienst
-                </div>
-
-                <h1>
-                    <span class="name-line">Bruno</span>
-                    <span class="name-line gold">Parlin</span>
-                    <span class="name-line">Pakpahan<span style="color:#d8b878;">.</span></span>
-                </h1>
-
-                <div class="hero-role">
-                    <span class="typing" id="typing"></span><span class="cursor"></span>
-                </div>
-
-                <p class="hero-text">
-                    Zuverlässig, lernbereit und teamorientiert.
-                    Ich möchte mich im Rahmen eines BFD persönlich und
-                    beruflich weiterentwickeln und meine Erfahrungen
-                    in einem sozialen Umfeld in Deutschland einbringen.
-                </p>
-
-                <div class="hero-buttons">
-
-                    <a href="#video" class="btn btn-primary">
-                        ▶ Meine Vorstellung
-                    </a>
-
-                    <a href="#kontakt" class="btn btn-secondary">
-                        Kontakt aufnehmen →
-                    </a>
-
-                </div>
+                <a href="#home">Start</a>
+                <a href="#vorstellung">Vorstellung</a>
+                <a href="#profil">Profil</a>
+                <a href="#erfahrung">Erfahrung</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#kontakt">Kontakt</a>
 
             </div>
 
+        </div>
+    </nav>
 
-            <div class="hero-photo-area reveal delay-2">
+    <!-- HERO -->
 
-                <div class="photo-glow"></div>
+    <main>
 
-                <div class="photo-frame">
+        <section class="hero" id="home">
 
-                    <div class="photo-inner">
+            <div class="container hero-grid">
+
+                <div class="hero-content reveal">
+
+                    <div class="eyebrow">
+                        Bewerbung für einen Bundesfreiwilligendienst
+                    </div>
+
+                    <h1>
+                        Bruno<br>
+                        <span>Parlin Pakpahan</span>
+                    </h1>
+
+                    <p class="hero-text">
+                        Zuverlässig, lernbereit und teamorientiert.
+                        Mit beruflicher Erfahrung in Logistik, Produktion
+                        und Personenbeförderung möchte ich mich im sozialen
+                        Bereich engagieren und neue Erfahrungen sammeln.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="#profil" class="btn btn-primary">
+                            Mein Profil
+                        </a>
+
+                        <a href="#portfolio" class="btn btn-outline">
+                            Portfolio ansehen
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="hero-profile reveal">
+
+                    <div class="profile-frame">
 
                         <img
                             src="profil.png"
@@ -1588,1160 +1114,1223 @@ footer {
 
                     </div>
 
-                    <div class="photo-tag">
-                        <strong>Deutschland</strong>
-                        BFD • Lernen • Mitwirken
+                    <div class="profile-badge">
+
+                        <strong>Bereit für neue Erfahrungen</strong>
+
+                        <small>
+                            BFD · Deutschland
+                        </small>
+
                     </div>
 
                 </div>
 
             </div>
 
-        </div>
-
-    </div>
+        </section>
 
 
-    <div class="scroll-hint">
-        Scroll
-        <span class="scroll-line"></span>
-    </div>
+        <!-- MARQUEE -->
 
-</section>
+        <div class="marquee">
 
+            <div class="marquee-track">
 
-<!-- ======================================================
-     MARQUEE
-====================================================== -->
-
-<div class="marquee-wrap">
-
-    <div class="marquee">
-
-        <span>
-            Zuverlässigkeit <b>✦</b>
-            Teamfähigkeit <b>✦</b>
-            Lernbereitschaft <b>✦</b>
-            Verantwortung <b>✦</b>
-            Empathie <b>✦</b>
-            Engagement <b>✦</b>
-        </span>
-
-        <span>
-            Zuverlässigkeit <b>✦</b>
-            Teamfähigkeit <b>✦</b>
-            Lernbereitschaft <b>✦</b>
-            Verantwortung <b>✦</b>
-            Empathie <b>✦</b>
-            Engagement <b>✦</b>
-        </span>
-
-    </div>
-
-</div>
-
-
-<!-- ======================================================
-     VIDEO
-====================================================== -->
-
-<section class="video-section" id="video">
-
-    <div class="container">
-
-        <div class="video-layout">
-
-            <div class="video-copy reveal">
-
-                <div class="section-label">
-                    Persönliche Vorstellung
-                </div>
-
-                <h2 class="section-title">
-                    Lernen Sie mich<br>
-                    <span>persönlich kennen.</span>
-                </h2>
-
-                <p>
-                    Ein kurzer persönlicher Einblick in meine
-                    Motivation, meinen bisherigen Weg und meinen
-                    Wunsch, einen Bundesfreiwilligendienst in
-                    Deutschland zu absolvieren.
-                </p>
-
-                <div class="video-note">
-                    🎥 Meine Vorstellung • ca. 60–90 Sekunden
-                </div>
-
-            </div>
-
-
-            <div class="video-box reveal delay-2">
-
-                <video controls preload="metadata" poster="profil.png">
-
-                    <source
-                        src="video/vorstellung.mp4"
-                        type="video/mp4"
-                    >
-
-                    Ihr Browser unterstützt das Videoformat nicht.
-
-                </video>
+                <span>Bruno Parlin Pakpahan</span>
+                Zuverlässigkeit
+                <span>Teamfähigkeit</span>
+                Lernbereitschaft
+                <span>Verantwortungsbewusstsein</span>
+                Organisation
+                <span>Bruno Parlin Pakpahan</span>
+                Zuverlässigkeit
+                <span>Teamfähigkeit</span>
+                Lernbereitschaft
+                <span>Verantwortungsbewusstsein</span>
+                Organisation
 
             </div>
 
         </div>
 
-    </div>
 
-</section>
+        <!-- VORSTELLUNG -->
 
+        <section id="vorstellung">
 
-<!-- ======================================================
-     PROFIL
-====================================================== -->
+            <div class="container">
 
-<section id="profil">
+                <div class="section-heading reveal">
 
-    <div class="container">
+                    <div class="section-label">
+                        01 — Vorstellung
+                    </div>
 
-        <div class="profile-grid">
+                    <h2 class="section-title">
+                        Persönlich vorgestellt.
+                    </h2>
 
-            <div class="reveal">
+                    <p class="section-description">
+                        Ein kurzer persönlicher Einblick und eine Vorstellung
+                        meiner Motivation.
+                    </p>
 
-                <div class="section-label">
-                    Kurzprofil
                 </div>
 
-                <h2 class="section-title">
-                    Mehr als ein<br>
-                    <span>Lebenslauf.</span>
-                </h2>
+                <div class="video-wrapper reveal">
 
-                <div class="profile-text">
+                    <video controls preload="metadata">
 
-                    <p>
-                        Mein Name ist Bruno Parlin Pakpahan.
-                        Ich komme aus Indonesien und habe eine
-                        berufliche Ausbildung im Bereich
-                        Computer- und Netzwerktechnik abgeschlossen.
-                    </p>
+                        <source
+                            src="video/vorstellung.mp4"
+                            type="video/mp4"
+                        >
 
-                    <p>
-                        In den vergangenen Jahren konnte ich
-                        praktische Erfahrungen in verschiedenen
-                        Arbeitsbereichen sammeln – unter anderem
-                        in Logistik, Produktion und
-                        Personenbeförderung.
-                    </p>
+                        Ihr Browser unterstützt dieses Videoformat nicht.
 
-                    <p>
-                        Diese Erfahrungen haben mich gelehrt,
-                        zuverlässig zu arbeiten, Verantwortung zu
-                        übernehmen und auch in unterschiedlichen
-                        Situationen respektvoll mit anderen Menschen
-                        umzugehen.
-                    </p>
-
-                    <p>
-                        Jetzt möchte ich einen neuen Schritt gehen:
-                        neue Menschen kennenlernen, mich sozial
-                        engagieren, meine Deutschkenntnisse
-                        weiterentwickeln und gleichzeitig persönlich
-                        wachsen.
-                    </p>
+                    </video>
 
                 </div>
 
             </div>
 
+        </section>
 
-            <div class="info-card reveal delay-2">
 
-                <div class="info-row">
-                    <span class="info-label">Name</span>
-                    <span class="info-value">Bruno Parlin Pakpahan</span>
+        <!-- PROFIL -->
+
+        <section id="profil">
+
+            <div class="container">
+
+                <div class="section-heading reveal">
+
+                    <div class="section-label">
+                        02 — Kurzprofil
+                    </div>
+
+                    <h2 class="section-title">
+                        Wer ich bin.
+                    </h2>
+
+                    <p class="section-description">
+                        Ein Überblick über meine Persönlichkeit,
+                        Motivation und beruflichen Hintergrund.
+                    </p>
+
                 </div>
 
-                <div class="info-row">
-                    <span class="info-label">Geburtsort</span>
-                    <span class="info-value">Aekraja, Indonesien</span>
-                </div>
+                <div class="cards">
 
-                <div class="info-row">
-                    <span class="info-label">Staatsangehörigkeit</span>
-                    <span class="info-value">Indonesisch</span>
-                </div>
+                    <div class="card reveal">
 
-                <div class="info-row">
-                    <span class="info-label">Wohnort</span>
-                    <span class="info-value">Jakarta, Indonesien</span>
-                </div>
+                        <div class="card-number">01</div>
 
-                <div class="info-row">
-                    <span class="info-label">Deutsch</span>
-                    <span class="info-value">B1</span>
-                </div>
+                        <h3>Über mich</h3>
 
-                <div class="info-row">
-                    <span class="info-label">Ziel</span>
-                    <span class="info-value">Bundesfreiwilligendienst</span>
+                        <p>
+                            Ich bin Absolvent einer berufsbildenden
+                            Oberschule im Bereich Computer- und
+                            Netzwerktechnik. Durch meine bisherigen
+                            beruflichen Tätigkeiten habe ich gelernt,
+                            zuverlässig, verantwortungsbewusst und
+                            selbstständig zu arbeiten.
+                        </p>
+
+                    </div>
+
+                    <div class="card reveal">
+
+                        <div class="card-number">02</div>
+
+                        <h3>Meine Motivation</h3>
+
+                        <p>
+                            Mit einem Bundesfreiwilligendienst möchte ich
+                            mich gesellschaftlich engagieren, praktische
+                            Erfahrungen im sozialen Bereich sammeln und
+                            gleichzeitig meine Deutschkenntnisse weiter
+                            verbessern.
+                        </p>
+
+                    </div>
+
+                    <div class="card reveal">
+
+                        <div class="card-number">03</div>
+
+                        <h3>Mein Ziel</h3>
+
+                        <p>
+                            Ich möchte mich persönlich und beruflich
+                            weiterentwickeln, Verantwortung übernehmen und
+                            mich aktiv in ein neues Team und Arbeitsumfeld
+                            einbringen.
+                        </p>
+
+                    </div>
+
                 </div>
 
             </div>
 
-        </div>
-
-    </div>
-
-</section>
+        </section>
 
 
-<!-- ======================================================
-     WHY BFD
-====================================================== -->
+        <!-- WARUM BFD -->
 
-<section class="bfd-section" id="bfd">
+        <section>
 
-    <div class="container">
+            <div class="container">
 
-        <div class="bfd-intro reveal">
+                <div class="section-heading reveal">
+
+                    <div class="section-label">
+                        03 — Warum BFD?
+                    </div>
+
+                    <h2 class="section-title">
+                        Engagement mit Perspektive.
+                    </h2>
+
+                </div>
+
+                <div class="cards">
+
+                    <div class="card reveal">
+
+                        <div class="card-number">01</div>
+
+                        <h3>Menschen unterstützen</h3>
+
+                        <p>
+                            Ich möchte meine Zeit und meine Fähigkeiten
+                            sinnvoll einsetzen und Menschen im Alltag
+                            unterstützen.
+                        </p>
+
+                    </div>
+
+                    <div class="card reveal">
+
+                        <div class="card-number">02</div>
+
+                        <h3>Neue Erfahrungen</h3>
+
+                        <p>
+                            Der BFD bietet mir die Möglichkeit, einen neuen
+                            beruflichen Bereich kennenzulernen und praktische
+                            Erfahrungen zu sammeln.
+                        </p>
+
+                    </div>
+
+                    <div class="card reveal">
+
+                        <div class="card-number">03</div>
+
+                        <h3>Deutsch verbessern</h3>
+
+                        <p>
+                            Durch den täglichen Kontakt mit Menschen möchte
+                            ich meine deutschen Sprachkenntnisse weiter
+                            entwickeln und sicherer kommunizieren.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STÄRKEN -->
+
+        <section>
+
+            <div class="container">
+
+                <div class="section-heading reveal">
+
+                    <div class="section-label">
+                        04 — Stärken
+                    </div>
+
+                    <h2 class="section-title">
+                        Was ich mitbringe.
+                    </h2>
+
+                </div>
+
+                <div class="strength-grid">
+
+                    <div class="strength reveal">
+                        <span>01</span>
+                        <strong>Zuverlässigkeit</strong>
+                    </div>
+
+                    <div class="strength reveal">
+                        <span>02</span>
+                        <strong>Pünktlichkeit</strong>
+                    </div>
+
+                    <div class="strength reveal">
+                        <span>03</span>
+                        <strong>Teamfähigkeit</strong>
+                    </div>
+
+                    <div class="strength reveal">
+                        <span>04</span>
+                        <strong>Verantwortungsbewusstsein</strong>
+                    </div>
+
+                    <div class="strength reveal">
+                        <span>05</span>
+                        <strong>Einfühlungsvermögen</strong>
+                    </div>
+
+                    <div class="strength reveal">
+                        <span>06</span>
+                        <strong>Belastbarkeit</strong>
+                    </div>
+
+                    <div class="strength reveal">
+                        <span>07</span>
+                        <strong>Lernbereitschaft</strong>
+                    </div>
+
+                    <div class="strength reveal">
+                        <span>08</span>
+                        <strong>Organisation</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ERFAHRUNG -->
+
+        <section id="erfahrung">
+
+            <div class="container">
+
+                <div class="section-heading reveal">
+
+                    <div class="section-label">
+                        05 — Berufserfahrung
+                    </div>
+
+                    <h2 class="section-title">
+                        Mein beruflicher Weg.
+                    </h2>
+
+                </div>
+
+                <div class="timeline">
+
+                    <div class="timeline-item reveal">
+
+                        <div class="timeline-dot"></div>
+
+                        <div class="timeline-date">
+                            01.09.2024 – aktuell
+                        </div>
+
+                        <h3>
+                            Selbstständiger Fahrer
+                        </h3>
+
+                        <div class="timeline-company">
+                            GRAB Indonesia · Jakarta
+                        </div>
+
+                        <p>
+                            Sichere Beförderung von Personen sowie
+                            zuverlässige Zustellung von Dokumenten,
+                            Paketen und Lebensmitteln. Flexible und
+                            effektive Routenplanung sowie freundlicher
+                            und professioneller Umgang mit
+                            unterschiedlichen Kunden.
+                        </p>
+
+                    </div>
+
+
+                    <div class="timeline-item reveal">
+
+                        <div class="timeline-dot"></div>
+
+                        <div class="timeline-date">
+                            01.06.2022 – 01.05.2024
+                        </div>
+
+                        <h3>
+                            Lagermitarbeiter
+                        </h3>
+
+                        <div class="timeline-company">
+                            PT. Serpong Alam Lestari · Bogor
+                        </div>
+
+                        <p>
+                            Kommissionierung, Bestandskontrollen und
+                            Unterstützung eines reibungslosen
+                            Lagerbetriebs.
+                        </p>
+
+                    </div>
+
+
+                    <div class="timeline-item reveal">
+
+                        <div class="timeline-dot"></div>
+
+                        <div class="timeline-date">
+                            01.03.2020 – 01.06.2022
+                        </div>
+
+                        <h3>
+                            Produktionsmitarbeiter
+                        </h3>
+
+                        <div class="timeline-company">
+                            PT. Bright Food International · Bogor
+                        </div>
+
+                        <p>
+                            Bedienung von Maschinen, Qualitätskontrolle
+                            sowie Pflege und Instandhaltung des
+                            Arbeitsbereichs.
+                        </p>
+
+                    </div>
+
+
+                    <div class="timeline-item reveal">
+
+                        <div class="timeline-dot"></div>
+
+                        <div class="timeline-date">
+                            01.10.2018 – 01.02.2020
+                        </div>
+
+                        <h3>
+                            Helper – Lager / Transport
+                        </h3>
+
+                        <div class="timeline-company">
+                            PT. Mulia Multi Mandiri · Indonesien
+                        </div>
+
+                        <p>
+                            Be- und Entladen von Waren, Kontrolle von
+                            Menge und Zustand sowie Unterstützung
+                            logistischer Abläufe.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- BILDUNG & SPRACHEN -->
+
+        <section>
+
+            <div class="container">
+
+                <div class="section-heading reveal">
+
+                    <div class="section-label">
+                        06 — Bildung & Sprachen
+                    </div>
+
+                    <h2 class="section-title">
+                        Ausbildung und Kommunikation.
+                    </h2>
+
+                </div>
+
+                <div class="info-grid">
+
+                    <div class="info-box reveal">
+
+                        <h3>Ausbildung</h3>
+
+                        <p>
+                            <strong>
+                                Abschluss der berufsbildenden Oberschule
+                            </strong>
+                        </p>
+
+                        <p>
+                            Fachrichtung Computer- und Netzwerktechnik
+                        </p>
+
+                        <p>
+                            SMK Swasta St. Nahanson Parapat
+                        </p>
+
+                        <p style="color:var(--muted); margin-top:10px;">
+                            01.06.2015 – 01.03.2018 · Tarutung, Indonesien
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-box reveal">
+
+                        <h3>Sprachen</h3>
+
+                        <div class="language">
+
+                            <div class="language-top">
+
+                                <span>Indonesisch</span>
+
+                                <span>Muttersprache</span>
+
+                            </div>
+
+                            <div class="language-bar">
+
+                                <span style="width:100%"></span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="language">
+
+                            <div class="language-top">
+
+                                <span>Deutsch</span>
+
+                                <span>B1</span>
+
+                            </div>
+
+                            <div class="language-bar">
+
+                                <span style="width:65%"></span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="language">
+
+                            <div class="language-top">
+
+                                <span>Englisch</span>
+
+                                <span>A1</span>
+
+                            </div>
+
+                            <div class="language-bar">
+
+                                <span style="width:30%"></span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PORTFOLIO -->
+
+        <section id="portfolio">
+
+            <div class="container">
+
+                <div class="section-heading reveal">
+
+                    <div class="section-label">
+                        07 — Portfolio
+                    </div>
+
+                    <h2 class="section-title">
+                        Einblicke in meinen Arbeitsalltag.
+                    </h2>
+
+                    <p class="section-description">
+                        Fotos aus meinem beruflichen Alltag sowie
+                        Nachweise und Zertifikate.
+                    </p>
+
+                </div>
+
+
+                <!-- TABS -->
+
+                <div class="tabs reveal">
+
+                    <button
+                        class="tab-button active"
+                        data-tab="fotos">
+                        Fotos
+                    </button>
+
+                    <button
+                        class="tab-button"
+                        data-tab="zertifikate">
+                        Zertifikate
+                    </button>
+
+                </div>
+
+
+                <!-- FOTOS -->
+
+                <div
+                    class="tab-content active"
+                    id="fotos">
+
+                    <div class="gallery-grid">
+
+
+                        <!-- FOTO 1 -->
+
+                        <div class="gallery-card reveal">
+
+                            <div
+                                class="gallery-image"
+                                data-image="photos/foto1.jpg">
+
+                                <img
+                                    src="photos/foto1.jpg"
+                                    alt="Arbeitsbeginn">
+
+                            </div>
+
+                            <div class="gallery-caption">
+
+                                <h3>Arbeitsbeginn</h3>
+
+                                <p>
+                                    Dokumentation meines Arbeitsbeginns
+                                    und eines strukturierten
+                                    Arbeitsalltags.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- FOTO 2 -->
+
+                        <div class="gallery-card reveal">
+
+                            <div
+                                class="gallery-image"
+                                data-image="photos/foto2.jpg">
+
+                                <img
+                                    src="photos/foto2.jpg"
+                                    alt="Arbeitsplatz">
+
+                            </div>
+
+                            <div class="gallery-caption">
+
+                                <h3>Arbeitsplatz</h3>
+
+                                <p>
+                                    Ein Einblick in mein berufliches
+                                    Umfeld und meinen täglichen
+                                    Arbeitsalltag.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- FOTO 3 -->
+
+                        <div class="gallery-card reveal">
+
+                            <div
+                                class="gallery-image"
+                                data-image="photos/foto3.jpg">
+
+                                <img
+                                    src="photos/foto3.jpg"
+                                    alt="Staplertraining">
+
+                            </div>
+
+                            <div class="gallery-caption">
+
+                                <h3>Staplertraining</h3>
+
+                                <p>
+                                    Praktische Einweisung in die
+                                    Bedienung eines Gabelstaplers
+                                    und Erweiterung meiner
+                                    beruflichen Fähigkeiten.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- FOTO 4 -->
+
+                        <div class="gallery-card reveal">
+
+                            <div
+                                class="gallery-image"
+                                data-image="photos/foto4.jpg">
+
+                                <img
+                                    src="photos/foto4.jpg"
+                                    alt="Arbeitsende">
+
+                            </div>
+
+                            <div class="gallery-caption">
+
+                                <h3>Arbeitsende</h3>
+
+                                <p>
+                                    Dokumentation des Arbeitsendes
+                                    nach einem verantwortungsvollen
+                                    und produktiven Arbeitstag.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     ZERTIFIKATE — PDF
+                ========================= -->
+
+                <div
+                    class="tab-content"
+                    id="zertifikate">
+
+                    <div class="certificate-grid">
+
+
+                        <!-- ZERTIFIKAT 1 -->
+
+                        <div class="certificate-card reveal">
+
+                            <div class="certificate-preview">
+
+                                <iframe
+                                    src="certificates/zertifikat1.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                                    title="Zertifikat 1">
+                                </iframe>
+
+                            </div>
+
+                            <div class="certificate-info">
+
+                                <h3>
+                                    Zertifikat 1
+                                </h3>
+
+                                <p>
+                                    Nachweis meiner Weiterbildung
+                                    und beruflichen Qualifikation.
+                                </p>
+
+                                <a
+                                    href="certificates/zertifikat1.pdf"
+                                    target="_blank"
+                                    rel="noopener"
+                                    class="pdf-button">
+
+                                    📄 PDF öffnen
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ZERTIFIKAT 2 -->
+
+                        <div class="certificate-card reveal">
+
+                            <div class="certificate-preview">
+
+                                <iframe
+                                    src="certificates/zertifikat2.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                                    title="Zertifikat 2">
+                                </iframe>
+
+                            </div>
+
+                            <div class="certificate-info">
+
+                                <h3>
+                                    Zertifikat 2
+                                </h3>
+
+                                <p>
+                                    Nachweis meiner Weiterbildung
+                                    und beruflichen Qualifikation.
+                                </p>
+
+                                <a
+                                    href="certificates/zertifikat2.pdf"
+                                    target="_blank"
+                                    rel="noopener"
+                                    class="pdf-button">
+
+                                    📄 PDF öffnen
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ZERTIFIKAT 3 -->
+
+                        <div class="certificate-card reveal">
+
+                            <div class="certificate-preview">
+
+                                <iframe
+                                    src="certificates/zertifikat3.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                                    title="Zertifikat 3">
+                                </iframe>
+
+                            </div>
+
+                            <div class="certificate-info">
+
+                                <h3>
+                                    Zertifikat 3
+                                </h3>
+
+                                <p>
+                                    Nachweis meiner Weiterbildung
+                                    und beruflichen Qualifikation.
+                                </p>
+
+                                <a
+                                    href="certificates/zertifikat3.pdf"
+                                    target="_blank"
+                                    rel="noopener"
+                                    class="pdf-button">
+
+                                    📄 PDF öffnen
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- KONTAKT -->
+
+        <section id="kontakt">
+
+            <div class="container">
+
+                <div class="contact-box reveal">
+
+                    <div>
+
+                        <div class="section-label">
+                            08 — Kontakt
+                        </div>
+
+                        <h2>
+                            Vielen Dank für<br>
+                            Ihre Aufmerksamkeit.
+                        </h2>
+
+                        <p>
+                            Ich freue mich über die Möglichkeit,
+                            mich persönlich vorzustellen und mehr
+                            über einen möglichen Bundesfreiwilligendienst
+                            zu erfahren.
+                        </p>
+
+                        <div class="contact-details">
+
+                            <div>
+                                <span>✉</span>
+                                brunoparlinpakpahan16@gmail.com
+                            </div>
+
+                            <div>
+                                <span>☎</span>
+                                +62 85183370310
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                        <a
+                            href="mailto:brunoparlinpakpahan16@gmail.com"
+                            class="btn btn-primary">
+
+                            Kontakt aufnehmen
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="container footer-inner">
 
             <div>
-                <div class="section-label">
-                    Meine Motivation
-                </div>
-
-                <h2 class="section-title">
-                    Warum<br>
-                    <span>BFD?</span>
-                </h2>
-            </div>
-
-            <p class="section-description">
-                Für mich ist der Bundesfreiwilligendienst
-                nicht nur eine Möglichkeit, in Deutschland
-                zu leben. Ich sehe ihn als Chance, zu lernen,
-                Verantwortung zu übernehmen und etwas
-                Sinnvolles beizutragen.
-            </p>
-
-        </div>
-
-
-        <div class="bfd-grid">
-
-            <article class="bfd-card reveal">
-
-                <div class="bfd-number">01 / LERNEN</div>
-
-                <h3>Neue Erfahrungen</h3>
-
-                <p>
-                    Ich möchte praktische Erfahrungen in einem
-                    sozialen Arbeitsumfeld sammeln und neue
-                    Perspektiven kennenlernen.
-                </p>
-
-            </article>
-
-
-            <article class="bfd-card reveal delay-1">
-
-                <div class="bfd-number">02 / MENSCHEN</div>
-
-                <h3>Mit Menschen arbeiten</h3>
-
-                <p>
-                    Der Kontakt mit unterschiedlichen Menschen
-                    interessiert mich. Ich möchte zuhören,
-                    unterstützen und von anderen lernen.
-                </p>
-
-            </article>
-
-
-            <article class="bfd-card reveal delay-2">
-
-                <div class="bfd-number">03 / ENTWICKLUNG</div>
-
-                <h3>Persönlich wachsen</h3>
-
-                <p>
-                    Ich möchte meine Deutschkenntnisse verbessern,
-                    selbstständiger werden und mich fachlich sowie
-                    persönlich weiterentwickeln.
-                </p>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ======================================================
-     STRENGTHS
-====================================================== -->
-
-<section>
-
-    <div class="container">
-
-        <div class="reveal">
-
-            <div class="section-label">
-                Persönliche Stärken
-            </div>
-
-            <h2 class="section-title">
-                Was ich <span>mitbringe.</span>
-            </h2>
-
-            <p class="section-description">
-                Eigenschaften, die ich in meinem bisherigen
-                Berufsleben entwickelt und im Arbeitsalltag
-                immer wieder eingesetzt habe.
-            </p>
-
-        </div>
-
-
-        <div class="strengths-grid">
-
-            <div class="strength reveal">Zuverlässigkeit</div>
-            <div class="strength reveal delay-1">Teamfähigkeit</div>
-            <div class="strength reveal delay-2">Pünktlichkeit</div>
-            <div class="strength reveal delay-3">Lernbereitschaft</div>
-            <div class="strength reveal delay-4">Verantwortung</div>
-            <div class="strength reveal">Belastbarkeit</div>
-            <div class="strength reveal delay-1">Organisation</div>
-            <div class="strength reveal delay-2">Einfühlungsvermögen</div>
-            <div class="strength reveal delay-3">Respekt</div>
-            <div class="strength reveal delay-4">Engagement</div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ======================================================
-     EXPERIENCE
-====================================================== -->
-
-<section id="erfahrung">
-
-    <div class="container">
-
-        <div class="reveal">
-
-            <div class="section-label">
-                Berufliche Erfahrung
-            </div>
-
-            <h2 class="section-title">
-                Erfahrungen, die<br>
-                <span>mich geprägt haben.</span>
-            </h2>
-
-            <p class="section-description">
-                Ein kompakter Überblick. Die vollständigen
-                beruflichen Angaben befinden sich in meinen
-                Bewerbungsunterlagen.
-            </p>
-
-        </div>
-
-
-        <div class="experience-grid">
-
-            <article class="experience-card reveal">
-
-                <div class="experience-date">
-                    2024 – heute
-                </div>
-
-                <h3>Selbstständiger Fahrer</h3>
-
-                <div class="experience-company">
-                    GRAB Indonesia • Jakarta
-                </div>
-
-                <p>
-                    Personenbeförderung und Lieferdienste,
-                    verantwortungsvolle Kundenbetreuung,
-                    zuverlässige Abläufe und flexible
-                    Routenplanung.
-                </p>
-
-            </article>
-
-
-            <article class="experience-card reveal delay-1">
-
-                <div class="experience-date">
-                    2022 – 2024
-                </div>
-
-                <h3>Lagermitarbeiter</h3>
-
-                <div class="experience-company">
-                    PT. Serpong Alam Lestari • Bogor
-                </div>
-
-                <p>
-                    Kommissionierung, Bestandskontrolle und
-                    Unterstützung reibungsloser Abläufe
-                    im Lager.
-                </p>
-
-            </article>
-
-
-            <article class="experience-card reveal delay-2">
-
-                <div class="experience-date">
-                    2020 – 2022
-                </div>
-
-                <h3>Produktionsmitarbeiter</h3>
-
-                <div class="experience-company">
-                    PT. Bright Food International • Bogor
-                </div>
-
-                <p>
-                    Maschinenbedienung, Qualitätskontrolle
-                    sowie Pflege und Unterstützung der
-                    Produktionsabläufe.
-                </p>
-
-            </article>
-
-
-            <article class="experience-card reveal delay-3">
-
-                <div class="experience-date">
-                    2018 – 2020
-                </div>
-
-                <h3>Helper – Lager & Transport</h3>
-
-                <div class="experience-company">
-                    PT. Mulia Multi Mandiri • Indonesien
-                </div>
-
-                <p>
-                    Be- und Entladung, Kontrolle von Menge
-                    und Zustand der Waren sowie Unterstützung
-                    im Transportbereich.
-                </p>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ======================================================
-     EDUCATION + LANGUAGES
-====================================================== -->
-
-<section>
-
-    <div class="container">
-
-        <div class="profile-grid">
-
-            <div class="reveal">
-
-                <div class="section-label">
-                    Ausbildung
-                </div>
-
-                <h2 class="section-title">
-                    Mein<br>
-                    <span>Hintergrund.</span>
-                </h2>
-
-                <p class="section-description">
-
-                    Berufsbildende Oberschule /
-                    SMK Swasta St. Nahanson Parapat
-
-                    <br><br>
-
-                    Fachrichtung:
-                    <strong style="color:#e8edf4;">
-                        Computer- und Netzwerktechnik
-                    </strong>
-
-                    <br><br>
-
-                    2015 – 2018 • Tarutung, Indonesien
-
-                </p>
-
-            </div>
-
-
-            <div class="reveal delay-2">
-
-                <div class="section-label">
-                    Sprachkenntnisse
-                </div>
-
-                <h2 class="section-title">
-                    Sprachen.
-                </h2>
-
-                <div class="languages">
-
-                    <div class="language-card">
-
-                        <div class="language-top">
-                            <span class="language-name">Deutsch</span>
-                            <span class="language-level">B1</span>
-                        </div>
-
-                        <div class="language-bar">
-                            <div class="language-fill" style="width:70%;"></div>
-                        </div>
-
-                    </div>
-
-
-                    <div class="language-card">
-
-                        <div class="language-top">
-                            <span class="language-name">Englisch</span>
-                            <span class="language-level">A1</span>
-                        </div>
-
-                        <div class="language-bar">
-                            <div class="language-fill" style="width:30%;"></div>
-                        </div>
-
-                    </div>
-
-
-                    <div class="language-card">
-
-                        <div class="language-top">
-                            <span class="language-name">Indonesisch</span>
-                            <span class="language-level">Muttersprache</span>
-                        </div>
-
-                        <div class="language-bar">
-                            <div class="language-fill" style="width:100%;"></div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ======================================================
-     PORTFOLIO
-====================================================== -->
-
-<section id="portfolio">
-
-    <div class="container">
-
-        <div class="reveal">
-
-            <div class="section-label">
-                Persönliches Portfolio
-            </div>
-
-            <h2 class="section-title">
-                Einblicke in meinen<br>
-                <span>Alltag & Nachweise.</span>
-            </h2>
-
-            <p class="section-description">
-                Fotos und Zertifikate geben einen zusätzlichen
-                persönlichen Einblick und ergänzen meine
-                Bewerbungsunterlagen.
-            </p>
-
-        </div>
-
-
-        <div class="portfolio-tabs reveal">
-
-            <button class="tab-btn active" data-tab="photos">
-                Fotos
-            </button>
-
-            <button class="tab-btn" data-tab="certificates">
-                Zertifikate
-            </button>
-
-        </div>
-
-
-        <!-- PHOTOS -->
-
-        <div class="gallery-card reveal">
-
-            <div class="gallery-item">
-                <img src="foto1.jpg" alt="Absen Masuk Kerja">
-            </div>
-
-           <div class="gallery-caption">
-               <h3>Absen Masuk Kerja</h3>
-              <p>Eingestempelt!</p>
-              <div/>
-                 
-            <div class="gallery-item">
-                <img src="foto2.jpg" alt="Tempat Kerja">
-            </div>
-
-            <div class="gallery-item">
-                <img src="foto3.jpg" alt="Belajar Mengoperasikan Forklift">
-            </div>
-
-            <div class="gallery-item">
-                <img src="foto4.jpg" alt="Absen Pulang Kerja">
-            </div>
-
-        </div>
-
-
-        <!-- CERTIFICATES -->
-
-        <div class="certificates" id="certificates">
-
-            <div class="certificate">
-
-                <img
-                    src="certificates/zertifikat1.jpg"
-                    alt="Zertifikat 1"
-                >
-
-                <div class="certificate-info">
-                    <h3>Zertifikat</h3>
-                    <p>Nachweis / Qualifikation</p>
-                </div>
-
-            </div>
-
-
-            <div class="certificate">
-
-                <img
-                    src="certificates/zertifikat2.jpg"
-                    alt="Zertifikat 2"
-                >
-
-                <div class="certificate-info">
-                    <h3>Zertifikat</h3>
-                    <p>Nachweis / Qualifikation</p>
-                </div>
-
-            </div>
-
-
-            <div class="certificate">
-
-                <img
-                    src="certificates/zertifikat3.jpg"
-                    alt="Zertifikat 3"
-                >
-
-                <div class="certificate-info">
-                    <h3>Zertifikat</h3>
-                    <p>Nachweis / Qualifikation</p>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ======================================================
-     CONTACT
-====================================================== -->
-
-<section id="kontakt">
-
-    <div class="container">
-
-        <div class="contact-box reveal">
-
-            <div class="section-label">
-                Kontakt
-            </div>
-
-            <h2>
-                Vielleicht beginnt<br>
-                <span>hier unser Gespräch.</span>
-            </h2>
-
-            <p>
-                Vielen Dank für Ihr Interesse an meiner
-                Bewerbung. Ich freue mich über die Möglichkeit,
-                mich persönlich vorzustellen und mehr über
-                eine mögliche Einsatzstelle im Rahmen des
-                Bundesfreiwilligendienstes zu erfahren.
-            </p>
-
-
-            <div class="contact-buttons">
-
-                <a
-                    href="mailto:brunoparlinpakpahan16@gmail.com"
-                    class="btn btn-primary"
-                >
-                    ✉ E-Mail schreiben
-                </a>
-
-                <a
-                    href="tel:+6285183370310"
-                    class="btn btn-secondary"
-                >
-                    ☎ +62 851 8337 0310
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-</main>
-
-
-<!-- ======================================================
-     FOOTER
-====================================================== -->
-
-<footer>
-
-    <div class="container">
-
-        <div class="footer-inner">
-
-            <div class="footer-name">
-                © 2026 Bruno Parlin Pakpahan
+                © <span id="year"></span>
+                Bruno Parlin Pakpahan
             </div>
 
             <div>
-                Persönliches Portfolio • BFD Bewerbung
+                Persönliches Portfolio · BFD Bewerbung
             </div>
 
         </div>
 
+    </footer>
+
+
+    <!-- LIGHTBOX -->
+
+    <div class="lightbox" id="lightbox">
+
+        <div class="lightbox-close" id="lightboxClose">
+            ×
+        </div>
+
+        <img
+            id="lightboxImage"
+            src=""
+            alt="Portfolio Bild">
+
     </div>
 
-</footer>
 
+    <script>
 
-<!-- ======================================================
-     LIGHTBOX
-====================================================== -->
+        /* =========================
+           LOADER
+        ========================= */
 
-<div class="lightbox" id="lightbox">
+        window.addEventListener("load", function () {
 
-    <button class="lightbox-close" id="lightboxClose">
-        ×
-    </button>
+            setTimeout(function () {
 
-    <img id="lightboxImage" src="" alt="">
+                document
+                    .getElementById("loader")
+                    .classList
+                    .add("hide");
 
-</div>
-
-
-<!-- ======================================================
-     JAVASCRIPT
-====================================================== -->
-
-<script>
-
-/* ========================================================
-   LOADER
-======================================================== */
-
-window.addEventListener("load", () => {
-
-    setTimeout(() => {
-
-        document
-            .getElementById("loader")
-            .classList.add("hide");
-
-    }, 700);
-
-});
-
-
-/* ========================================================
-   MOBILE MENU
-======================================================== */
-
-const menuBtn = document.getElementById("menuBtn");
-const navLinks = document.getElementById("navLinks");
-
-menuBtn.addEventListener("click", () => {
-
-    navLinks.classList.toggle("open");
-
-});
-
-
-document.querySelectorAll(".nav-links a").forEach(link => {
-
-    link.addEventListener("click", () => {
-
-        navLinks.classList.remove("open");
-
-    });
-
-});
-
-
-/* ========================================================
-   TYPING EFFECT
-======================================================== */
-
-const typingElement = document.getElementById("typing");
-
-const phrases = [
-    "BFD-Bewerber aus Indonesien",
-    "Zuverlässig & lernbereit",
-    "Teamorientiert & engagiert",
-    "Bereit für neue Erfahrungen"
-];
-
-let phraseIndex = 0;
-let characterIndex = 0;
-let deleting = false;
-
-function typeEffect() {
-
-    const currentPhrase = phrases[phraseIndex];
-
-    if (!deleting) {
-
-        typingElement.textContent =
-            currentPhrase.substring(0, characterIndex + 1);
-
-        characterIndex++;
-
-        if (characterIndex === currentPhrase.length) {
-
-            deleting = true;
-
-            setTimeout(typeEffect, 1800);
-            return;
-
-        }
-
-    } else {
-
-        typingElement.textContent =
-            currentPhrase.substring(0, characterIndex - 1);
-
-        characterIndex--;
-
-        if (characterIndex === 0) {
-
-            deleting = false;
-
-            phraseIndex =
-                (phraseIndex + 1) % phrases.length;
-
-        }
-
-    }
-
-    setTimeout(
-        typeEffect,
-        deleting ? 45 : 75
-    );
-}
-
-typeEffect();
-
-
-/* ========================================================
-   SCROLL PROGRESS
-======================================================== */
-
-window.addEventListener("scroll", () => {
-
-    const scrollTop =
-        window.scrollY;
-
-    const documentHeight =
-        document.documentElement.scrollHeight -
-        window.innerHeight;
-
-    const progress =
-        (scrollTop / documentHeight) * 100;
-
-    document.getElementById("progress").style.width =
-        progress + "%";
-
-});
-
-
-/* ========================================================
-   REVEAL ANIMATION
-======================================================== */
-
-const observer =
-    new IntersectionObserver(
-        entries => {
-
-            entries.forEach(entry => {
-
-                if (entry.isIntersecting) {
-
-                    entry.target.classList.add("visible");
-
-                    observer.unobserve(entry.target);
-
-                }
-
-            });
-
-        },
-        {
-            threshold: .12
-        }
-    );
-
-
-document
-    .querySelectorAll(".reveal")
-    .forEach(element => {
-
-        observer.observe(element);
-
-    });
-
-
-/* ========================================================
-   ACTIVE NAVIGATION
-======================================================== */
-
-const sections =
-    document.querySelectorAll("section[id]");
-
-const navItems =
-    document.querySelectorAll(".nav-links a");
-
-window.addEventListener("scroll", () => {
-
-    let current = "";
-
-    sections.forEach(section => {
-
-        const sectionTop =
-            section.offsetTop - 180;
-
-        if (window.scrollY >= sectionTop) {
-
-            current = section.getAttribute("id");
-
-        }
-
-    });
-
-    navItems.forEach(item => {
-
-        item.classList.remove("active");
-
-        if (
-            item.getAttribute("href") === "#" + current
-        ) {
-
-            item.classList.add("active");
-
-        }
-
-    });
-
-});
-
-
-/* ========================================================
-   PORTFOLIO TABS
-======================================================== */
-
-const tabButtons =
-    document.querySelectorAll(".tab-btn");
-
-const gallery =
-    document.getElementById("photos");
-
-const certificates =
-    document.getElementById("certificates");
-
-
-tabButtons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        tabButtons.forEach(btn =>
-            btn.classList.remove("active")
-        );
-
-        button.classList.add("active");
-
-        const tab =
-            button.dataset.tab;
-
-        if (tab === "photos") {
-
-            gallery.style.display = "grid";
-            certificates.classList.remove("show");
-
-        } else {
-
-            gallery.style.display = "none";
-            certificates.classList.add("show");
-
-        }
-
-    });
-
-});
-
-
-/* ========================================================
-   LIGHTBOX
-======================================================== */
-
-const lightbox =
-    document.getElementById("lightbox");
-
-const lightboxImage =
-    document.getElementById("lightboxImage");
-
-const lightboxClose =
-    document.getElementById("lightboxClose");
-
-
-document.querySelectorAll(
-    ".gallery-item img, .certificate img"
-).forEach(image => {
-
-    image.addEventListener("click", () => {
-
-        lightboxImage.src =
-            image.src;
-
-        lightbox.classList.add("show");
-
-    });
-
-});
-
-
-lightboxClose.addEventListener("click", () => {
-
-    lightbox.classList.remove("show");
-
-});
-
-
-lightbox.addEventListener("click", event => {
-
-    if (event.target === lightbox) {
-
-        lightbox.classList.remove("show");
-
-    }
-
-});
-
-
-document.addEventListener("keydown", event => {
-
-    if (event.key === "Escape") {
-
-        lightbox.classList.remove("show");
-
-    }
-
-});
-
-
-/* ========================================================
-   SUBTLE MOUSE PARALLAX
-======================================================== */
-
-const heroPhoto =
-    document.querySelector(".photo-frame");
-
-if (window.innerWidth > 900) {
-
-    document.addEventListener("mousemove", event => {
-
-        const x =
-            (event.clientX / window.innerWidth - .5);
-
-        const y =
-            (event.clientY / window.innerHeight - .5);
-
-        heroPhoto.style.transform =
-            `rotate(${2 + x * 2}deg)
-             translate(${x * 5}px, ${y * 5}px)`;
-
-    });
-
-}
-
-
-/* ========================================================
-   REDUCE MOTION ACCESSIBILITY
-======================================================== */
-
-if (
-    window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches
-) {
-
-    document.documentElement.style.scrollBehavior = "auto";
-
-    document
-        .querySelectorAll(".marquee")
-        .forEach(element => {
-
-            element.style.animation = "none";
+            }, 500);
 
         });
 
-}
 
-</script>
+        /* =========================
+           YEAR
+        ========================= */
+
+        document
+            .getElementById("year")
+            .textContent = new Date().getFullYear();
+
+
+        /* =========================
+           MOBILE MENU
+        ========================= */
+
+        const menuToggle =
+            document.getElementById("menuToggle");
+
+        const navLinks =
+            document.getElementById("navLinks");
+
+        menuToggle.addEventListener("click", function () {
+
+            navLinks.classList.toggle("active");
+
+        });
+
+
+        document
+            .querySelectorAll(".nav-links a")
+            .forEach(function (link) {
+
+                link.addEventListener("click", function () {
+
+                    navLinks.classList.remove("active");
+
+                });
+
+            });
+
+
+        /* =========================
+           SCROLL PROGRESS
+        ========================= */
+
+        window.addEventListener("scroll", function () {
+
+            const scrollTop =
+                window.scrollY;
+
+            const documentHeight =
+                document.documentElement.scrollHeight
+                - window.innerHeight;
+
+            const percentage =
+                documentHeight > 0
+                    ? (scrollTop / documentHeight) * 100
+                    : 0;
+
+            document
+                .getElementById("progress")
+                .style.width = percentage + "%";
+
+        });
+
+
+        /* =========================
+           REVEAL ANIMATION
+        ========================= */
+
+        const observer =
+            new IntersectionObserver(
+                function (entries) {
+
+                    entries.forEach(function (entry) {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add("show");
+
+                            observer.unobserve(entry.target);
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: .12
+                }
+            );
+
+
+        document
+            .querySelectorAll(".reveal")
+            .forEach(function (element) {
+
+                observer.observe(element);
+
+            });
+
+
+        /* =========================
+           TABS
+        ========================= */
+
+        const tabButtons =
+            document.querySelectorAll(".tab-button");
+
+        const tabContents =
+            document.querySelectorAll(".tab-content");
+
+
+        tabButtons.forEach(function (button) {
+
+            button.addEventListener("click", function () {
+
+                const target =
+                    button.getAttribute("data-tab");
+
+
+                tabButtons.forEach(function (btn) {
+
+                    btn.classList.remove("active");
+
+                });
+
+
+                tabContents.forEach(function (content) {
+
+                    content.classList.remove("active");
+
+                });
+
+
+                button.classList.add("active");
+
+                document
+                    .getElementById(target)
+                    .classList.add("active");
+
+
+                /*
+                    Wichtig:
+
+                    Elemente innerhalb des neu geöffneten Tabs
+                    werden hier ebenfalls sichtbar gemacht.
+                */
+
+                document
+                    .querySelectorAll(
+                        "#" + target + " .reveal"
+                    )
+                    .forEach(function (element) {
+
+                        setTimeout(function () {
+
+                            element.classList.add("show");
+
+                        }, 50);
+
+                    });
+
+            });
+
+        });
+
+
+        /* =========================
+           PHOTO LIGHTBOX
+        ========================= */
+
+        const lightbox =
+            document.getElementById("lightbox");
+
+        const lightboxImage =
+            document.getElementById("lightboxImage");
+
+        const lightboxClose =
+            document.getElementById("lightboxClose");
+
+
+        document
+            .querySelectorAll(".gallery-image")
+            .forEach(function (imageContainer) {
+
+                imageContainer.addEventListener(
+                    "click",
+                    function () {
+
+                        const image =
+                            imageContainer
+                                .getAttribute("data-image");
+
+                        lightboxImage.src = image;
+
+                        lightbox.classList.add("active");
+
+                    }
+                );
+
+            });
+
+
+        function closeLightbox() {
+
+            lightbox.classList.remove("active");
+
+            lightboxImage.src = "";
+
+        }
+
+
+        lightboxClose.addEventListener(
+            "click",
+            closeLightbox
+        );
+
+
+        lightbox.addEventListener(
+            "click",
+            function (event) {
+
+                if (event.target === lightbox) {
+
+                    closeLightbox();
+
+                }
+
+            }
+        );
+
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (event.key === "Escape") {
+
+                    closeLightbox();
+
+                }
+
+            }
+        );
+
+    </script>
 
 </body>
 </html>
