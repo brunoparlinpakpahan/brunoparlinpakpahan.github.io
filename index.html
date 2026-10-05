@@ -2025,6 +2025,51 @@
         font-size: 12px;  
     }  
 
+    /* ========================================================= 
+       FOLDER VIEW (PORTFOLIO)
+    ========================================================= */
+
+    .folder-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(4, 11, 20, 0.65);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        transition: background 0.4s ease;
+        pointer-events: none; /* Agar klik diteruskan ke gambar */
+    }
+
+    .gallery-card:hover .folder-overlay {
+        background: rgba(4, 11, 20, 0.35);
+    }
+
+    .folder-icon {
+        font-size: 42px;
+        margin-bottom: 12px;
+        text-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        transition: transform 0.4s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .gallery-card:hover .folder-icon {
+        transform: scale(1.15) translateY(-5px);
+    }
+
+    .folder-overlay strong {
+        font-size: 15px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+    }
+    
+    .back-folder-btn {
+        display: inline-flex;
+        margin-bottom: 25px;
+        padding: 8px 16px;
+        font-size: 12px;
+    }
 
     /* =========================================================  
        CERTIFICATE  
@@ -3055,7 +3100,8 @@
                         Pakpahan  
                     </h1>  
 
-                    <p class="hero-description" data-de="Engagierter und zuverlässiger Bewerber mit beruflicher Erfahrung in Logistik, Produktion und Personenbeförderung. Ich arbeite verantwortungsbewusst, lerne gerne Neues und möchte meine beruflichen Kenntnisse und Fähigkeiten kontinuierlich weiterentwickeln.  
+                    <p class="hero-description" data-de="Engagierter und zuverlässiger Bewerber mit beruflicher Erfahrung in Logistik, Produktion und Personenbeförderung. Ich arbeite verantwortungsbewusst, lerne gerne Neues und möchte meine beruflichen Kenntnisse und Fähigkeiten kontinuierlich weiterentwickeln." data-id="Pelamar yang berdedikasi dan dapat diandalkan dengan pengalaman profesional di bidang logistik, produksi, dan transportasi penumpang. Saya bekerja secara bertanggung jawab, senang mempelajari hal-hal baru dan ingin terus mengembangkan pengetahuan dan keterampilan profesional saya." data-en="Dedicated and reliable applicant with professional experience in logistics, production, and passenger transport. I work responsibly, enjoy learning new things, and want to continuously develop my professional knowledge and skills.">  
+                        Engagierter und zuverlässiger Bewerber mit beruflicher Erfahrung in Logistik, Produktion und Personenbeförderung. Ich arbeite verantwortungsbewusst, lerne gerne Neues und möchte meine beruflichen Kenntnisse und Fähigkeiten kontinuierlich weiterentwickeln.  
                     </p>  
 
                     <div class="hero-buttons">  
@@ -3477,55 +3523,117 @@
                 <button class="tab-button" data-tab="certificates" data-de="Zertifikat" data-id="Sertifikat" data-en="Certificate">Zertifikat</button>  
             </div>  
 
-            <!-- PHOTOS -->  
+            <!-- PHOTOS (FOLDERS) -->  
             <div class="portfolio-panel active" id="photos">  
-                <div class="gallery stagger">  
-
-                    <!-- FOTO 1 -->  
-                    <div class="gallery-card">  
-                        <div class="gallery-image" onclick="openImage('foto1.jpg', 'Arbeitsbeginn')">  
-                            <img src="foto1.jpg" alt="Arbeitsbeginn" loading="lazy">  
+                
+                <!-- TAMPILAN AWAL: DAFTAR FOLDER -->
+                <div id="folders-view" class="gallery stagger">  
+                    
+                    <!-- FOLDER 1: KERJA FORMAL -->  
+                    <div class="gallery-card" onclick="openFolder('gallery-work')" style="cursor: pointer;">  
+                        <div class="gallery-image">  
+                            <img src="foto1.jpg" alt="Kerja Formal Cover" loading="lazy">  
+                            <div class="folder-overlay">
+                                <div class="folder-icon">📁</div>
+                                <strong data-de="Arbeit" data-id="Kerja Formal" data-en="Formal Work">Arbeit</strong>
+                            </div>
                         </div>  
                         <div class="gallery-info">  
-                            <h3 data-de="Arbeitsbeginn" data-id="Mulai Bekerja" data-en="Start of Work">Arbeitsbeginn</h3>  
-                            <p data-de="Dokumentation meines Arbeitsbeginns und eines strukturierten Arbeitsalltags." data-id="Dokumentasi awal bekerja dan rutinitas kerja yang terstruktur." data-en="Documentation of the start of my shift and a structured work routine.">Dokumentation meines Arbeitsbeginns und eines strukturierten Arbeitsalltags.</p>  
+                            <h3 data-de="Formale Arbeitserfahrung" data-id="Pengalaman Kerja Formal" data-en="Formal Work Experience">Formale Arbeitserfahrung</h3>  
+                            <p data-de="Fotos aus meinem Arbeitsalltag." data-id="Foto-foto keseharian kerja saya." data-en="Photos from my everyday work life.">Fotos aus meinem Arbeitsalltag.</p>  
                         </div>  
                     </div>  
 
-                    <!-- FOTO 2 -->  
-                    <div class="gallery-card">  
-                        <div class="gallery-image" onclick="openImage('foto2.jpg', 'Arbeitsplatz')">  
-                            <img src="foto2.jpg" alt="Arbeitsplatz" loading="lazy">  
+                    <!-- FOLDER 2: VOLUNTIR -->  
+                    <div class="gallery-card" onclick="openFolder('gallery-volunteer')" style="cursor: pointer;">  
+                        <div class="gallery-image">  
+                            <!-- Ganti foto2.jpg di bawah ini dengan gambar cover voluntir yang diinginkan -->
+                            <img src="foto2.jpg" alt="Voluntir Cover" loading="lazy">  
+                            <div class="folder-overlay">
+                                <div class="folder-icon">🤝</div>
+                                <strong data-de="Ehrenamt" data-id="Voluntir" data-en="Volunteer">Ehrenamt</strong>
+                            </div>
                         </div>  
                         <div class="gallery-info">  
-                            <h3 data-de="Arbeitsplatz" data-id="Tempat Kerja" data-en="Workplace">Arbeitsplatz</h3>  
-                            <p data-de="Ein Einblick in mein berufliches Umfeld und meinen täglichen Arbeitsalltag." data-id="Wawasan tentang lingkungan kerja dan rutinitas kerja harian saya." data-en="An insight into my professional environment and daily work routine.">Ein Einblick in mein berufliches Umfeld und meinen täglichen Arbeitsalltag.</p>  
+                            <h3 data-de="Ehrenamtliche Tätigkeit" data-id="Pengalaman Voluntir" data-en="Volunteer Experience">Ehrenamtliche Tätigkeit</h3>  
+                            <p data-de="Dokumentation meines sozialen Engagements." data-id="Dokumentasi kegiatan sosial saya." data-en="Documentation of my social engagement.">Dokumentation meines sozialen Engagements.</p>  
                         </div>  
                     </div>  
 
-                    <!-- FOTO 3 -->  
-                    <div class="gallery-card">  
-                        <div class="gallery-image" onclick="openImage('foto3.jpg', 'Staplertraining')">  
-                            <img src="foto3.jpg" alt="Staplertraining" loading="lazy">  
-                        </div>  
-                        <div class="gallery-info">  
-                            <h3 data-de="Staplertraining" data-id="Pelatihan Forklift" data-en="Forklift Training">Staplertraining</h3>  
-                            <p data-de="Praktische Einweisung in die Bedienung eines Gabelstaplers und Erweiterung meiner beruflichen Fähigkeiten." data-id="Instruksi praktis pengoperasian forklift dan perluasan keterampilan profesional saya." data-en="Practical instruction in operating a forklift and expanding my professional skills.">Praktische Einweisung in die Bedienung eines Gabelstaplers und Erweiterung meiner beruflichen Fähigkeiten.</p>  
-                        </div>  
-                    </div>  
+                </div> 
 
-                    <!-- FOTO 4 -->  
-                    <div class="gallery-card">  
-                        <div class="gallery-image" onclick="openImage('foto4.jpg', 'Arbeitsende')">  
-                            <img src="foto4.jpg" alt="Arbeitsende" loading="lazy">  
+                <!-- ISI FOLDER 1: KERJA FORMAL -->
+                <div id="gallery-work" style="display: none;">
+                    <button class="btn btn-secondary back-folder-btn" onclick="closeFolder()">
+                        ← <span data-de="Zurück" data-id="Kembali ke Folder" data-en="Back to Folders">Zurück</span>
+                    </button>
+                    
+                    <div class="gallery stagger">  
+                        <div class="gallery-card">  
+                            <div class="gallery-image" onclick="openImage('foto1.jpg', 'Arbeitsbeginn')">  
+                                <img src="foto1.jpg" alt="Arbeitsbeginn" loading="lazy">  
+                            </div>  
+                            <div class="gallery-info">  
+                                <h3 data-de="Arbeitsbeginn" data-id="Mulai Bekerja" data-en="Start of Work">Arbeitsbeginn</h3>  
+                                <p data-de="Dokumentation meines Arbeitsbeginns und eines strukturierten Arbeitsalltags." data-id="Dokumentasi awal bekerja dan rutinitas kerja yang terstruktur." data-en="Documentation of the start of my shift and a structured work routine.">Dokumentation meines Arbeitsbeginns und eines strukturierten Arbeitsalltags.</p>  
+                            </div>  
                         </div>  
-                        <div class="gallery-info">  
-                            <h3 data-de="Arbeitsende" data-id="Selesai Bekerja" data-en="End of Work">Arbeitsende</h3>  
-                            <p data-de="Dokumentation des Arbeitsendes nach einem verantwortungsvollen und produktiven Arbeitstag." data-id="Dokumentasi akhir kerja setelah hari kerja yang bertanggung jawab dan produktif." data-en="Documentation of the end of the shift after a responsible and productive workday.">Dokumentation des Arbeitsendes nach einem verantwortungsvollen und produktiven Arbeitstag.</p>  
-                        </div>  
-                    </div>  
 
-                </div>  
+                        <div class="gallery-card">  
+                            <div class="gallery-image" onclick="openImage('foto2.jpg', 'Arbeitsplatz')">  
+                                <img src="foto2.jpg" alt="Arbeitsplatz" loading="lazy">  
+                            </div>  
+                            <div class="gallery-info">  
+                                <h3 data-de="Arbeitsplatz" data-id="Tempat Kerja" data-en="Workplace">Arbeitsplatz</h3>  
+                                <p data-de="Ein Einblick in mein berufliches Umfeld und meinen täglichen Arbeitsalltag." data-id="Wawasan tentang lingkungan kerja dan rutinitas kerja harian saya." data-en="An insight into my professional environment and daily work routine.">Ein Einblick in mein berufliches Umfeld und meinen täglichen Arbeitsalltag.</p>  
+                            </div>  
+                        </div>  
+
+                        <div class="gallery-card">  
+                            <div class="gallery-image" onclick="openImage('foto3.jpg', 'Staplertraining')">  
+                                <img src="foto3.jpg" alt="Staplertraining" loading="lazy">  
+                            </div>  
+                            <div class="gallery-info">  
+                                <h3 data-de="Staplertraining" data-id="Pelatihan Forklift" data-en="Forklift Training">Staplertraining</h3>  
+                                <p data-de="Praktische Einweisung in die Bedienung eines Gabelstaplers und Erweiterung meiner beruflichen Fähigkeiten." data-id="Instruksi praktis pengoperasian forklift dan perluasan keterampilan profesional saya." data-en="Practical instruction in operating a forklift and expanding my professional skills.">Praktische Einweisung in die Bedienung eines Gabelstaplers und Erweiterung meiner beruflichen Fähigkeiten.</p>  
+                            </div>  
+                        </div>  
+
+                        <div class="gallery-card">  
+                            <div class="gallery-image" onclick="openImage('foto4.jpg', 'Arbeitsende')">  
+                                <img src="foto4.jpg" alt="Arbeitsende" loading="lazy">  
+                            </div>  
+                            <div class="gallery-info">  
+                                <h3 data-de="Arbeitsende" data-id="Selesai Bekerja" data-en="End of Work">Arbeitsende</h3>  
+                                <p data-de="Dokumentation des Arbeitsendes nach einem verantwortungsvollen und produktiven Arbeitstag." data-id="Dokumentasi akhir kerja setelah hari kerja yang bertanggung jawab dan produktif." data-en="Documentation of the end of the shift after a responsible and productive workday.">Dokumentation des Arbeitsendes nach einem verantwortungsvollen und produktiven Arbeitstag.</p>  
+                            </div>  
+                        </div>  
+                    </div>
+                </div>
+
+                <!-- ISI FOLDER 2: VOLUNTIR -->
+                <div id="gallery-volunteer" style="display: none;">
+                    <button class="btn btn-secondary back-folder-btn" onclick="closeFolder()">
+                        ← <span data-de="Zurück" data-id="Kembali ke Folder" data-en="Back to Folders">Zurück</span>
+                    </button>
+                    
+                    <div class="gallery stagger">  
+                        <!-- Contoh Foto Voluntir 1 -->
+                        <div class="gallery-card">  
+                            <!-- Ganti voluntir1.jpg dengan nama file aslimu -->
+                            <div class="gallery-image" onclick="openImage('voluntir1.jpg', 'Aktivität mit Kindern')">  
+                                <img src="voluntir1.jpg" alt="Voluntir Kegiatan" loading="lazy">  
+                            </div>  
+                            <div class="gallery-info">  
+                                <h3 data-de="Soziales Engagement" data-id="Kegiatan Sosial" data-en="Social Activity">Soziales Engagement</h3>  
+                                <p data-de="Spiele und Betreuung." data-id="Bermain dan mendampingi." data-en="Games and supervision.">Spiele und Betreuung.</p>  
+                            </div>  
+                        </div>  
+                        
+                        <!-- Kamu bisa copy paste block div class="gallery-card" di atas jika ada foto voluntir tambahan -->
+                    </div>
+                </div>
+
             </div>  
 
             <!-- CERTIFICATE -->  
@@ -3851,6 +3959,48 @@
         });  
     });  
 
+    /* =====================================================  
+       PORTFOLIO FOLDERS LOGIC  
+    ====================================================== */  
+
+    function openFolder(folderId) {
+        // Sembunyikan tampilan awal folder
+        document.getElementById('folders-view').style.display = 'none';
+        
+        // Tampilkan isi galeri yang dipilih (Work atau Volunteer)
+        const targetGallery = document.getElementById(folderId);
+        targetGallery.style.display = 'block';
+
+        // Panggil animasi muncul ulang (stagger) agar terlihat mulus
+        const staggerContainer = targetGallery.querySelector('.stagger');
+        if (staggerContainer) {
+            staggerContainer.classList.remove('revealed');
+            // Sedikit delay agar transisinya terlihat
+            setTimeout(() => {
+                staggerContainer.classList.add('revealed');
+            }, 50);
+        }
+
+        // Terapkan kembali bahasa jika belum terbaca
+        const currentLang = localStorage.getItem('portfolio_lang') || 'de';
+        setLang(currentLang);
+    }
+
+    function closeFolder() {
+        // Sembunyikan isi galeri
+        document.getElementById('gallery-work').style.display = 'none';
+        document.getElementById('gallery-volunteer').style.display = 'none';
+        
+        // Tampilkan kembali daftar folder
+        const foldersView = document.getElementById('folders-view');
+        foldersView.style.display = 'grid'; // Grid agar struktur responsif terjaga
+        
+        // Animasi muncul ulang
+        foldersView.classList.remove('revealed');
+        setTimeout(() => {
+            foldersView.classList.add('revealed');
+        }, 50);
+    }
 
     /* =====================================================  
        LIGHTBOX  
