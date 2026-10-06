@@ -3562,15 +3562,15 @@
                             </div>
                         </div>  
                         <div class="gallery-info">  
-                            <h3 data-de="Formale Arbeitserfahrung" data-id="Pengalaman Kerja Formal" data-en="Formal Work Experience">Formale Arbeitserfahrung</h3>  
+                            <h3 data-de="Formale Arbeitserfahrung" data-id="Pengalaman Kerja Formal" data-en="Formale Arbeitserfahrung">Formale Arbeitserfahrung</h3>  
                             <p data-de="Fotos aus meinem Arbeitsalltag." data-id="Foto-foto keseharian kerja saya." data-en="Photos from my everyday work life.">Fotos aus meinem Arbeitsalltag.</p>  
                         </div>  
                     </div>  
 
-                    <!-- FOLDER 2: VOLUNTIR -->  
+                    <!-- FOLDER 2: EHRENAMT -->  
                     <div class="gallery-card" onclick="openFolder('gallery-volunteer')" style="cursor: pointer;">  
                         <div class="gallery-image">  
-                            <img src="foto2.jpg" alt="Voluntir Cover" loading="lazy">  
+                            <img src="voluntir1.jpg" alt="Voluntir Cover" loading="lazy">  
                             <div class="folder-overlay">
                                 <div class="folder-icon">🤝</div>
                                 <strong data-de="Ehrenamt" data-id="Voluntir" data-en="Volunteer">Ehrenamt</strong>
@@ -3579,6 +3579,21 @@
                         <div class="gallery-info">  
                             <h3 data-de="Ehrenamtliche Tätigkeit" data-id="Pengalaman Voluntir" data-en="Volunteer Experience">Ehrenamtliche Tätigkeit</h3>  
                             <p data-de="Dokumentation meines sozialen Engagements." data-id="Dokumentasi kegiatan sosial saya." data-en="Documentation of my social engagement.">Dokumentation meines sozialen Engagements.</p>  
+                        </div>  
+                    </div>  
+
+                    <!-- FOLDER 3: LEBENSMITTELSPENDE (DONASI MAKANAN) -->  
+                    <div class="gallery-card" onclick="openFolder('gallery-donasi')" style="cursor: pointer;">  
+                        <div class="gallery-image">  
+                            <img src="donasi1.jpg" alt="Lebensmittelspende Cover" loading="lazy">  
+                            <div class="folder-overlay">
+                                <div class="folder-icon">🍲</div>
+                                <strong data-de="Lebensmittelspende" data-id="Donasi Makanan" data-en="Food Donation">Lebensmittelspende</strong>
+                            </div>
+                        </div>  
+                        <div class="gallery-info">  
+                            <h3 data-de="Lebensmittelspende" data-id="Donasi Makanan" data-en="Food Donation">Lebensmittelspende</h3>  
+                            <p data-de="Weitergabe von stornierten Bestellungen." data-id="Penyaluran pesanan yang dibatalkan." data-en="Distribution of cancelled orders.">Weitergabe von stornierten Bestellungen.</p>  
                         </div>  
                     </div>  
 
@@ -3648,9 +3663,17 @@
                                 <h3 data-de="Soziales Engagement" data-id="Kegiatan Sosial" data-en="Social Activity">Soziales Engagement</h3>  
                                 <p data-de="Spiele und Betreuung." data-id="Bermain dan mendampingi." data-en="Games and supervision.">Spiele und Betreuung.</p>  
                             </div>  
-                        </div> 
-                        
-                        <!-- NEW PHOTO 1: Donasi Makanan -->
+                        </div>  
+                    </div>
+                </div>
+
+                <!-- ISI FOLDER 3: LEBENSMITTELSPENDE (DONASI MAKANAN) -->
+                <div id="gallery-donasi" style="display: none;">
+                    <button class="btn btn-secondary back-folder-btn" onclick="closeFolder()">
+                        ← <span data-de="Zurück" data-id="Kembali ke Folder" data-en="Back to Folders">Zurück</span>
+                    </button>
+                    
+                    <div class="gallery stagger">  
                         <div class="gallery-card">  
                             <div class="gallery-image" onclick="openImage('donasi1.jpg', 'Lebensmittelspende')">  
                                 <img src="donasi1.jpg" alt="Donasi Makanan 1" loading="lazy">  
@@ -3659,9 +3682,8 @@
                                 <h3 data-de="Lebensmittelspende" data-id="Donasi Makanan" data-en="Food Donation">Lebensmittelspende</h3>  
                                 <p data-de="Übergabe von stornierten Essensbestellungen an ein Waisenhaus." data-id="Penyerahan pesanan makanan yang dibatalkan ke panti asuhan." data-en="Handing over cancelled food orders to an orphanage.">Übergabe von stornierten Essensbestellungen an ein Waisenhaus.</p>  
                             </div>  
-                        </div> 
+                        </div>  
 
-                        <!-- NEW PHOTO 2: Tanggung Jawab Sosial -->
                         <div class="gallery-card">  
                             <div class="gallery-image" onclick="openImage('donasi2.jpg', 'Soziale Verantwortung')">  
                                 <img src="donasi2.jpg" alt="Donasi Makanan 2" loading="lazy">  
@@ -3670,9 +3692,8 @@
                                 <h3 data-de="Soziale Verantwortung" data-id="Tanggung Jawab Sosial" data-en="Social Responsibility">Soziale Verantwortung</h3>  
                                 <p data-de="Sinnvolle Nutzung von übrig gebliebenen Lieferungen." data-id="Pemanfaatan pengiriman yang tersisa secara bermanfaat." data-en="Meaningful use of leftover deliveries.">Sinnvolle Nutzung von übrig gebliebenen Lieferungen.</p>  
                             </div>  
-                        </div> 
+                        </div>  
 
-                        <!-- NEW PHOTO 3: Bantuan Komunitas -->
                         <div class="gallery-card">  
                             <div class="gallery-image" onclick="openImage('donasi3.jpg', 'Hilfe für die Gemeinschaft')">  
                                 <img src="donasi3.jpg" alt="Donasi Makanan 3" loading="lazy">  
@@ -3681,9 +3702,8 @@
                                 <h3 data-de="Hilfe für die Gemeinschaft" data-id="Bantuan untuk Masyarakat" data-en="Community Help">Hilfe für die Gemeinschaft</h3>  
                                 <p data-de="Unterstützung für Kinder und Bedürftige." data-id="Dukungan untuk anak-anak dan mereka yang membutuhkan." data-en="Support for children and those in need.">Unterstützung für Kinder und Bedürftige.</p>  
                             </div>  
-                        </div> 
+                        </div>  
 
-                        <!-- NEW PHOTO 4: Keterlibatan Lokal -->
                         <div class="gallery-card">  
                             <div class="gallery-image" onclick="openImage('donasi4.jpg', 'Engagement vor Ort')">  
                                 <img src="donasi4.jpg" alt="Donasi Makanan 4" loading="lazy">  
@@ -3692,8 +3712,7 @@
                                 <h3 data-de="Engagement vor Ort" data-id="Keterlibatan Lokal" data-en="Local Engagement">Engagement vor Ort</h3>  
                                 <p data-de="Ein kleiner Beitrag zur Unterstützung der lokalen Gemeinschaft." data-id="Kontribusi kecil untuk mendukung komunitas lokal." data-en="A small contribution to support the local community.">Ein kleiner Beitrag zur Unterstützung der lokalen Gemeinschaft.</p>  
                             </div>  
-                        </div> 
-
+                        </div>  
                     </div>
                 </div>
 
@@ -4030,18 +4049,24 @@
         // Sembunyikan tampilan awal folder
         document.getElementById('folders-view').style.display = 'none';
         
-        // Tampilkan isi galeri yang dipilih (Work atau Volunteer)
-        const targetGallery = document.getElementById(folderId);
-        targetGallery.style.display = 'block';
+        // Sembunyikan semua galeri terlebih dahulu
+        document.getElementById('gallery-work').style.display = 'none';
+        document.getElementById('gallery-volunteer').style.display = 'none';
+        document.getElementById('gallery-donasi').style.display = 'none';
 
-        // Panggil animasi muncul ulang (stagger) agar terlihat mulus
-        const staggerContainer = targetGallery.querySelector('.stagger');
-        if (staggerContainer) {
-            staggerContainer.classList.remove('revealed');
-            // Sedikit delay agar transisinya terlihat
-            setTimeout(() => {
-                staggerContainer.classList.add('revealed');
-            }, 50);
+        // Tampilkan isi galeri yang dipilih
+        const targetGallery = document.getElementById(folderId);
+        if (targetGallery) {
+            targetGallery.style.display = 'block';
+
+            // Panggil animasi muncul ulang (stagger) agar terlihat mulus
+            const staggerContainer = targetGallery.querySelector('.stagger');
+            if (staggerContainer) {
+                staggerContainer.classList.remove('revealed');
+                setTimeout(() => {
+                    staggerContainer.classList.add('revealed');
+                }, 50);
+            }
         }
 
         // Terapkan kembali bahasa jika belum terbaca
@@ -4050,9 +4075,10 @@
     }
 
     function closeFolder() {
-        // Sembunyikan isi galeri
+        // Sembunyikan semua isi galeri
         document.getElementById('gallery-work').style.display = 'none';
         document.getElementById('gallery-volunteer').style.display = 'none';
+        document.getElementById('gallery-donasi').style.display = 'none';
         
         // Tampilkan kembali daftar folder
         const foldersView = document.getElementById('folders-view');
