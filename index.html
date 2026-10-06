@@ -879,8 +879,8 @@
 
     .hero-image-wrap {  
         position: relative;  
-        max-width: 400px;  /* Batas maksimal lebar foto di desktop */
-        margin-left: auto; /* Mendorong foto agar rata kanan di desktop */
+        max-width: 400px;  
+        margin-left: auto; 
         
         animation:  
             heroImageIn 1.1s 0.45s both  
@@ -2453,8 +2453,8 @@
     }  
 
     .lightbox img {  
-        max-width: min(900px, 90vw); /* Disesuaikan agar lightbox ada bingkai kosongnya */ 
-        max-height: 80vh;  /* Disesuaikan agar lightbox tidak kepanjangan atas bawah */  
+        max-width: min(900px, 90vw); 
+        max-height: 80vh; 
 
         object-fit: contain;  
 
@@ -2704,7 +2704,7 @@
         }  
 
         .hero-image-wrap {  
-            width: min(350px, 85vw);  /* Diperbarui agar lebih proporsional di tablet */
+            width: min(350px, 85vw);  
             margin: auto;  
         }  
 
@@ -2716,7 +2716,7 @@
         }  
 
         .profile-photo {  
-            width: min(320px, 85vw);  /* Diperbarui agar lebih proporsional di tablet */
+            width: min(320px, 85vw);  
             margin: auto;  
         }  
 
@@ -2834,12 +2834,12 @@
         }  
         
         .hero-image-wrap {  
-            width: min(280px, 75vw); /* Diperbarui agar lebih rapi di HP */
+            width: min(280px, 75vw); 
             margin: 0 auto 30px auto; 
         }  
 
         .profile-photo {  
-            width: min(260px, 75vw); /* Diperbarui agar lebih rapi di HP */ 
+            width: min(260px, 75vw);  
             margin: 0 auto;  
         }  
 
@@ -3060,6 +3060,7 @@
             <nav class="nav-links" id="navLinks">  
                 <a href="#home" class="nav-link active" data-de="Start" data-id="Beranda" data-en="Home">Start</a>  
                 <a href="#profil" class="nav-link" data-de="Über mich" data-id="Tentang Saya" data-en="About Me">Über mich</a>  
+                <a href="#video" class="nav-link" data-de="Video" data-id="Video" data-en="Video">Video</a>
                 <a href="#motivation" class="nav-link" data-de="Motivation" data-id="Motivasi" data-en="Motivation">Motivation</a>  
                 <a href="#erfahrung" class="nav-link" data-de="Erfahrung" data-id="Pengalaman" data-en="Experience">Erfahrung</a>  
                 <a href="#engagement" class="nav-link" data-de="Engagement" data-id="Sosial" data-en="Engagement">Engagement</a>  
@@ -3216,6 +3217,33 @@
 
     </section>  
 
+    <!-- =====================================================  
+         VORSTELLUNG VIDEO  
+    ====================================================== -->  
+    <section id="video">  
+        <div class="container">  
+            <div class="section-heading reveal">  
+                <div class="eyebrow" data-de="Vorstellungsvideo" data-id="Video Perkenalan" data-en="Introduction Video">Vorstellungsvideo</div>  
+                <h2 data-de="Ein kurzes Video über mich." data-id="Video singkat tentang saya." data-en="A short video about me.">Ein kurzes Video über mich.</h2>  
+                <p data-de="Erfahren Sie mehr über mich und meine Motivation für den Bundesfreiwilligendienst und eine Ausbildung in diesem Vorstellungsvideo." data-id="Pelajari lebih lanjut tentang diri saya dan motivasi saya untuk BFD serta Ausbildung dalam video perkenalan ini." data-en="Learn more about me and my motivation for the BFD and an apprenticeship in this introduction video.">  
+                    Erfahren Sie mehr über mich und meine Motivation für den Bundesfreiwilligendienst und eine Ausbildung in diesem Vorstellungsvideo.  
+                </p>  
+            </div>  
+
+            <div class="video-card reveal">  
+                <video controls preload="metadata" style="border-radius: 24px 24px 0 0;">  
+                    <source src="vorstellung.mp4" type="video/mp4">  
+                    <span data-de="Ihr Browser unterstützt das Video-Tag nicht." data-id="Browser Anda tidak mendukung tag video." data-en="Your browser does not support the video tag.">  
+                        Ihr Browser unterstützt das Video-Tag nicht.  
+                    </span>  
+                </video>  
+                <div class="video-caption">  
+                    <h3 data-de="Sich Vorstellen – BFD & Ausbildung" data-id="Perkenalan Diri – BFD & Ausbildung" data-en="Self-Introduction – BFD & Ausbildung">Sich Vorstellen – BFD & Ausbildung</h3>  
+                    <p data-de="Ein persönlicher Einblick in meine Ziele, Fähigkeiten und meine Lernbereitschaft." data-id="Wawasan pribadi tentang tujuan, kemampuan, dan kemauan belajar saya." data-en="A personal insight into my goals, skills, and willingness to learn.">Ein persönlicher Einblick in meine Ziele, Fähigkeiten und meine Lernbereitschaft.</p>  
+                </div>  
+            </div>  
+        </div>  
+    </section>  
 
     <!-- =====================================================  
          MOTIVATION  
@@ -3361,7 +3389,7 @@
                             <li data-de="Sichere Beförderung von Fahrgästen, Dokumenten, Paketen und Lebensmitteln." data-id="Transportasi yang aman untuk penumpang, dokumen, paket, dan makanan." data-en="Safe transportation of passengers, documents, packages, and food.">Sichere Beförderung von Fahrgästen, Dokumenten, Paketen und Lebensmitteln.</li>  
                             <li data-de="Pünktliche und sorgfältige Durchführung von Lieferungen." data-id="Pengiriman yang tepat waktu dan hati-hati." data-en="Punctual and careful execution of deliveries.">Pünktliche und sorgfältige Durchführung von Lieferungen.</li>  
                             <li data-de="Flexible und effektive Routenplanung im dichten Stadtverkehr." data-id="Perencanaan rute yang fleksibel dan efektif di lalu lintas kota yang padat." data-en="Flexible and effective route planning in dense city traffic.">Flexible und effektive Routenplanung im dichten Stadtverkehr.</li>  
-                            <li data-de="Freundlicher und professioneller Umgang mit unterschiedlichen Kunden." data-id="Interaksi yang ramah dan profesional dengan berbagai pelanggan." data-en="Friendly and professional interaction with diverse customers.">Freundlicher und professioneller Umgang mit unterschiedlichen Kunden.</li>  
+                            <li data-de="Freundlicher und professionaleller Umgang mit unterschiedlichen Kunden." data-id="Interaksi yang ramah dan profesional dengan berbagai pelanggan." data-en="Friendly and professional interaction with diverse customers.">Freundlicher und professioneller Umgang mit unterschiedlichen Kunden.</li>  
                         </ul>  
                     </div>  
                 </div>  
@@ -3559,7 +3587,6 @@
                     <!-- FOLDER 2: VOLUNTIR -->  
                     <div class="gallery-card" onclick="openFolder('gallery-volunteer')" style="cursor: pointer;">  
                         <div class="gallery-image">  
-                            <!-- Ganti foto2.jpg di bawah ini dengan gambar cover voluntir yang diinginkan -->
                             <img src="foto2.jpg" alt="Voluntir Cover" loading="lazy">  
                             <div class="folder-overlay">
                                 <div class="folder-icon">🤝</div>
@@ -3630,9 +3657,7 @@
                     </button>
                     
                     <div class="gallery stagger">  
-                        <!-- Contoh Foto Voluntir 1 -->
                         <div class="gallery-card">  
-                            <!-- Ganti voluntir1.jpg dengan nama file aslimu -->
                             <div class="gallery-image" onclick="openImage('voluntir1.jpg', 'Aktivität mit Kindern')">  
                                 <img src="voluntir1.jpg" alt="Voluntir Kegiatan" loading="lazy">  
                             </div>  
@@ -3641,8 +3666,6 @@
                                 <p data-de="Spiele und Betreuung." data-id="Bermain dan mendampingi." data-en="Games and supervision.">Spiele und Betreuung.</p>  
                             </div>  
                         </div>  
-                        
-                        <!-- Kamu bisa copy paste block div class="gallery-card" di atas jika ada foto voluntir tambahan -->
                     </div>
                 </div>
 
