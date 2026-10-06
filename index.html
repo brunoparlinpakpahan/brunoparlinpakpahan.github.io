@@ -2074,7 +2074,7 @@
     }
 
     /* =========================================================  
-       CERTIFICATE  
+       CERTIFICATE & DOCUMENTS
     ========================================================= */  
 
     .certificate-grid {  
@@ -2174,6 +2174,7 @@
         display: inline-flex;  
         align-items: center;  
         justify-content: center;  
+        gap: 6px;
 
         padding: 11px 17px;  
 
@@ -2192,6 +2193,7 @@
         font-weight: 800;  
 
         cursor: pointer;  
+        text-decoration: none;
 
         transition:  
             transform 0.3s ease,  
@@ -2205,6 +2207,24 @@
             0 10px 25px  
             rgba(214, 179, 106, 0.18);  
     }  
+    
+    .pdf-button.outline {
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--white);
+        border: 1px solid var(--border);
+    }
+    
+    .pdf-button.outline:hover {
+        background: rgba(214, 179, 106, 0.08);
+        border-color: rgba(214, 179, 106, 0.4);
+    }
+
+    .doc-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 20px;
+    }
 
 
     /* =========================================================  
@@ -2939,6 +2959,10 @@
         .certificate-info {  
             padding: 20px;  
         }  
+        
+        .doc-actions {
+            flex-direction: column;
+        }
 
         .portfolio-tabs {  
             flex-wrap: wrap;  
@@ -3543,7 +3567,7 @@
 
             <div class="portfolio-tabs">  
                 <button class="tab-button active" data-tab="photos" data-de="Fotos" data-id="Foto" data-en="Photos">Fotos</button>  
-                <button class="tab-button" data-tab="certificates" data-de="Zertifikat" data-id="Sertifikat" data-en="Certificate">Zertifikat</button>  
+                <button class="tab-button" data-tab="certificates" data-de="Zertifikate & Dokumente" data-id="Sertifikat & Dokumen" data-en="Certificates & Documents">Zertifikate & Dokumente</button>  
             </div>  
 
             <!-- PHOTOS (FOLDERS) -->  
@@ -3675,7 +3699,7 @@
                     
                     <div class="gallery stagger">  
                         <div class="gallery-card">  
-                            <div class="gallery-image" onclick="openImage('donasi1.jpg', 'Lebensmittelspende')">  
+                            <div class="gallery-image" onclick="openImage('donasi1.jpg', 'Lebensmittelspende 1')">  
                                 <img src="donasi1.jpg" alt="Donasi Makanan 1" loading="lazy">  
                             </div>  
                             <div class="gallery-info">  
@@ -3713,12 +3737,22 @@
                                 <p data-de="Ein kleiner Beitrag zur Unterstützung der lokalen Gemeinschaft." data-id="Kontribusi kecil untuk mendukung komunitas lokal." data-en="A small contribution to support the local community.">Ein kleiner Beitrag zur Unterstützung der lokalen Gemeinschaft.</p>  
                             </div>  
                         </div>  
+                        
+                        <div class="gallery-card">  
+                            <div class="gallery-image" onclick="openImage('donasi5.jpg', 'Zusammenhalt')">  
+                                <img src="donasi5.jpg" alt="Donasi Makanan 5" loading="lazy">  
+                            </div>  
+                            <div class="gallery-info">  
+                                <h3 data-de="Zusammenhalt" data-id="Kebersamaan" data-en="Togetherness">Zusammenhalt</h3>  
+                                <p data-de="Gemeinsame Freude beim Helfen und Teilen." data-id="Kegembiraan bersama saat membantu dan berbagi." data-en="Shared joy in helping and sharing.">Gemeinsame Freude beim Helfen und Teilen.</p>  
+                            </div>  
+                        </div>  
                     </div>
                 </div>
 
             </div>  
 
-            <!-- CERTIFICATE -->  
+            <!-- CERTIFICATES & DOCUMENTS -->  
             <div class="portfolio-panel" id="certificates">  
                 <div class="certificate-grid">  
                     <div class="certificate-card">  
@@ -3726,11 +3760,20 @@
                             <img src="sertifikat.png" alt="Zertifikat Bruno Parlin Pakpahan" loading="lazy">  
                         </div>  
                         <div class="certificate-info">  
-                            <h3 data-de="Zertifikat" data-id="Sertifikat" data-en="Certificate">Zertifikat</h3>  
-                            <p data-de="Nachweis meiner beruflichen beziehungsweise fachlichen Weiterbildung." data-id="Bukti pelatihan profesional dan spesialis saya." data-en="Proof of my professional and specialized training.">Nachweis meiner beruflichen beziehungsweise fachlichen Weiterbildung.</p>  
-                            <button class="pdf-button" type="button" onclick="openCertificate()">  
-                                🔍 <span data-de="Zertifikat vergrößern" data-id="Perbesar Sertifikat" data-en="Enlarge Certificate">Zertifikat vergrößern</span>  
-                            </button>  
+                            <h3 data-de="Zertifikat & Dokumente" data-id="Sertifikat & Dokumen" data-en="Certificate & Documents">Zertifikat & Dokumente</h3>  
+                            <p data-de="Nachweis meiner beruflichen Weiterbildung und meine Bewerbungsunterlagen." data-id="Bukti pelatihan profesional saya beserta dokumen lamaran." data-en="Proof of my professional training and my application documents.">Nachweis meiner beruflichen Weiterbildung und meine Bewerbungsunterlagen.</p>  
+                            
+                            <div class="doc-actions">
+                                <button class="pdf-button" type="button" onclick="openCertificate()">  
+                                    🔍 <span data-de="Zertifikat ansehen" data-id="Lihat Sertifikat" data-en="View Certificate">Zertifikat ansehen</span>  
+                                </button>  
+                                <a href="v1.pdf" target="_blank" class="pdf-button outline">
+                                    📄 <span data-de="Dokument öffnen (V1)" data-id="Buka Dokumen (V1)" data-en="Open Document (V1)">Dokument öffnen (V1)</span>
+                                </a>
+                                <a href="v2.pdf" target="_blank" class="pdf-button outline">
+                                    📄 <span data-de="Dokument öffnen (V2)" data-id="Buka Dokumen (V2)" data-en="Open Document (V2)">Dokument öffnen (V2)</span>
+                                </a>
+                            </div>
                         </div>  
                     </div>  
                 </div>  
